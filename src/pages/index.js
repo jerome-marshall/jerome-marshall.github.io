@@ -1,18 +1,22 @@
 import React from "react"
 import { useTheme } from "next-themes"
+import Layout from "../components/Layout/Layout"
 
 const Home = () => {
   const { theme, setTheme } = useTheme()
 
   return (
-    <div className="flex bg-slate-300 dark:bg-slate-900 w-full h-screen transition-all delay-500">
-      Home
-      <button
+    <div className="">
+      <Layout>
+        <h1>Hello Next.js</h1>
+      </Layout>
+      
+      {/* <button
         aria-label="Toggle Dark Mode"
         type="button"
-        className="p-3 h-12 w-12 order-2 md:order-3"
+        className="p-3 w-12 order-2 md:order-3 h-screen"
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      >Toggle</button>
+      >Toggle</button> */}
     </div>
   )
 }
