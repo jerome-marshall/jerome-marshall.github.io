@@ -1,6 +1,6 @@
 import React from "react"
 import { useTheme } from "next-themes"
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout"
 
 const Home = () => {
   const { theme, setTheme } = useTheme()
@@ -10,7 +10,7 @@ const Home = () => {
       <Layout>
         <h1>Hello Next.js</h1>
       </Layout>
-      
+
       {/* <button
         aria-label="Toggle Dark Mode"
         type="button"
