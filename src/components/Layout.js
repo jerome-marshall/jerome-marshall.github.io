@@ -13,8 +13,4 @@ const Layout = ({children}) => {
   )
 }
 
-export async function getStaticProps() {
-
-}
-
 export default Layout

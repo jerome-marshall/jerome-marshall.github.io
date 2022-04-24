@@ -1,8 +1,10 @@
 import React from "react"
 import { useTheme } from "next-themes"
 import Layout from "../components/Layout"
+import axios from "axios"
 
-const Home = () => {
+const Home = ({data}) => {
+console.log("🚀 ~ file: index.js ~ line 6 ~ Home ~ data", data)
   const { theme, setTheme } = useTheme()
 
   return (
@@ -19,6 +21,16 @@ const Home = () => {
       >Toggle</button> */}
     </div>
   )
+}
+
+export async function getStaticProps() {
+  try {
+    const response = await axios.get('https://portfolio-strapi3-api.herokuapp.com/global-data');
+    return { props: { data: response.data }}
+  } catch (error) {
+    console.error(error);
+    return { props: { data: "error" }}
+  }
 }
 
 export default Home
