@@ -17,4 +17,4 @@ export async function getStaticProps() {
 
 }
 
-export default Layout̥
+export default Layout
