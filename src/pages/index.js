@@ -1,15 +1,17 @@
-import React from "react";
+import React, {createContext} from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
+import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
 
 const Home = ({ data }) => {
-  console.log("🚀 ~ file: index.js ~ line 6 ~ Home ~ data", data);
 
   return (
     <div className="font-noto-sans">
-      <Layout>
-        <h1>Hello Next.js</h1>
-      </Layout>
+      <GlobalProvider value={{ data }}>
+        <Layout>
+          <h1>Hello Next.js</h1>
+        </Layout>
+      </GlobalProvider>
     </div>
   );
 };
