@@ -2,14 +2,16 @@ import React, {createContext} from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
+import Hero from "../components/Hero";
 
 const Home = ({ data }) => {
+console.log("🚀 ~ file: index.js ~ line 8 ~ Home ~ data", data)
 
   return (
     <div className="font-noto-sans">
       <GlobalProvider value={{ data }}>
         <Layout>
-          <h1>Hello Next.js</h1>
+          <Hero />
         </Layout>
       </GlobalProvider>
     </div>
