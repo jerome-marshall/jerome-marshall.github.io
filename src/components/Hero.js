@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <div className="-mt-20 h-screen pt-20">
-      <div className="flex h-full w-full flex-col justify-center items-center">
+      <div className="flex h-full w-full flex-col items-center justify-center">
         <div className="flex flex-col">
           <p className="">{heroData.pageTitle}</p>
           <h1 className="">{data.name}</h1>
