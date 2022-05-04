@@ -7,7 +7,6 @@ const Hero = () => {
   const heroData = data.pageContent.find(
     (content) => content.__component === "page-content.hero-page-content"
   );
-  console.log("🚀 ~ file: Hero.js ~ line 6 ~ Hero ~ data", heroData);
 
   return (
     <div className="-mt-20 h-screen pt-20">

@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import axios from "axios";
 import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
 import Hero from "../components/Hero";
+import About from "../components/About";
 
 const Home = ({ data }) => {
   console.log("🚀 ~ file: index.js ~ line 8 ~ Home ~ data", data);
@@ -12,6 +13,7 @@ const Home = ({ data }) => {
       <GlobalProvider value={{ data }}>
         <Layout>
           <Hero />
+          <About />
         </Layout>
       </GlobalProvider>
     </div>
