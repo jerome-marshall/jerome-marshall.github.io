@@ -8,7 +8,7 @@ const Home = ({ data }) => {
   console.log("🚀 ~ file: index.js ~ line 8 ~ Home ~ data", data);
 
   return (
-    <div className="font-noto-sans">
+    <div className="">
       <GlobalProvider value={{ data }}>
         <Layout>
           <Hero />
