@@ -8,6 +8,14 @@
   @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
 }
 
+.theme-toggle {
+  > div {
+    > div {
+      @apply shadow-toggle-shadow dark:shadow-dark-toggle-shadow
+    }
+  }
+}
+
 html,
 body {
   padding: 0;

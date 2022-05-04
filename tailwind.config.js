@@ -1,12 +1,5 @@
-module.exports = {
-  darkMode: "class",
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    fontFamily: {
-      "noto-sans": ["Noto Sans JP", "sans-serif"],
-    },
-    colors: {
-      accent_border: "#efd199",
+const customColors = {
+  accent_border: "#efd199",
       secondary: "#815400",
       primary: "#d78c00",
       accent_hover: "#ad7000",
@@ -36,7 +29,43 @@ module.exports = {
         text_accent: "#2873ff",
         shadow: "#eeeeee",
       },
+}
+
+module.exports = {
+  darkMode: "class",
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {
+      boxShadow: {
+        'toggle-shadow': `0 0 35px 1px ${customColors.primary}`,
+        'dark-toggle-shadow': `0 0 35px 1px ${customColors.dark.primary}`,
+      }
+    },
+    fontFamily: {
+      "noto-sans": ["Noto Sans JP", "sans-serif"],
+    },
+    colors: {
+      ...customColors
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addBase, theme }) {
+      function extractColorVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce((vars, colorKey) => {
+          const value = colorObj[colorKey];
+
+          const newVars =
+            typeof value === 'string'
+              ? { [`--color${colorGroup}-${colorKey}`]: value }
+              : extractColorVars(value, `-${colorKey}`);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addBase({
+        ':root': extractColorVars(theme('colors')),
+      });
+    },
+  ],
 };

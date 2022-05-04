@@ -25,11 +25,11 @@ const Header = () => {
 
   return (
     <nav className="flex h-20 w-full items-center border-b-2 border-background_2 dark:border-dark-background_2">
-      <div className="text-xl font-bold text-primary dark:text-dark-primary">
+      <div className="text-[22px] font-bold text-primary dark:text-dark-primary">
         JM
       </div>
       <div className="ml-auto flex items-center">
-        <div className="">
+        <div className="theme-toggle">
           <DayNightToggle
             onChange={handleThemeChange}
             checked={isDark}
