@@ -18,27 +18,41 @@
   }
 }
 
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+@layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
   }
-}
 
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+  h3 {
+    @apply text-text_900 dark:text-dark-text_900 text-[28px] font-bold
+  }
+
+  p {
+    @apply text-text_700 dark:text-dark-text_700 text-base leading-relaxed
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      @apply relative text-base leading-relaxed text-text_900 dark:text-dark-text_900 pl-5
+    }
+
+    li::before {
+      @apply text-base content-['▹'] absolute left-0 text-primary dark:text-dark-primary;
+    }
+    
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
