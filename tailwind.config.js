@@ -41,6 +41,12 @@ module.exports = {
         "dark-toggle-shadow": `0 0 35px 1px ${customColors.dark.primary}`,
       },
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1.25rem',
+      },
+    },
     fontFamily: {
       "noto-sans": ["Noto Sans JP", "sans-serif"],
     },

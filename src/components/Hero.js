@@ -9,7 +9,7 @@ const Hero = () => {
   );
 
   return (
-    <div className="-mt-20 h-screen pt-20">
+    <div className="container h-screen">
       <div className="flex h-full w-full flex-col items-center justify-center ">
         <div className="flex flex-col">
           <p className="text-base text-secondary dark:text-dark-secondary">
@@ -21,7 +21,7 @@ const Hero = () => {
           <h3 className="text-[28px] font-bold text-text_700 dark:text-dark-text_700">
             {heroData.shortDescription}
           </h3>
-          <p className="mt-5 text-base text-text_500 dark:text-dark-text_500">
+          <p className="mt-5 text-base text-text_500 dark:text-dark-text_500 leading-[25px]">
             {heroData.description}
           </p>
         </div>
