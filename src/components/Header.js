@@ -33,7 +33,7 @@ const Header = () => {
           <DayNightToggle
             onChange={handleThemeChange}
             checked={isDark}
-            size={30}
+            size={28}
           />
         </div>
         <div className="ml-6 text-2xl" onClick={openModal}>

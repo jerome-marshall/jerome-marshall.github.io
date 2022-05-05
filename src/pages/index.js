@@ -4,6 +4,7 @@ import axios from "axios";
 import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
 import Hero from "../components/Hero";
 import About from "../components/About";
+import Experience from "../components/Experience";
 
 const Home = ({ data }) => {
   console.log("🚀 ~ file: index.js ~ line 8 ~ Home ~ data", data);
@@ -14,6 +15,7 @@ const Home = ({ data }) => {
         <Layout>
           <Hero />
           <About />
+          <Experience />
         </Layout>
       </GlobalProvider>
     </div>

@@ -8,12 +8,11 @@ const About = () => {
   const aboutData = data.pageContent.find(
     (content) => content.__component === "page-content.about-page-content"
   );
-  console.log("🚀 ~ file: About.js ~ line 9 ~ About ~ aboutData", aboutData);
 
   return (
     <div className="container h-screen">
       <div className="flex h-full flex-col items-center justify-center">
-        <h3 className="self-start text-text_900 dark:text-dark-text_900">
+        <h3 className="self-center">
           {aboutData.pageTitle}
         </h3>
         <div className="mt-7 flex w-full flex-col">
