@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "npx prettier --write '**/*.{js,md,mdx}'"
+    "prettier": "npx prettier --write 'src/**/*.{js,md,mdx}'"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.0",
