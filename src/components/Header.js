@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed inset-0 flex h-20 w-full items-center border-b-2 border-background_2 bg-background_1 px-5 dark:border-dark-background_2 dark:bg-dark-background_1">
+    <nav className="fixed inset-0 z-10 flex h-20 w-full items-center border-b-2 border-background_2 bg-background_1 px-5 dark:border-dark-background_2 dark:bg-dark-background_1">
       <div className="text-[22px] font-bold text-primary dark:text-dark-primary">
         JM
       </div>
