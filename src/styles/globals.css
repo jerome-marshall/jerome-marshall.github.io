@@ -8,11 +8,11 @@
     @apply self-start rounded-full border-[3px] border-text_900 px-5 py-3 text-base text-text_900 dark:border-dark-text_900 dark:text-dark-text_900;
     @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
   }
-  
+
   .theme-toggle {
     > div {
       > div {
-        @apply shadow-toggle-shadow dark:shadow-dark-toggle-shadow
+        @apply shadow-toggle-shadow dark:shadow-dark-toggle-shadow;
       }
     }
   }
@@ -27,11 +27,11 @@
   }
 
   h3 {
-    @apply text-text_900 dark:text-dark-text_900 text-[28px] font-bold
+    @apply text-[28px] font-bold text-text_900 dark:text-dark-text_900;
   }
 
   p {
-    @apply text-text_700 dark:text-dark-text_700 text-base leading-relaxed
+    @apply text-base leading-relaxed text-text_700 dark:text-dark-text_700;
   }
 
   a {
@@ -43,13 +43,12 @@
     list-style: none;
 
     li {
-      @apply relative text-base leading-relaxed text-text_900 dark:text-dark-text_900 pl-5
+      @apply relative pl-5 text-base leading-relaxed;
     }
 
     li::before {
-      @apply text-base content-['▹'] absolute left-0 text-primary dark:text-dark-primary;
+      @apply absolute left-0 text-base text-primary content-['▹'] dark:text-dark-primary;
     }
-    
   }
   * {
     box-sizing: border-box;

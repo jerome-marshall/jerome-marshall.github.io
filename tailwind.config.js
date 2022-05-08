@@ -44,7 +44,7 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '1.25rem',
+        DEFAULT: "1.25rem",
       },
     },
     fontFamily: {
@@ -55,23 +55,24 @@ module.exports = {
     },
   },
   plugins: [
-    function ({ addBase, theme }) {
-      function extractColorVars(colorObj, colorGroup = "") {
-        return Object.keys(colorObj).reduce((vars, colorKey) => {
-          const value = colorObj[colorKey];
+    require("tailwind-children"),
+    // function ({ addBase, theme }) {
+    //   function extractColorVars(colorObj, colorGroup = "") {
+    //     return Object.keys(colorObj).reduce((vars, colorKey) => {
+    //       const value = colorObj[colorKey];
 
-          const newVars =
-            typeof value === "string"
-              ? { [`--color${colorGroup}-${colorKey}`]: value }
-              : extractColorVars(value, `-${colorKey}`);
+    //       const newVars =
+    //         typeof value === "string"
+    //           ? { [`--color${colorGroup}-${colorKey}`]: value }
+    //           : extractColorVars(value, `-${colorKey}`);
 
-          return { ...vars, ...newVars };
-        }, {});
-      }
+    //       return { ...vars, ...newVars };
+    //     }, {});
+    //   }
 
-      addBase({
-        ":root": extractColorVars(theme("colors")),
-      });
-    },
+    //   addBase({
+    //     ":root": extractColorVars(theme("colors")),
+    //   });
+    // },
   ],
 };
