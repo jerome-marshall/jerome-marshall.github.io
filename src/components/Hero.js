@@ -5,7 +5,7 @@ import Button from "./Button";
 const Hero = () => {
   const { data } = useContext(GlobalContext);
   const heroData = data.pageContent.find(
-    (content) => content.__component === "page-content.hero-page-content"
+    (content) => content.__typename === "ComponentPageContentHeroPageContent"
   );
 
   return (

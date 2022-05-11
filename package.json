@@ -10,9 +10,11 @@
     "prettier": "npx prettier --write 'src/**/*.{js,md,mdx}'"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.2",
     "@headlessui/react": "^1.6.0",
     "aos": "^2.3.4",
     "axios": "^0.26.1",
+    "graphql": "^16.5.0",
     "next": "12.1.5",
     "next-themes": "^0.1.1",
     "react": "18.0.0",

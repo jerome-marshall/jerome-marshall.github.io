@@ -6,7 +6,7 @@ import SkillLink from "./SkillLink";
 const About = () => {
   const { data } = useContext(GlobalContext);
   const aboutData = data.pageContent.find(
-    (content) => content.__component === "page-content.about-page-content"
+    (content) => content.__typename === "ComponentPageContentAboutPageContent"
   );
 
   return (

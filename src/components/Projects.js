@@ -6,10 +6,10 @@ const Projects = () => {
   const projectsData = data.pageContent.find(
     (content) => content.__component === "page-content.projects-page-content"
   );
-  console.log(
-    "🚀 ~ file: Projects.js ~ line 9 ~ Projects ~ projectsData",
-    projectsData
-  );
+  // console.log(
+  //   "🚀 ~ file: Projects.js ~ line 9 ~ Projects ~ projectsData",
+  //   projectsData
+  // );
 
   return (
     <div className="container h-screen">

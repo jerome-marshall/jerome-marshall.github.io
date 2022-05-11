@@ -7,7 +7,8 @@ import ExpAccordian from "./ExpAccordian";
 const Experience = () => {
   const { data } = useContext(GlobalContext);
   const expData = data.pageContent.find(
-    (content) => content.__component === "page-content.experience-page-content"
+    (content) =>
+      content.__typename === "ComponentPageContentExperiencePageContent"
   );
 
   const pannelRef = useRef(null);

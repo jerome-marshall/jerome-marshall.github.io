@@ -7,9 +7,10 @@ import About from "../components/About";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 
-const Home = ({ data }) => {
-  console.log("🚀 ~ file: index.js ~ line 8 ~ Home ~ data", data);
+import { gql } from "@apollo/client";
+import { getData } from "../data/graphql-client";
 
+const Home = ({ data }) => {
   return (
     <div className="">
       <GlobalProvider value={{ data }}>
@@ -26,10 +27,11 @@ const Home = ({ data }) => {
 
 export async function getStaticProps() {
   try {
-    const response = await axios.get(
-      "https://portfolio-strapi3-api.herokuapp.com/global-data"
-    );
-    return { props: { data: response.data } };
+    const data = await getData();
+    // const response = await axios.get(
+    //   "https://portfolio-strapi3-api.herokuapp.com/global-data"
+    // );
+    return { props: { data: data } };
   } catch (error) {
     console.error(error);
     return { props: { data: "error" } };
