@@ -25,9 +25,7 @@ const Hero = () => {
             {heroData.description}
           </p>
         </div>
-        <div className="mt-12">
-          <Button>Get in Touch</Button>
-        </div>
+        <Button className="mt-12">Get in Touch</Button>
       </div>
     </div>
   );

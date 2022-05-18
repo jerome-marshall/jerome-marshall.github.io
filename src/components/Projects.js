@@ -14,10 +14,6 @@ const Projects = () => {
     (content) =>
       content.__typename === "ComponentPageContentProjectsPageContent"
   );
-  console.log(
-    "🚀 ~ file: Projects.js ~ line 9 ~ Projects ~ projectsData",
-    projectsData
-  );
 
   const projects = projectsData.projects;
 
@@ -30,7 +26,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="container py-40">
+    <div className="container pt-40">
       <div className="flex h-full w-full flex-col items-center justify-center">
         <h3 className="">{projectsData.pageTitle}</h3>
         <div className="mt-12 grid grid-cols-1 gap-6">

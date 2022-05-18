@@ -9,6 +9,7 @@ import Projects from "../components/Projects";
 
 import { gql } from "@apollo/client";
 import { getData } from "../data/graphql-client";
+import Contact from "../components/Contact";
 
 const Home = ({ data }) => {
   return (
@@ -19,6 +20,7 @@ const Home = ({ data }) => {
           <About />
           <Experience />
           <Projects />
+          <Contact />
         </Layout>
       </GlobalProvider>
     </div>
