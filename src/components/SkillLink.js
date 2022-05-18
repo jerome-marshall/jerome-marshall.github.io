@@ -7,7 +7,7 @@ const SkillLink = ({ skill, className }) => {
   );
   return (
     <a
-      className={`text-base text-text_900 dark:text-dark-text_900 ${className}`}
+      className={`text-base whitespace-nowrap ${className}`}
       href={skill.url}
       target="_blank"
       rel="noopener noreferrer"
