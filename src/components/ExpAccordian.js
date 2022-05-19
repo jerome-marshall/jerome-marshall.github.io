@@ -24,12 +24,12 @@ const ExpAccordian = (props) => {
             </Disclosure.Button>
 
             <Transition
-              className={"overflow-auto"}
+              className={"overflow-hidden"}
               enter="transition-[max-height] duration-500 linear"
               enterFrom=" max-h-0"
-              enterTo={" max-h-[600px]"}
+              enterTo={" max-h-[700px]"}
               leave="transition-[max-height] duration-500 linear"
-              leaveFrom=" max-h-[600px]"
+              leaveFrom=" max-h-[700px]"
               leaveTo=" max-h-0"
             >
               <Disclosure.Panel
