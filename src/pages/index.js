@@ -12,7 +12,7 @@ import { getData } from "../data/graphql-client";
 import Contact from "../components/Contact";
 
 const Home = ({ data }) => {
-console.log("🚀 ~ file: index.js ~ line 15 ~ Home ~ data", data)
+  console.log("🚀 ~ file: index.js ~ line 15 ~ Home ~ data", data);
   return (
     <div className="">
       <GlobalProvider value={{ data }}>
