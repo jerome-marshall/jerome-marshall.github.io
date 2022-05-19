@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import DayNightToggle from "react-day-and-night-toggle";
 import { FaBars } from "react-icons/fa";
+import { FaTimes as IconClose } from "react-icons/fa";
 import { useTheme } from "next-themes";
 import { Dialog } from "@headlessui/react";
+import Button from "./Button";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -43,13 +45,27 @@ const Header = () => {
       <Dialog
         as="div"
         open={isModalOpen}
-        onClose={closeModal}
+        onClose={(closeModal) => {}}
         className="relative z-10"
       >
         <div className="bg fixed inset-0 overflow-y-auto bg-background_2 dark:bg-dark-background_2">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="relative flex min-h-full items-center justify-center p-4 text-center">
+            <div
+              className="absolute top-0 right-0 m-6 text-2xl"
+              onClick={closeModal}
+            >
+              <IconClose />
+            </div>
             <Dialog.Panel className="mx-auto">
-              <p>testing</p>
+              <div className="flex flex-col gap-7 child-p:text-2xl child-p:text-text_900 dark:child-p:text-dark-text_900">
+                <p className="">About</p>
+                <p className="">Experience</p>
+                <p className="">Projects</p>
+                <p className="">Contact</p>
+              </div>
+              <Button className="mt-32 border-secondary bg-secondary px-12 text-text_hover dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-text_hover">
+                Resume
+              </Button>
             </Dialog.Panel>
           </div>
         </div>
