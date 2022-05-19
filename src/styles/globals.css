@@ -6,7 +6,15 @@
 @layer components {
   .btn {
     @apply rounded-full border-[3px] border-text_900 px-6 py-4 text-lg text-text_900 dark:border-dark-text_900 dark:text-dark-text_900;
-    @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
+    @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
+
+    @media screen(lg) {
+      @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
+    }
+  }
+  .btn-secondary {
+    @apply border-secondary bg-secondary text-text_hover dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-text_hover;
+    @apply active:border-text_900 active:text-text_900 dark:active:border-dark-text_900 dark:active:text-dark-text_900;
   }
 
   .theme-toggle {

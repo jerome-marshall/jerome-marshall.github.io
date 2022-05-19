@@ -23,7 +23,7 @@ const Experience = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" id="experience">
       <div className="flex h-full flex-col items-center py-20">
         <h3 className="">{expData.pageTitle}</h3>
         <div className="mt-12 flex w-full flex-col overflow-auto rounded-xl border-2 border-background_3 dark:border-dark-background_3">

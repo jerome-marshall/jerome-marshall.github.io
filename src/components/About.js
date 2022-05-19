@@ -10,7 +10,7 @@ const About = () => {
   );
 
   return (
-    <div className="container h-screen">
+    <div className="container h-screen" id="about">
       <div className="flex h-full flex-col items-center justify-center">
         <h3 className="self-center">{aboutData.pageTitle}</h3>
         <div className="mt-7 flex w-full flex-col">

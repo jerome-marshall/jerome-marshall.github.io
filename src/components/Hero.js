@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import Button from "./Button";
+import { Link } from "react-scroll";
+import ScrollToLink from "./ScrollToLink";
 
 const Hero = () => {
   const { data } = useContext(GlobalContext);
@@ -25,7 +27,9 @@ const Hero = () => {
             {heroData.description}
           </p>
         </div>
-        <Button className="mt-12">Get in Touch</Button>
+        <ScrollToLink to="contact" className="btn mt-12">
+          Get in Touch
+        </ScrollToLink>
       </div>
     </div>
   );
