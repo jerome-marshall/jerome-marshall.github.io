@@ -13,21 +13,21 @@ const Hero = () => {
   return (
     <div className="container h-screen">
       <div className="flex h-full w-full flex-col items-center justify-center ">
-        <div className="flex flex-col">
-          <p className="text-secondary dark:text-dark-secondary">
+        <div className="flex w-full flex-col">
+          <p className="text-sm text-secondary dark:text-dark-secondary">
             {heroData.pageTitle}
           </p>
-          <h1 className="text-[38px] font-bold text-text_900 dark:text-dark-text_900">
+          <h1 className="text-clamp-lg font-bold text-text_900 dark:text-dark-text_900">
             {data.name}.
           </h1>
-          <h3 className="text-text_700 dark:text-dark-text_700">
+          <h3 className=" text-clamp-md text-text_700 dark:text-dark-text_700">
             {heroData.shortDescription}
           </h3>
-          <p className="mt-5 text-text_500 dark:text-dark-text_500">
+          <p className="mt-5 max-w-[540px] text-text_500  dark:text-dark-text_500 lg:text-lg">
             {heroData.description}
           </p>
         </div>
-        <ScrollToLink to="contact" className="btn mt-12">
+        <ScrollToLink to="contact" className="btn mt-12 self-start">
           Get in Touch
         </ScrollToLink>
       </div>

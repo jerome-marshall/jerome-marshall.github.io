@@ -40,6 +40,10 @@ module.exports = {
         "toggle-shadow": `0 0 35px 1px ${customColors.primary}`,
         "dark-toggle-shadow": `0 0 35px 1px ${customColors.dark.primary}`,
       },
+      fontSize: {
+        "clamp-md": "clamp(28px, 5vw, 50px)",
+        "clamp-lg": "clamp(40px, 8vw, 80px)",
+      },
     },
     container: {
       center: true,
@@ -47,6 +51,7 @@ module.exports = {
         DEFAULT: "1.25rem",
       },
     },
+
     fontFamily: {
       "noto-sans": ["Noto Sans JP", "sans-serif"],
     },
