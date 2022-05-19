@@ -18,7 +18,7 @@
   }
 
   .social-card {
-    @apply flex rounded-full border-2 p-3 child-svg:h-5 child-svg:w-5 dark:border-dark-accent_border dark:child-svg:text-dark-text_700;
+    @apply flex rounded-full border-2 border-accent_border p-3 child-svg:h-5 child-svg:w-5 child-svg:text-text_700 dark:border-dark-accent_border dark:child-svg:text-dark-text_700;
   }
 }
 

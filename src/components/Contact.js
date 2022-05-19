@@ -7,15 +7,11 @@ const Contact = () => {
   const contactData = data.pageContent.find(
     (content) => content.__typename === "ComponentPageContentContactPageCotent"
   );
-  console.log(
-    "🚀 ~ file: Contact.js ~ line 9 ~ Contact ~ contactData",
-    contactData
-  );
 
   return (
     <div className="container flex h-screen items-center justify-center">
       <div className="flex flex-col items-center justify-center px-5 text-center">
-        <h6 className="text-sm dark:text-dark-secondary">
+        <h6 className="text-sm text-secondary dark:text-dark-secondary">
           {contactData.pageTitleIntro}
         </h6>
         <h3 className="">{contactData.pageTitle}</h3>

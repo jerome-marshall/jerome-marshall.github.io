@@ -12,7 +12,7 @@ import { SiNextdotjs as IconNextJs } from "react-icons/si";
 const Footer = () => {
   const { data } = useContext(GlobalContext);
 
-  const getIcon = iconName => {
+  const getIcon = (iconName) => {
     const Icon =
       iconName === "github"
         ? IconGitHub
@@ -24,38 +24,40 @@ const Footer = () => {
         ? IconPhone
         : iconName === "email"
         ? IconMail
-        : null
+        : null;
 
-    return Icon
-  }
+    return Icon;
+  };
 
   const CreditSectionIcons = data.socials.map((social, index) => {
-    const Icon = getIcon(social.name)
+    const Icon = getIcon(social.name);
 
     return (
       <a
         key={social.displayName + "creditSection"}
         className="social-card"
         href={social.url}
-        target={social.name !== "phone" ? "_blank": ""} rel="noreferrer"
+        target={social.name !== "phone" ? "_blank" : ""}
+        rel="noreferrer"
       >
         <Icon />
       </a>
-    )
-  })
+    );
+  });
 
   return (
     <div className="container mx-auto -mt-[140px] flex h-[140px] justify-center">
       <div className="mb-4 flex h-full flex-col items-center justify-center">
-        <div className="flex gap-4">
-          {CreditSectionIcons}
-        </div>
+        <div className="flex gap-4">{CreditSectionIcons}</div>
         <div className="mt-4 flex flex-col items-center">
-          <p className=" text-sm dark:text-dark-text_500">
+          <p className=" text-sm text-text_500 dark:text-dark-text_500">
             Designed by {data.name}
           </p>
-          <p className="mt-1 flex items-center gap-2 text-sm descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-dark-secondary dark:text-dark-text_500">
-            Built with <a href="https://nextjs.org/" target="_blank" rel="noreferrer"><IconNextJs /></a>
+          <p className="mt-1 flex items-center gap-2 text-sm text-text_500 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary">
+            Built with{" "}
+            <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
+              <IconNextJs />
+            </a>
           </p>
         </div>
       </div>

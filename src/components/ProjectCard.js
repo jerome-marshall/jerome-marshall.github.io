@@ -6,8 +6,8 @@ import SkillLink from "./SkillLink";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="flex w-full flex-col px-5 py-7 dark:bg-dark-background_2 ">
-      <div className="flex items-center justify-between child-svg:h-9 child-svg:w-9 dark:text-dark-text_700">
+    <div className="flex w-full flex-col bg-background_2 px-5 py-7 dark:bg-dark-background_2">
+      <div className="flex items-center justify-between text-text_700 child-svg:h-9 child-svg:w-9 dark:text-dark-text_700">
         <IconFolder />
         <div className="flex gap-4 child-svg:h-6 child-svg:w-6">
           <IconGitHub />
@@ -15,10 +15,12 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
       <div className="my-7 flex flex-col">
-        <h5 className="text-xl font-bold dark:text-dark-text_900">
+        <h5 className="text-xl font-bold text-text_900 dark:text-dark-text_900">
           {project.name}
         </h5>
-        <p className="mt-3 dark:text-dark-text_500">{project.description}</p>
+        <p className="mt-3 text-text_500 dark:text-dark-text_500">
+          {project.description}
+        </p>
       </div>
       <div className="-mb-3 mt-auto flex w-full gap-4 overflow-auto pb-3">
         {project.techStack?.map((skill) => (
@@ -28,7 +30,7 @@ const ProjectCard = ({ project }) => {
           >
             <SkillLink
               skill={skill}
-              className=" text-xs dark:text-dark-text_700"
+              className=" text-xs text-text_700 dark:text-dark-text_700"
             />
           </div>
         ))}
