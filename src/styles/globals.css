@@ -4,6 +4,10 @@
 @tailwind utilities;
 
 @layer components {
+  .container {
+    @apply max-w-[1000px];
+  }
+
   .btn {
     @apply rounded-full border-[3px] border-text_900 px-6 py-4 text-lg text-text_900 dark:border-dark-text_900 dark:text-dark-text_900;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
@@ -23,6 +27,10 @@
         @apply shadow-toggle-shadow dark:shadow-dark-toggle-shadow;
       }
     }
+  }
+
+  .header-link {
+    @apply cursor-pointer text-sm text-text_900 dark:text-dark-text_900 dark:hover:text-dark-primary;
   }
 
   .social-card {

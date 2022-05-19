@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed inset-0 z-10 flex h-20 w-full items-center border-b-2 border-background_2 bg-background_1 px-5 dark:border-dark-background_2 dark:bg-dark-background_1">
+    <nav className="fixed inset-0 z-10 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 px-5 dark:border-dark-background_2 dark:bg-dark-background_1">
       <Link
         className="text-[22px] font-bold text-primary dark:text-dark-primary"
         to="/"
@@ -35,7 +35,20 @@ const Header = () => {
       >
         JM
       </Link>
-      <div className="ml-auto flex items-center">
+      <div className="child-a:header-link hidden gap-12 lg:flex">
+        <ScrollToLink to="about">About</ScrollToLink>
+        <ScrollToLink to="experience">Experience</ScrollToLink>
+        <ScrollToLink to="projects">Projects</ScrollToLink>
+        <ScrollToLink to="contact">Contact</ScrollToLink>
+        <a
+          href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Resume
+        </a>
+      </div>
+      <div className="flex items-center">
         <div className="theme-toggle">
           <DayNightToggle
             onChange={handleThemeChange}
