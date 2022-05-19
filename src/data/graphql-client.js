@@ -17,6 +17,7 @@ export const getData = async () => {
             id
             name
             displayName
+            url
           }
           pageContent {
             ... on ComponentPageContentHeroPageContent {
