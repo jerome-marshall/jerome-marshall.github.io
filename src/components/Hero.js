@@ -23,11 +23,11 @@ const Hero = () => {
           <h3 className=" text-clamp-md text-text_700 dark:text-dark-text_700">
             {heroData.shortDescription}
           </h3>
-          <p className="mt-5 max-w-[540px] text-text_500  dark:text-dark-text_500 lg:text-lg">
+          <p className="mt-5 max-w-[600px] text-text_500  dark:text-dark-text_500  md:text-lg">
             {heroData.description}
           </p>
         </div>
-        <ScrollToLink to="contact" className="btn mt-12 self-start">
+        <ScrollToLink to="contact" className="btn mt-12 sm:self-start">
           Get in Touch
         </ScrollToLink>
       </div>
