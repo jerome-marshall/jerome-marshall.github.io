@@ -17,9 +17,7 @@ const About = () => {
         <h3 className="self-center">{aboutData.pageTitle}</h3>
         <div className="flex items-center gap-12">
           <div className="mt-7 flex w-full flex-col md:basis-2/3">
-            <ReactMarkdown className=" text-primary">
-              {aboutData.description}
-            </ReactMarkdown>
+            <ReactMarkdown className="">{aboutData.description}</ReactMarkdown>
 
             <ul className="mt-4 columns-2 sm:mr-auto sm:gap-32">
               {aboutData.skillset.map((skill) => (
