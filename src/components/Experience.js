@@ -26,7 +26,7 @@ const Experience = () => {
   return (
     <div className="container max-w-[800px]" id="experience">
       <div className="flex h-full w-full flex-col items-center py-20">
-        <h3 className="self-start">{expData.pageTitle}</h3>
+        <h3 className="md:self-start">{expData.pageTitle}</h3>
         <div className="mt-12">
           <Tab.Group vertical as="div" className="hidden  md:flex">
             <Tab.List className="flex flex-col">
