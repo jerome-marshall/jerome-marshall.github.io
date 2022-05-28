@@ -6,7 +6,7 @@ import SkillLink from "./SkillLink";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="flex w-full flex-col bg-background_2 px-5 py-7 dark:bg-dark-background_2">
+    <div className="group flex w-full flex-col bg-background_2 px-5 py-7 dark:bg-dark-background_2">
       <div className="flex items-center justify-between text-text_700 child-svg:h-9 child-svg:w-9 dark:text-dark-text_700">
         <IconFolder />
         <div className="flex gap-4 child-svg:h-6 child-svg:w-6">
@@ -15,10 +15,10 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
       <div className="my-7 flex flex-col">
-        <h5 className="text-xl font-bold text-text_900 dark:text-dark-text_900">
+        <h5 className="text-xl font-bold text-text_900 group-hover:text-dark-primary dark:text-dark-text_900">
           {project.name}
         </h5>
-        <p className="mt-3 text-text_500 dark:text-dark-text_500">
+        <p className="mt-3 text-text_500 dark:text-dark-text_500 lg:text-sm">
           {project.description}
         </p>
       </div>
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
           >
             <SkillLink
               skill={skill}
-              className=" text-xs text-text_700 dark:text-dark-text_700"
+              className=" text-xs text-text_700 group-hover:text-dark-secondary dark:text-dark-text_700"
             />
           </div>
         ))}

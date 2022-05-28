@@ -9,7 +9,7 @@
   }
 
   .btn {
-    @apply rounded-full border-[3px] border-text_900 px-6 py-4 text-lg text-text_900 dark:border-dark-text_900 dark:text-dark-text_900;
+    @apply rounded-full border-[3px] border-text_900 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:text-dark-text_900 lg:px-6 lg:py-4 lg:text-lg;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
 
     @media screen(lg) {

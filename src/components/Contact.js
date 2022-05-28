@@ -14,11 +14,15 @@ const Contact = () => {
       id="contact"
     >
       <div className="flex flex-col items-center justify-center px-5 text-center">
-        <h6 className="text-sm text-secondary dark:text-dark-secondary">
+        <h6 className="text-sm text-secondary dark:text-dark-secondary lg:text-base">
           {contactData.pageTitleIntro}
         </h6>
-        <h3 className="">{contactData.pageTitle}</h3>
-        <p className="my-6">{contactData.description}</p>
+        <h3 className="md:text-4xl lg:my-3 lg:text-[50px]">
+          {contactData.pageTitle}
+        </h3>
+        <p className="mt-4 mb-6 max-w-xl lg:text-lg">
+          {contactData.description}
+        </p>
         <a href="mailto:jeromemarshall0@gmail.com" className="btn mt-4">
           Say Hello
         </a>
