@@ -10,12 +10,14 @@ import Projects from "../components/Projects";
 import { gql } from "@apollo/client";
 import { getData } from "../data/graphql-client";
 import Contact from "../components/Contact";
+import SideBar from "../components/SideBar";
 
 const Home = ({ data }) => {
   console.log("🚀 ~ file: index.js ~ line 15 ~ Home ~ data", data);
   return (
     <div className="">
       <GlobalProvider value={{ data }}>
+        <SideBar />
         <Layout>
           <Hero />
           <About />

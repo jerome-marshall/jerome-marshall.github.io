@@ -9,7 +9,7 @@ const MobileMenuModal = (props) => {
       as="div"
       open={props.isModalOpen}
       onClose={(closeModal) => {}}
-      className="relative z-10"
+      className="relative z-50"
     >
       <div className="bg fixed inset-0 overflow-y-auto bg-background_2 dark:bg-dark-background_2">
         <div className="relative flex min-h-full items-center justify-center p-4 text-center">

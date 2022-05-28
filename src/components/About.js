@@ -28,7 +28,7 @@ const About = () => {
             </ul>
           </div>
           <div className="relative hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-full hover:rounded-3xl md:block lg:hover:scale-110">
-            <div className="absolute z-50 h-full w-full bg-background_1/30 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
+            <div className="absolute z-10 h-full w-full bg-background_1/30 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
             <Image
               src={myImg}
               alt={`Picture of ${data.name}`}

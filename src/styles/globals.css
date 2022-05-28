@@ -8,6 +8,10 @@
     @apply max-w-[1000px];
   }
 
+  .wrapper {
+    @apply mx-auto max-w-[1600px] px-6;
+  }
+
   .btn {
     @apply rounded-full border-[3px] border-text_900 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:text-dark-text_900 lg:px-6 lg:py-4 lg:text-lg;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
@@ -34,7 +38,7 @@
   }
 
   .social-card {
-    @apply flex rounded-full border-2 border-accent_border p-3 child-svg:h-5 child-svg:w-5 child-svg:text-text_700 dark:border-dark-accent_border dark:child-svg:text-dark-text_700;
+    @apply flex rounded-full border-2 border-accent_border p-3 hover:border-secondary hover:bg-background_2 child-svg:h-5 child-svg:w-5 child-svg:text-text_700 dark:border-dark-accent_border dark:hover:border-dark-secondary dark:hover:bg-dark-background_2 dark:child-svg:text-dark-text_700;
   }
 }
 
@@ -70,8 +74,29 @@
       @apply absolute left-0 text-base text-primary content-['▹'] dark:text-dark-primary;
     }
   }
+
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Works on Firefox */
+  * {
+    scrollbar-width: thin;
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--background-dark);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--grey-500);
+    border-radius: 100px;
+    /* border: 3px solid orange; */
   }
 }

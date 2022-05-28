@@ -27,9 +27,9 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed inset-0 z-10 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 px-5 dark:border-dark-background_2 dark:bg-dark-background_1">
+    <nav className="wrapper fixed inset-0 z-10 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1">
       <Link
-        className="text-[22px] font-bold text-primary dark:text-dark-primary"
+        className="cursor-pointer text-[22px] font-bold text-primary dark:text-dark-primary"
         to="/"
         onClick={() => scroll.scrollToTop()}
       >
