@@ -12,7 +12,7 @@ const About = () => {
   );
 
   return (
-    <div className="container h-screen" id="about">
+    <div className="container py-20" id="about">
       <div className="flex h-full flex-col items-center justify-center">
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
         <div className="flex items-center gap-12">

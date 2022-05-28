@@ -26,7 +26,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="container pt-40" id="projects">
+    <div className="container pt-20" id="projects">
       <div className="flex h-full w-full flex-col items-center justify-center">
         <h3 className="text-4xl">{projectsData.pageTitle}</h3>
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
