@@ -44,7 +44,7 @@ const SideBar = () => {
     ));
 
   return (
-    <div className="wrapper fixed bottom-0 right-0 left-0 hidden w-screen items-end justify-between xl:flex">
+    <div className="wrapper fixed bottom-0 right-0 left-0 z-0 hidden w-screen items-end justify-between xl:flex">
       {iconsLocation.map((_, index) => {
         const isLeft = index === 0;
 

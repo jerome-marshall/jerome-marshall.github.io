@@ -3,7 +3,7 @@ import React from "react";
 const SkillLink = ({ skill, className }) => {
   return (
     <a
-      className={`whitespace-nowrap text-base ${className}`}
+      className={`whitespace-nowrap text-sm ${className}`}
       href={skill.url}
       target="_blank"
       rel="noopener noreferrer"

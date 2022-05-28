@@ -6,7 +6,7 @@ import SkillLink from "./SkillLink";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="group flex w-full flex-col bg-background_2 px-5 py-7 dark:bg-dark-background_2">
+    <div className="group z-10 flex w-full flex-col bg-background_2 px-5 py-7 dark:bg-dark-background_2">
       <div className="flex items-center justify-between text-text_700 child-svg:h-9 child-svg:w-9 dark:text-dark-text_700">
         <IconFolder />
         <div className="flex gap-4 child-svg:h-6 child-svg:w-6">
