@@ -32,7 +32,12 @@ const Footer = () => {
           </p>
           <p className="mt-1 flex items-center gap-2 text-sm text-text_500 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary">
             Built with{" "}
-            <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
+            <a
+              className="z-10"
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IconNextJs />
             </a>
           </p>

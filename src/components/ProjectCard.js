@@ -15,7 +15,7 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
       <div className="my-7 flex flex-col">
-        <h5 className="text-xl font-bold text-text_900 group-hover:text-dark-primary dark:text-dark-text_900">
+        <h5 className="text-xl font-bold text-text_900 group-hover:text-primary dark:text-dark-text_900 dark:group-hover:text-dark-primary">
           {project.name}
         </h5>
         <p className="mt-3 text-text_500 dark:text-dark-text_500 lg:text-sm">
@@ -30,7 +30,7 @@ const ProjectCard = ({ project }) => {
           >
             <SkillLink
               skill={skill}
-              className=" text-xs text-text_700 group-hover:text-dark-secondary dark:text-dark-text_700"
+              className=" text-xs text-text_700 group-hover:text-secondary dark:text-dark-text_700 dark:group-hover:text-dark-secondary"
             />
           </div>
         ))}

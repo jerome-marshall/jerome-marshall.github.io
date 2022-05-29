@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import { getIcon } from "../utils/utils";
+import { motion } from "framer-motion";
 
 const SideBar = () => {
   const { data } = useContext(GlobalContext);
@@ -10,11 +11,51 @@ const SideBar = () => {
     ["phone", "email"], // right icons
   ];
 
+  const sideContainerVariant = (isLeft) => {
+    return {
+      hidden: {
+        // x: isLeft ? -100 : 100,
+        opacity: 0,
+      },
+      visible: {
+        // x: 0,
+        opacity: 1,
+        transition: {
+          duration: 1,
+          // delay: 2,
+          // when: "beforeChildren",
+          ease: "easeInOut",
+          staggerChildren: 0.1,
+          delayChildren: 1,
+          staggerDirection: -1,
+        },
+      },
+    };
+  };
+
+  const iconVariant = (isLeft) => {
+    return {
+      hidden: {
+        x: isLeft ? -100 : 100,
+        opacity: 0,
+      },
+      visible: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      },
+    };
+  };
+
   const GetIconCard = ({ social, left, right }) => {
     const Icon = getIcon(social.name);
 
     return (
-      <a
+      <motion.a
+        variants={iconVariant(left)}
         key={social.displayName + "creditSection"}
         className={`social-card group flex items-center gap-3 ${
           right && "flex-row-reverse"
@@ -27,7 +68,7 @@ const SideBar = () => {
         <span className="hidden text-sm text-text_900 group-hover:inline dark:text-dark-text_900">
           {social.displayName}
         </span>
-      </a>
+      </motion.a>
     );
   };
 
@@ -49,19 +90,23 @@ const SideBar = () => {
         const isLeft = index === 0;
 
         return (
-          <div
+          <motion.div
+            variants={sideContainerVariant(isLeft)}
+            initial="hidden"
+            animate="visible"
             key={index}
             className={`flex flex-col items-start gap-5 ${
               !isLeft && "items-end"
             }`}
           >
             {isLeft ? LeftSection : RightSection}
-            <p
+            <motion.p
+              variants={iconVariant(isLeft)}
               className={`h-[150px] border-r-2 border-accent_border dark:border-dark-accent_border ${
                 isLeft ? "ml-[22px]" : "mr-[22px]"
               }`}
-            ></p>
-          </div>
+            ></motion.p>
+          </motion.div>
         );
       })}
     </div>

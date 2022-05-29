@@ -6,6 +6,7 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
+import { AnimatePresence } from "framer-motion";
 
 import { gql } from "@apollo/client";
 import { getData } from "../data/graphql-client";
@@ -15,9 +16,8 @@ import SideBar from "../components/SideBar";
 const Home = ({ data }) => {
   console.log("🚀 ~ file: index.js ~ line 15 ~ Home ~ data", data);
   return (
-    <div className="">
+    <div>
       <GlobalProvider value={{ data }}>
-        <SideBar />
         <Layout>
           <Hero />
           <About />
@@ -25,6 +25,7 @@ const Home = ({ data }) => {
           <Projects />
           <Contact />
         </Layout>
+        <SideBar />
       </GlobalProvider>
     </div>
   );

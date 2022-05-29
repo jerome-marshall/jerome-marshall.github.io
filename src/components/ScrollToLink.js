@@ -1,17 +1,14 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
-const ScrollToLink = ({ to, className, clickHandler, children }) => {
+const ScrollToLink = ({ to, className, clickHandler, children, variants }) => {
   return (
-    <Link
-      to={to}
-      className={`${className}`}
-      onClick={clickHandler}
-      smooth={true}
-      duration={1000}
-    >
-      {children}
-    </Link>
+    <motion.div className={`${className}`} variants={variants}>
+      <Link to={to} onClick={clickHandler} smooth={true} duration={1000}>
+        {children}
+      </Link>
+    </motion.div>
   );
 };
 

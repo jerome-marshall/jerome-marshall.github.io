@@ -28,14 +28,14 @@ const Experience = () => {
       <div className="flex h-full w-full flex-col items-center py-20">
         <h3 className="md:self-start">{expData.pageTitle}</h3>
         <div className="mt-12">
-          <Tab.Group vertical as="div" className="hidden  md:flex">
+          <Tab.Group vertical as="div" className="hidden md:flex">
             <Tab.List className="flex flex-col">
               {expData.jobs.map((job, i) => (
                 <Tab
                   key={job.companyName + "Tab"}
                   className={({ selected }) =>
                     classNames(
-                      "mr-8 whitespace-nowrap border-l-[3px] p-3 text-left text-sm hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
+                      "z-10 mr-8 whitespace-nowrap border-l-[3px] p-3 text-left text-sm hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
                       selected
                         ? "border-secondary text-secondary dark:border-dark-secondary  dark:text-dark-secondary"
                         : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500"
@@ -57,7 +57,7 @@ const Experience = () => {
                       @
                     </span>{" "}
                     <a
-                      className="font-bold text-primary dark:text-dark-primary"
+                      className="z-10 font-bold text-primary dark:text-dark-primary"
                       href={job.url}
                       target="_blank"
                       rel="noreferrer"
