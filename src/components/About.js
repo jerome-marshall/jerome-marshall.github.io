@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import ReactMarkdown from "react-markdown";
 import SkillLink from "./SkillLink";
 import Image from "next/image";
 import myImg from "../assets/me.jpg";
+import { useInView } from "react-intersection-observer";
+import { useAnimation, motion } from "framer-motion";
 
 const About = () => {
   const { data } = useContext(GlobalContext);
@@ -11,33 +13,123 @@ const About = () => {
     (content) => content.__typename === "ComponentPageContentAboutPageContent"
   );
 
+  const { ref, inView, entry } = useInView({
+    threshold: 0.4,
+    triggerOnce: true,
+  });
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start("visible");
+      console.log("inView", inView);
+    }
+  }, [inView, animation]);
+
+  const containerVariant = {
+    hidden: {
+      opacity: 0,
+      y: 100,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        // delay: 1,
+        // when: "beforeChildren",
+        // staggerChildren: 0.1,
+        // delayChildren: 0.4,
+      },
+    },
+  };
+
+  const itemVariant = (index) => {
+    return {
+      hidden: {
+        opacity: 0,
+        y: 20,
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 0.3 + index * 0.2,
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      },
+      hover: {
+        scale: 1.1,
+      },
+    };
+  };
+
+  const imgVariant = {
+    hidden: {
+      scale: 0.7,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
-    <div className="container py-20" id="about">
-      <div className="flex h-full flex-col items-center justify-center">
+    <div className="container py-20">
+      <motion.div
+        id="about"
+        ref={ref}
+        variants={containerVariant}
+        initial="hidden"
+        animate={animation}
+        className="flex h-full flex-col items-center justify-center"
+      >
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
         <div className="flex items-center gap-8 md:gap-8 lg:gap-10 xl:gap-12">
           <div className="mt-7 flex w-full flex-col md:basis-2/3">
             <ReactMarkdown className="">{aboutData.description}</ReactMarkdown>
 
-            <ul className="mt-4 columns-2 sm:mr-auto sm:gap-32">
-              {aboutData.skillset.map((skill) => (
-                <li className="py-1" key={skill.name}>
+            <ul className="mt-4 grid grid-cols-2 sm:mr-auto sm:gap-x-32">
+              {aboutData.skillset.map((skill, i) => (
+                <motion.li
+                  animate={animation}
+                  initial="hidden"
+                  variants={itemVariant(i)}
+                  className="py-1"
+                  key={skill.name}
+                >
                   <SkillLink skill={skill} />
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
-          <div className="relative hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-full hover:rounded-3xl md:block lg:hover:scale-110">
-            <div className="absolute z-10 h-full w-full bg-background_1/30 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
-            <Image
-              src={myImg}
-              alt={`Picture of ${data.name}`}
-              className="aspect-ratio-1/1 "
-              // layout="fixed"
-            />
-          </div>
+          <motion.div
+            className="z-10"
+            variants={imgVariant}
+            initial="hidden"
+            animate={animation}
+          >
+            <div className="relative z-10 hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-[50%] transition-all duration-500 hover:rounded-3xl md:block lg:hover:!scale-110">
+              <div className="absolute z-10 h-full w-full bg-background_1/30 transition-all duration-500 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
+              <Image
+                src={myImg}
+                alt={`Picture of ${data.name}`}
+                className="aspect-ratio-1/1"
+                // layout="fixed"
+              />
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -72,7 +72,7 @@ const Header = () => {
       </div>
 
       <motion.div
-        className="descendant-a:header-link hidden gap-12 lg:flex"
+        className="descendant-a:header-link hidden gap-12 md:flex"
         variants={navContainerVarient}
       >
         <ScrollToLink to="about" variants={navItemVarient}>
@@ -97,14 +97,14 @@ const Header = () => {
         </motion.a>
       </motion.div>
 
-      <div className="theme-toggle">
+      <div className="theme-toggle ml-auto md:ml-0">
         <DayNightToggle
           onChange={handleThemeChange}
           checked={isDark}
           size={28}
         />
       </div>
-      <div className="ml-6 text-2xl lg:hidden" onClick={openModal}>
+      <div className="ml-6 text-2xl md:hidden" onClick={openModal}>
         <FaBars />
       </div>
 
