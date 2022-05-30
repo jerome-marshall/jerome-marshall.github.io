@@ -4,28 +4,13 @@ import ReactMarkdown from "react-markdown";
 import SkillLink from "./SkillLink";
 import Image from "next/image";
 import myImg from "../assets/me.jpg";
-import { useInView } from "react-intersection-observer";
-import { useAnimation, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const About = () => {
   const { data } = useContext(GlobalContext);
   const aboutData = data.pageContent.find(
     (content) => content.__typename === "ComponentPageContentAboutPageContent"
   );
-
-  const { ref, inView, entry } = useInView({
-    threshold: 0.4,
-    triggerOnce: true,
-  });
-
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start("visible");
-      console.log("inView", inView);
-    }
-  }, [inView, animation]);
 
   const containerVariant = {
     hidden: {
@@ -87,10 +72,9 @@ const About = () => {
     <div className="container py-20">
       <motion.div
         id="about"
-        ref={ref}
         variants={containerVariant}
         initial="hidden"
-        animate={animation}
+        whileInView="visible"
         className="flex h-full flex-col items-center justify-center"
       >
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
@@ -100,15 +84,15 @@ const About = () => {
 
             <ul className="mt-4 grid grid-cols-2 sm:mr-auto sm:gap-x-32">
               {aboutData.skillset.map((skill, i) => (
-                <motion.li
-                  animate={animation}
+                <motion.l
+                  whileInView="visible"
                   initial="hidden"
                   variants={itemVariant(i)}
                   className="py-1"
                   key={skill.name}
                 >
                   <SkillLink skill={skill} />
-                </motion.li>
+                </motion.l>
               ))}
             </ul>
           </div>
@@ -116,7 +100,7 @@ const About = () => {
             className="z-10"
             variants={imgVariant}
             initial="hidden"
-            animate={animation}
+            whileInView="visible"
           >
             <div className="relative z-10 hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-[50%] transition-all duration-500 hover:rounded-3xl md:block lg:hover:!scale-110">
               <div className="absolute z-10 h-full w-full bg-background_1/30 transition-all duration-500 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
