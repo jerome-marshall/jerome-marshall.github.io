@@ -23,10 +23,7 @@ const About = () => {
       transition: {
         duration: 1,
         ease: "easeInOut",
-        // delay: 1,
-        // when: "beforeChildren",
-        // staggerChildren: 0.1,
-        // delayChildren: 0.4,
+        when: "beforeChildren",
       },
     },
   };
@@ -41,7 +38,7 @@ const About = () => {
         opacity: 1,
         y: 0,
         transition: {
-          delay: 0.3 + index * 0.2,
+          delay: index * 0.1,
           duration: 0.5,
           ease: "easeInOut",
         },
@@ -75,6 +72,7 @@ const About = () => {
         variants={containerVariant}
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
         className="flex h-full flex-col items-center justify-center"
       >
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
@@ -84,15 +82,16 @@ const About = () => {
 
             <ul className="mt-4 grid grid-cols-2 sm:mr-auto sm:gap-x-32">
               {aboutData.skillset.map((skill, i) => (
-                <motion.l
+                <motion.li
                   whileInView="visible"
                   initial="hidden"
+                  viewport={{ once: true }}
                   variants={itemVariant(i)}
-                  className="py-1"
+                  className="z-10 py-1"
                   key={skill.name}
                 >
                   <SkillLink skill={skill} />
-                </motion.l>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -101,6 +100,7 @@ const About = () => {
             variants={imgVariant}
             initial="hidden"
             whileInView="visible"
+            viewport={{ once: true }}
           >
             <div className="relative z-10 hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-[50%] transition-all duration-500 hover:rounded-3xl md:block lg:hover:!scale-110">
               <div className="absolute z-10 h-full w-full bg-background_1/30 transition-all duration-500 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
