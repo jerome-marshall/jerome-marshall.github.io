@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import { getIcon } from "../utils/utils";
 import { motion } from "framer-motion";
+import { useWindowSize } from "../hooks/window-size";
 
 const SideBar = () => {
   const { data } = useContext(GlobalContext);
@@ -10,6 +11,14 @@ const SideBar = () => {
     ["github", "linkedin", "stackoverflow"], // left icons
     ["phone", "email"], // right icons
   ];
+
+  const iconCardWidths = {
+    github: "hover:w-[107px]",
+    linkedin: "hover:w-[117px]",
+    stackoverflow: "hover:w-[158px]",
+    phone: "hover:w-[164px]",
+    email: "hover:w-[253px]",
+  };
 
   const sideContainerVariant = (isLeft) => {
     return {
@@ -43,32 +52,39 @@ const SideBar = () => {
         x: 0,
         opacity: 1,
         transition: {
-          duration: 0.5,
+          duration: 0.3,
           ease: "easeInOut",
         },
       },
     };
   };
 
+  // const [windowWidth] = useWindowSize();
+  // let adjustment = (windowWidth - 1500 + 10) / 2;
+  // if (adjustment < 20) {
+  //   adjustment = 20;
+  // }
+
   const GetIconCard = ({ social, left, right }) => {
     const Icon = getIcon(social.name);
 
     return (
-      <motion.a
-        variants={iconVariant(left)}
-        key={social.displayName + "creditSection"}
-        className={`social-card group flex items-center gap-3 ${
-          right && "flex-row-reverse"
-        }`}
-        href={social.url}
-        target={social.name !== "phone" ? "_blank" : ""}
-        rel="noreferrer"
-      >
-        <Icon />
-        <span className="hidden text-sm text-text_900 group-hover:inline dark:text-dark-text_900">
-          {social.displayName}
-        </span>
-      </motion.a>
+      <motion.div variants={iconVariant(left)}>
+        <a
+          key={social.displayName + "creditSection"}
+          className={`social-card group flex w-[48px] items-center gap-3 ${
+            iconCardWidths[social.name]
+          } ${right ? "flex-row-reverse" : ""}`}
+          href={social.url}
+          target={social.name !== "phone" ? "_blank" : ""}
+          rel="noreferrer"
+        >
+          <Icon />
+          <span className=" whitespace-nowrap text-sm text-text_900 opacity-0 transition-all duration-500 group-hover:opacity-100 dark:text-dark-text_900">
+            {social.displayName}
+          </span>
+        </a>
+      </motion.div>
     );
   };
 

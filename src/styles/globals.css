@@ -15,6 +15,7 @@
   .btn {
     @apply z-10 rounded-full border-[3px] border-text_900 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:text-dark-text_900 md:px-6 md:py-4 lg:text-lg;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
+    @apply transition-all duration-300;
 
     @media screen(lg) {
       @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
@@ -38,7 +39,8 @@
   }
 
   .social-card {
-    @apply flex rounded-full border-2 border-accent_border p-3 hover:border-secondary hover:bg-background_2 child-svg:h-5 child-svg:w-5 child-svg:text-text_700 dark:border-dark-accent_border dark:hover:border-dark-secondary dark:hover:bg-dark-background_2 dark:child-svg:text-dark-text_700;
+    @apply flex overflow-hidden rounded-full border-2 border-accent_border p-3 hover:border-secondary hover:bg-background_2 child-svg:min-h-[20px] child-svg:min-w-[20px] child-svg:text-text_700 dark:border-dark-accent_border dark:hover:border-dark-secondary dark:hover:bg-dark-background_2 dark:child-svg:text-dark-text_700;
+    @apply transition-all duration-500;
   }
 }
 
