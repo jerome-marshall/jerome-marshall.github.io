@@ -66,9 +66,8 @@ const About = () => {
   };
 
   return (
-    <div className="container py-20">
+    <div className="container py-20" id="about">
       <motion.div
-        id="about"
         variants={containerVariant}
         initial="hidden"
         whileInView="visible"

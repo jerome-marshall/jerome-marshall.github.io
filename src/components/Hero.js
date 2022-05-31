@@ -89,12 +89,11 @@ const Hero = () => {
           {heroData.description}
         </motion.p>
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
-          <ScrollToLink
-            to="contact"
-            className="btn mt-12 self-center sm:self-start"
-          >
-            Get in Touch
-          </ScrollToLink>
+          <div className="btn mt-12 self-center sm:self-start">
+            <Link to="contact" smooth={true} duration={1000}>
+              Get in Touch
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
     </div>
