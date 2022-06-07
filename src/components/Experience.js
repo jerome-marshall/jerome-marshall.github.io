@@ -4,7 +4,7 @@ import { Tab, Disclosure, Transition } from "@headlessui/react";
 import ReactMarkdown from "react-markdown";
 import ExpAccordian from "./ExpAccordian";
 import { classNames } from "../utils/utils";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Experience = () => {
   const { data } = useContext(GlobalContext);
@@ -84,7 +84,7 @@ const Experience = () => {
                     key={job.companyName + "Tab"}
                     className={({ selected }) =>
                       classNames(
-                        "z-10 w-full whitespace-nowrap border-l-[3px] p-3 text-left text-sm hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
+                        "z-10 w-full whitespace-nowrap border-l-[3px] p-3 text-left text-sm transition-all duration-500 hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
                         selected
                           ? "border-secondary text-secondary dark:border-dark-secondary  dark:text-dark-secondary"
                           : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500"
@@ -96,33 +96,42 @@ const Experience = () => {
                 </motion.div>
               ))}
             </Tab.List>
+
             <Tab.Panels>
-              {expData.jobs.map((job, i) => (
-                <Tab.Panel key={job.companyName + "Panel"}>
-                  <h4 className="text-xl">
-                    <span className="font-bold text-text_900 dark:text-dark-text_900">
-                      {job.designation}
-                    </span>{" "}
-                    <span className="text-secondary dark:text-dark-secondary">
-                      @
-                    </span>{" "}
-                    <a
-                      className="z-10 font-bold text-primary dark:text-dark-primary"
-                      href={job.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {job.companyName}
-                    </a>
-                  </h4>
-                  <p className="mt-1 text-sm text-text_500 dark:text-dark-text_500">
-                    {job.range}
-                  </p>
-                  <ReactMarkdown className="mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700">
-                    {job.workDescription}
-                  </ReactMarkdown>
-                </Tab.Panel>
-              ))}
+              <AnimatePresence>
+                {expData.jobs.map((job, i) => (
+                  <Tab.Panel
+                    as={motion.div}
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    key={job.companyName + "Panel12"}
+                  >
+                    <h4 className="text-xl">
+                      <span className="font-bold text-text_900 dark:text-dark-text_900">
+                        {job.designation}
+                      </span>{" "}
+                      <span className="text-secondary dark:text-dark-secondary">
+                        @
+                      </span>{" "}
+                      <a
+                        className="z-10 font-bold text-primary dark:text-dark-primary"
+                        href={job.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {job.companyName}
+                      </a>
+                    </h4>
+                    <p className="mt-1 text-sm text-text_500 dark:text-dark-text_500">
+                      {job.range}
+                    </p>
+                    <ReactMarkdown className="mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700">
+                      {job.workDescription}
+                    </ReactMarkdown>
+                  </Tab.Panel>
+                ))}
+              </AnimatePresence>
             </Tab.Panels>
           </Tab.Group>
           <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-background_3 dark:border-dark-background_3 md:hidden">
