@@ -68,7 +68,7 @@ const Experience = () => {
         viewport={{ once: true }}
       >
         <h3 className="md:self-start">{expData.pageTitle}</h3>
-        <div className="mt-12">
+        <div className="mt-12 w-full">
           <Tab.Group vertical as="div" className="hidden md:flex">
             <Tab.List className="flex flex-col">
               {expData.jobs.map((job, i) => (

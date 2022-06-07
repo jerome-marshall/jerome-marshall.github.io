@@ -52,7 +52,7 @@ const Projects = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <h3 className="text-4xl">{projectsData.pageTitle}</h3>
+        <h3 className="text-center text-4xl">{projectsData.pageTitle}</h3>
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {projects.map((project, index) => (
             <ProjectCard

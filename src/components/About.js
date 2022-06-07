@@ -75,7 +75,7 @@ const About = () => {
         className="flex h-full flex-col items-center justify-center"
       >
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
-        <div className="flex items-center gap-8 md:gap-8 lg:gap-10 xl:gap-12">
+        <div className="flex items-center md:gap-8 lg:gap-10 xl:gap-12">
           <div className="mt-7 flex w-full flex-col md:basis-2/3">
             <ReactMarkdown className="">{aboutData.description}</ReactMarkdown>
 
