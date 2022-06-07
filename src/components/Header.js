@@ -7,6 +7,7 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import ScrollToLink from "./ScrollToLink";
 import MobileMenuModal from "./MobileMenuModal";
 import { motion } from "framer-motion";
+import { useWindowSize } from "../hooks/window-size";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -26,6 +27,8 @@ const Header = () => {
     setTheme(isDark ? "light" : "dark");
     setIsDark(!isDark);
   };
+
+  const windowSize = useWindowSize();
 
   const navContainerVarient = {
     hidden: {
@@ -63,7 +66,7 @@ const Header = () => {
     >
       <div variants={navItemVarient}>
         <Link
-          className="cursor-pointer text-[22px] font-bold text-primary dark:text-dark-primary"
+          className="cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary"
           to="/"
           onClick={() => scroll.scrollToTop()}
         >
@@ -87,21 +90,22 @@ const Header = () => {
         <ScrollToLink to="contact" variants={navItemVarient}>
           Contact
         </ScrollToLink>
-        <motion.a
-          href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
-          target="_blank"
-          rel="noreferrer"
-          variants={navItemVarient}
-        >
-          Resume
-        </motion.a>
+        <motion.div variants={navItemVarient}>
+          <a
+            href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Resume
+          </a>
+        </motion.div>
       </motion.div>
 
       <div className="theme-toggle ml-auto md:ml-0">
         <DayNightToggle
           onChange={handleThemeChange}
           checked={isDark}
-          size={28}
+          size={windowSize.width > 768 ? 28 : 26}
         />
       </div>
       <div className="ml-6 text-2xl md:hidden" onClick={openModal}>

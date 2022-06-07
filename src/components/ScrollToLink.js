@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const ScrollToLink = ({ to, className, clickHandler, children, variants }) => {
   return (
-    <motion.div className={`${className}`} variants={variants}>
+    <motion.div className={`${className ? className : ""}`} variants={variants}>
       <Link
         to={to}
         className="transition-all duration-300"
