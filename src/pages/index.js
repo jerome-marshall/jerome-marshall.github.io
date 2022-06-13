@@ -24,8 +24,8 @@ const Home = ({ data }) => {
           <Experience />
           <Projects />
           <Contact />
+          <SideBar />
         </Layout>
-        <SideBar />
       </GlobalProvider>
     </div>
   );

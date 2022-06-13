@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DayNightToggle from "react-day-and-night-toggle";
 import { FaBars } from "react-icons/fa";
 import { useTheme } from "next-themes";
@@ -8,10 +8,10 @@ import ScrollToLink from "./ScrollToLink";
 import MobileMenuModal from "./MobileMenuModal";
 import { motion } from "framer-motion";
 import { useWindowSize } from "../hooks/window-size";
+import { ThemeContext } from "../data/ThemeContext";
 
-const Header = () => {
-  const { theme, setTheme } = useTheme();
-  const [isDark, setIsDark] = useState(true);
+const Header = ({ isDark, handleThemeChange }) => {
+  const { isThemeChanging } = useContext(ThemeContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,11 +21,6 @@ const Header = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
-
-  const handleThemeChange = () => {
-    setTheme(isDark ? "light" : "dark");
-    setIsDark(!isDark);
   };
 
   const windowSize = useWindowSize();
@@ -59,7 +54,9 @@ const Header = () => {
 
   return (
     <motion.nav
-      className="wrapper fixed inset-0 z-50 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1"
+      className={`wrapper fixed inset-0 z-50 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1 ${
+        isThemeChanging && "transition-all duration-1000"
+      }`}
       variants={navContainerVarient}
       initial="hidden"
       animate="visible"
