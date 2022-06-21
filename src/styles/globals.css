@@ -52,7 +52,7 @@
   }
 
   .btn {
-    @apply z-10 rounded-full border-[3px] border-text_900 bg-background_1 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:bg-dark-background_1 dark:text-dark-text_900 md:px-6 md:py-4 lg:text-lg;
+    @apply z-10 rounded-full border-[2px] border-text_900 bg-background_1 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:bg-dark-background_1 dark:text-dark-text_900 md:px-6 md:py-4 lg:border-[3px] lg:text-lg;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
     @apply transition-all duration-300;
 

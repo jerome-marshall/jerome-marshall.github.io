@@ -7,16 +7,22 @@ import {
   themeChangeTransition,
 } from "../data/ThemeContext";
 import { useTheme } from "next-themes";
+import { useLocalStorage } from "react-use";
 
 const Layout = ({ children }) => {
+  const [localIsDark, setLocalIsDark, removelocalIsDark] = useLocalStorage(
+    "isDark",
+    true
+  );
   const { theme, setTheme } = useTheme();
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(localIsDark);
   const [isThemeChanging, setIsThemeChanging] = useState(false);
 
   const handleThemeChange = () => {
     setIsThemeChanging(true);
     setTheme(isDark ? "light" : "dark");
     setIsDark(!isDark);
+    setLocalIsDark(!localIsDark);
 
     setTimeout(() => {
       setIsThemeChanging(false);
