@@ -7,7 +7,7 @@ const ScrollToLink = ({ to, className, clickHandler, children, variants }) => {
     <motion.div className={`${className ? className : ""}`} variants={variants}>
       <Link
         to={to}
-        className="transition-all duration-300"
+        className="transition-all duration-300 ease-linear"
         onClick={clickHandler}
         smooth={true}
         duration={1000}

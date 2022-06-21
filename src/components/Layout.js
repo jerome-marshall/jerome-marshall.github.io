@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import { ThemeContext, ThemeProvider } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  ThemeProvider,
+  themeChangeTransition,
+} from "../data/ThemeContext";
 import { useTheme } from "next-themes";
 
 const Layout = ({ children }) => {
@@ -22,7 +26,11 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider value={{ isThemeChanging }}>
-      <div className="bg-background_1 dark:bg-dark-background_1">
+      <div
+        className={`bg-background_1 dark:bg-dark-background_1 ${
+          isThemeChanging && themeChangeTransition
+        }`}
+      >
         <Header isDark={isDark} handleThemeChange={handleThemeChange} />
         {children}
         <Footer />

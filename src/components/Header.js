@@ -63,7 +63,9 @@ const Header = ({ isDark, handleThemeChange }) => {
     >
       <div variants={navItemVarient}>
         <Link
-          className="cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary"
+          className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
+            isThemeChanging && themeChangeTransition
+          }`}
           to="/"
           onClick={() => scroll.scrollToTop()}
         >
@@ -89,6 +91,9 @@ const Header = ({ isDark, handleThemeChange }) => {
         </ScrollToLink>
         <motion.div variants={navItemVarient}>
           <a
+            className={`transition-all duration-300 ${
+              isThemeChanging && themeChangeTransition
+            }`}
             href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
             target="_blank"
             rel="noreferrer"
