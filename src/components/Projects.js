@@ -8,8 +8,11 @@ import { FiFolder as IconFolder } from "react-icons/fi";
 import SkillLink from "./SkillLink";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
+import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const Projects = () => {
+  const { isThemeChanging } = useContext(ThemeContext);
+
   const { data } = useContext(GlobalContext);
   const projectsData = data.pageContent.find(
     (content) =>
@@ -46,13 +49,19 @@ const Projects = () => {
   return (
     <div className="container pt-20" id="projects">
       <motion.div
-        className="flex h-full w-full flex-col items-center justify-center"
+        className={`flex h-full w-full flex-col items-center justify-center ${
+          isThemeChanging && themeChangeTransition
+        }`}
         variants={containerVariant}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <h3 className="text-center text-3xl md:text-4xl">
+        <h3
+          className={`text-center text-3xl md:text-4xl ${
+            isThemeChanging && themeChangeTransition
+          }`}
+        >
           {projectsData.pageTitle}
         </h3>
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">

@@ -3,8 +3,11 @@ import { GlobalContext } from "../data/GlobalContext";
 import { getIcon } from "../utils/utils";
 import { SiNextdotjs as IconNextJs } from "react-icons/si";
 import { motion } from "framer-motion";
+import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const Footer = () => {
+  const { isThemeChanging } = useContext(ThemeContext);
+
   const { data } = useContext(GlobalContext);
 
   const containerVariant = {
@@ -51,13 +54,21 @@ const Footer = () => {
       >
         <div className="flex gap-4 xl:hidden">{CreditSectionIcons}</div>
         <div className="my-4 flex flex-col items-center">
-          <p className=" text-sm text-text_500 dark:text-dark-text_500">
+          <p
+            className={`text-sm text-text_500 dark:text-dark-text_500 ${
+              isThemeChanging && themeChangeTransition
+            }`}
+          >
             Designed by {data.name}
           </p>
-          <p className="mt-1 flex items-center gap-2 text-sm text-text_500 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary">
+          <p
+            className={`mt-1 flex items-center gap-2 text-sm text-text_500 descendant:duration-1000 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary descendant-svg:transition-all dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary ${
+              isThemeChanging && themeChangeTransition
+            }`}
+          >
             Built with{" "}
             <a
-              className="z-10"
+              className={`z-10 ${isThemeChanging && themeChangeTransition}`}
               href="https://nextjs.org/"
               target="_blank"
               rel="noreferrer"

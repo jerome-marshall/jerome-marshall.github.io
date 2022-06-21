@@ -5,8 +5,11 @@ import ReactMarkdown from "react-markdown";
 import ExpAccordian from "./ExpAccordian";
 import { classNames } from "../utils/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const Experience = () => {
+  const { isThemeChanging } = useContext(ThemeContext);
+
   const { data } = useContext(GlobalContext);
   const expData = data.pageContent.find(
     (content) =>
@@ -67,7 +70,13 @@ const Experience = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <h3 className="md:self-start">{expData.pageTitle}</h3>
+        <h3
+          className={`md:self-start ${
+            isThemeChanging && themeChangeTransition
+          }`}
+        >
+          {expData.pageTitle}
+        </h3>
         <div className="mt-12 w-full">
           <Tab.Group vertical as="div" className="hidden md:flex">
             <Tab.List className="flex flex-col">
@@ -87,7 +96,8 @@ const Experience = () => {
                         "z-10 w-full whitespace-nowrap border-l-[3px] p-3 text-left text-sm transition-all duration-500 hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
                         selected
                           ? "border-secondary text-secondary dark:border-dark-secondary  dark:text-dark-secondary"
-                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500"
+                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500",
+                        ""
                       )
                     }
                   >
@@ -108,14 +118,24 @@ const Experience = () => {
                     key={job.companyName + "Panel12"}
                   >
                     <h4 className="text-xl">
-                      <span className="font-bold text-text_900 dark:text-dark-text_900">
+                      <span
+                        className={`font-bold text-text_900 dark:text-dark-text_900 ${
+                          isThemeChanging && themeChangeTransition
+                        }`}
+                      >
                         {job.designation}
                       </span>{" "}
-                      <span className="text-secondary dark:text-dark-secondary">
+                      <span
+                        className={`text-secondary dark:text-dark-secondary ${
+                          isThemeChanging && themeChangeTransition
+                        }`}
+                      >
                         @
                       </span>{" "}
                       <a
-                        className="z-10 font-bold text-primary dark:text-dark-primary"
+                        className={`z-10 font-bold text-primary dark:text-dark-primary ${
+                          isThemeChanging && themeChangeTransition
+                        }`}
                         href={job.url}
                         target="_blank"
                         rel="noreferrer"
@@ -123,10 +143,18 @@ const Experience = () => {
                         {job.companyName}
                       </a>
                     </h4>
-                    <p className="mt-1 text-sm text-text_500 dark:text-dark-text_500">
+                    <p
+                      className={`mt-1 text-sm text-text_500 dark:text-dark-text_500 ${
+                        isThemeChanging && themeChangeTransition
+                      }`}
+                    >
                       {job.range}
                     </p>
-                    <ReactMarkdown className="mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700">
+                    <ReactMarkdown
+                      className={`mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700 ${
+                        isThemeChanging && themeChangeTransition
+                      }`}
+                    >
                       {job.workDescription}
                     </ReactMarkdown>
                   </Tab.Panel>

@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Tab, Disclosure, Transition } from "@headlessui/react";
 import ReactMarkdown from "react-markdown";
+import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const ExpAccordian = (props) => {
+  const { isThemeChanging } = useContext(ThemeContext);
+
   return (
     <Disclosure
       className="bg-background_3 dark:bg-dark-background_3"
@@ -17,7 +20,7 @@ const ExpAccordian = (props) => {
                 open
                   ? " text-text-700 bg-background_3 text-lg font-bold dark:bg-dark-background_3 dark:text-dark-text_700"
                   : " bg-background_2 text-text_500 dark:bg-dark-background_2 dark:text-dark-text_500"
-              } `}
+              } ${isThemeChanging && themeChangeTransition}`}
               onClick={() => props.toggleDisclosure(props.i)}
             >
               {props.job.companyName}
@@ -38,25 +41,41 @@ const ExpAccordian = (props) => {
                   open && props.i != props.length - 1
                     ? "border-b-2 border-background_3 dark:border-dark-background_3"
                     : ""
-                }`}
+                } ${isThemeChanging && themeChangeTransition}`}
               >
                 {({ close }) => {
                   props.openedDisclosure !== props.i && close();
                   return (
                     <div>
                       <p className="">
-                        <span className="text-xl text-text_900 dark:text-dark-text_900">
+                        <span
+                          className={`text-xl text-text_900 dark:text-dark-text_900 ${
+                            isThemeChanging && themeChangeTransition
+                          }`}
+                        >
                           {props.job.designation}
                         </span>
                         <span className="">{" @ "}</span>
-                        <span className="text-xl text-primary dark:text-dark-primary">
+                        <span
+                          className={`text-xl text-primary dark:text-dark-primary ${
+                            isThemeChanging && themeChangeTransition
+                          }`}
+                        >
                           {props.job.companyName}
                         </span>
                       </p>
-                      <p className="mt-1 mb-6 text-sm text-text_500 dark:text-dark-text_500">
+                      <p
+                        className={`mt-1 mb-6 text-sm text-text_500 dark:text-dark-text_500 ${
+                          isThemeChanging && themeChangeTransition
+                        }`}
+                      >
                         {props.job.range}
                       </p>
-                      <ReactMarkdown className="descendant-li:text-text_700 descendant-li:dark:text-dark-text_700">
+                      <ReactMarkdown
+                        className={`descendant-li:text-text_700 descendant-li:dark:text-dark-text_700 ${
+                          isThemeChanging && themeChangeTransition
+                        }`}
+                      >
                         {props.job.workDescription}
                       </ReactMarkdown>
                     </div>
