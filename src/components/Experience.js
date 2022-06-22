@@ -107,17 +107,18 @@ const Experience = () => {
               ))}
             </Tab.List>
 
-            <Tab.Panels>
+            <Tab.Panels className="z-10">
               <AnimatePresence>
                 {expData.jobs.map((job, i) => (
                   <Tab.Panel
                     as={motion.div}
+                    className="z-10"
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     key={job.companyName + "Panel12"}
                   >
-                    <h4 className="text-xl">
+                    <h4 className="z-10 text-xl">
                       <span
                         className={`font-bold text-text_900 dark:text-dark-text_900 ${
                           isThemeChanging && themeChangeTransition
