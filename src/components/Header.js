@@ -9,6 +9,7 @@ import MobileMenuModal from "./MobileMenuModal";
 import { motion } from "framer-motion";
 import { useWindowSize } from "../hooks/window-size";
 import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import { Cross as Hamburger } from "hamburger-react";
 
 const Header = ({ isDark, handleThemeChange }) => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -67,7 +68,10 @@ const Header = ({ isDark, handleThemeChange }) => {
             isThemeChanging && themeChangeTransition
           }`}
           to="/"
-          onClick={() => scroll.scrollToTop()}
+          onClick={() => {
+            if (isModalOpen) closeModal();
+            scroll.scrollToTop();
+          }}
         >
           JM
         </Link>
@@ -110,8 +114,16 @@ const Header = ({ isDark, handleThemeChange }) => {
           size={windowSize.width > 768 ? 28 : 26}
         />
       </div>
-      <div className="ml-6 text-2xl md:hidden" onClick={openModal}>
-        <FaBars />
+      <div className="ml-4 text-2xl md:hidden">
+        <Hamburger
+          toggled={isModalOpen}
+          toggle={isModalOpen ? closeModal : openModal}
+          rounded
+          size={30}
+          duration={0.5}
+          distance="md"
+          // easing="linear"
+        />
       </div>
 
       <MobileMenuModal isModalOpen={isModalOpen} closeModal={closeModal} />

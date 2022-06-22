@@ -1,21 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { FaTimes as IconClose } from "react-icons/fa";
 import ScrollToLink from "./ScrollToLink";
 import { motion } from "framer-motion";
+import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const MobileMenuModal = (props) => {
-  const modalVarient = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 2,
-        ease: "easeInOut",
-      },
-    },
-  };
+  const { isThemeChanging } = useContext(ThemeContext);
 
   return (
     <Transition show={props.isModalOpen}>
@@ -29,24 +20,28 @@ const MobileMenuModal = (props) => {
       >
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="left-full"
-          enterTo="left-0"
-          leave="ease-in duration-200"
-          leaveFrom="left-0"
-          leaveTo="left-full"
+          enter="ease-out duration-500"
+          enterFrom="opacity-50 bottom-full"
+          enterTo="opacity-100 bottom-0"
+          leave="ease-in duration-300"
+          leaveFrom="opacity-100 bottom-0"
+          leaveTo="opacity-50 bottom-full"
         >
-          <div className="bg fixed inset-0 overflow-y-auto bg-background_2 dark:bg-dark-background_2">
-            <div className="relative flex min-h-full items-center justify-center p-4 text-center">
-              <div
+          <div
+            className={`bg fixed inset-0 top-20 overflow-y-auto bg-background_1 dark:bg-dark-background_1 ${
+              isThemeChanging && themeChangeTransition
+            }`}
+          >
+            <div className="relative flex h-full items-center justify-center p-4 text-center">
+              {/* <div
                 className="absolute top-0 right-0 m-6 text-2xl"
                 onClick={props.closeModal}
               >
                 <IconClose />
-              </div>
+              </div> */}
 
-              <Dialog.Panel className="mx-auto">
-                <div className="flex flex-col gap-7 child-a:text-2xl child-a:text-text_900 dark:child-a:text-dark-text_900">
+              <Dialog.Panel className="relative bottom-20 mx-auto">
+                <div className="flex flex-col gap-7 child-a:text-2xl child-a:text-text_900 child-a:transition-all child-a:duration-1000 child-a:ease-linear dark:child-a:text-dark-text_900">
                   <ScrollToLink to="about" clickHandler={props.closeModal}>
                     About
                   </ScrollToLink>
@@ -64,7 +59,9 @@ const MobileMenuModal = (props) => {
                   <a
                     href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
                     target="_blank"
-                    className="btn btn-secondary border-secondary bg-secondary px-12 text-text_hover dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-text_hover"
+                    className={`btn btn-secondary border-secondary bg-secondary px-12 text-text_hover dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-text_hover ${
+                      isThemeChanging && themeChangeTransition
+                    }`}
                     rel="noreferrer"
                   >
                     Resume
