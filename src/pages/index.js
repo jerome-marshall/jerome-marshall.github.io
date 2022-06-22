@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
@@ -12,20 +12,37 @@ import { gql } from "@apollo/client";
 import { getData } from "../data/graphql-client";
 import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
+import SplashScreen from "../components/SplashScreen";
+import { motion } from "framer-motion";
 
 const Home = ({ data }) => {
-  console.log("🚀 ~ file: index.js ~ line 15 ~ Home ~ data", data);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // setIsLoading(false);
+    }, 7000);
+  }, []);
+
   return (
-    <div>
+    <div className="bg-dark-background_1">
       <GlobalProvider value={{ data }}>
-        <Layout>
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-          <SideBar />
-        </Layout>
+        <AnimatePresence exitBeforeEnter>
+          {isLoading ? (
+            <SplashScreen key="splash-container" />
+          ) : (
+            <>
+              <Layout>
+                <Hero />
+                <About />
+                <Experience />
+                <Projects />
+                <Contact />
+                <SideBar />
+              </Layout>
+            </>
+          )}
+        </AnimatePresence>
       </GlobalProvider>
     </div>
   );
