@@ -29,7 +29,7 @@ const Home = ({ data }) => {
       <GlobalProvider value={{ data }}>
         <AnimatePresence exitBeforeEnter>
           {isLoading ? (
-            <SplashScreen key="splash-container" />
+            <SplashScreen key="splash-container" setIsLoading={setIsLoading} />
           ) : (
             <>
               <Layout>
