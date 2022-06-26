@@ -9,13 +9,13 @@ import Projects from "../components/Projects";
 import { AnimatePresence } from "framer-motion";
 
 import { gql } from "@apollo/client";
-import { getData } from "../data/graphql-client";
+import { getGlobalData, getQuotes } from "../data/graphql-client";
 import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { motion } from "framer-motion";
 
-const Home = ({ data }) => {
+const Home = ({ data, quotes }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +29,11 @@ const Home = ({ data }) => {
       <GlobalProvider value={{ data }}>
         <AnimatePresence exitBeforeEnter>
           {isLoading ? (
-            <SplashScreen key="splash-container" setIsLoading={setIsLoading} />
+            <SplashScreen
+              key="splash-container"
+              setIsLoading={setIsLoading}
+              quotes={quotes}
+            />
           ) : (
             <>
               <Layout>
@@ -50,11 +54,12 @@ const Home = ({ data }) => {
 
 export async function getStaticProps() {
   try {
-    const data = await getData();
+    const globalData = await getGlobalData();
+    const quotes = await getQuotes();
     // const response = await axios.get(
     //   "https://portfolio-strapi3-api.herokuapp.com/global-data"
     // );
-    return { props: { data: data } };
+    return { props: { data: globalData, quotes: quotes } };
   } catch (error) {
     console.error(error);
     return { props: { data: "error" } };

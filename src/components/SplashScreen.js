@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { FaQuoteLeft as IconQuote } from "react-icons/fa";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
+import ReactMarkdown from "react-markdown";
 
-const SplashScreen = ({ setIsLoading }) => {
+const SplashScreen = ({ setIsLoading, quotes }) => {
   const [showContine, setShowContinue] = useState(false);
   const [startIconAniamation, setStartIconAniamation] = useState(false);
 
-  const iconControls = useAnimation();
+  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  console.log(
+    "🚀 ~ file: SplashScreen.js ~ line 11 ~ SplashScreen ~ randomQuote",
+    randomQuote
+  );
 
   setTimeout(() => {
     setShowContinue(true);
@@ -114,9 +119,8 @@ const SplashScreen = ({ setIsLoading }) => {
             <div className="text-5xl text-dark-text_500 md:text-6xl lg:text-7xl">
               <IconQuote />
             </div>
-            <p className="mt-8 text-3xl leading-normal dark:text-dark-text_700 lg:text-4xl lg:leading-normal">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-              quas odit est libero ipsam alias eius tempora, impedit aliquid ex
+            <p className="mt-8 text-3xl leading-normal dark:text-dark-text_700 lg:text-5xl lg:leading-normal">
+              {randomQuote.quote}
             </p>
             <motion.div
               className={` flex w-40 items-center justify-center ${
@@ -167,7 +171,7 @@ const SplashScreen = ({ setIsLoading }) => {
               className="text-lg dark:text-dark-text_700 lg:text-xl"
               layout
             >
-              Bat Man
+              {randomQuote.author}
             </motion.p>
           </motion.div>
         </motion.div>

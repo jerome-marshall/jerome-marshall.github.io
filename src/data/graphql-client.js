@@ -6,7 +6,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getData = async () => {
+export const getGlobalData = async () => {
   const response = await client.query({
     query: gql`
       query getData {
@@ -83,9 +83,27 @@ export const getData = async () => {
             }
           }
         }
+        quotes {
+          author
+          quote
+        }
       }
     `,
   });
 
   return response.data.globalDatum;
+};
+export const getQuotes = async () => {
+  const response = await client.query({
+    query: gql`
+      query Quotes {
+        quotes {
+          author
+          quote
+        }
+      }
+    `,
+  });
+
+  return response.data.quotes;
 };
