@@ -4,15 +4,13 @@ import { FaQuoteLeft as IconQuote } from "react-icons/fa";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
 import ReactMarkdown from "react-markdown";
 
-const SplashScreen = ({ setIsLoading, quotes }) => {
-  const [showContine, setShowContinue] = useState(false);
-  const [startIconAniamation, setStartIconAniamation] = useState(false);
-
-  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
   console.log(
-    "🚀 ~ file: SplashScreen.js ~ line 11 ~ SplashScreen ~ randomQuote",
+    "🚀 ~ file: SplashScreen.js ~ line 8 ~ SplashScreen ~ randomQuote",
     randomQuote
   );
+  const [showContine, setShowContinue] = useState(false);
+  const [startIconAniamation, setStartIconAniamation] = useState(false);
 
   setTimeout(() => {
     setShowContinue(true);

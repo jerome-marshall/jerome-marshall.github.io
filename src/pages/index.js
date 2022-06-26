@@ -18,6 +18,8 @@ import { motion } from "framer-motion";
 const Home = ({ data, quotes }) => {
   const [isLoading, setIsLoading] = useState(true);
 
+  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
   useEffect(() => {
     setTimeout(() => {
       // setIsLoading(false);
@@ -33,6 +35,7 @@ const Home = ({ data, quotes }) => {
               key="splash-container"
               setIsLoading={setIsLoading}
               quotes={quotes}
+              randomQuote={randomQuote}
             />
           ) : (
             <>
