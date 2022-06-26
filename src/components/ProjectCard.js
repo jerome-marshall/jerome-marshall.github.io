@@ -4,7 +4,11 @@ import { FiExternalLink as IconExternal } from "react-icons/fi";
 import { FiFolder as IconFolder } from "react-icons/fi";
 import SkillLink from "./SkillLink";
 import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 
 const ProjectCard = ({ project, index }) => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -87,10 +91,12 @@ const ProjectCard = ({ project, index }) => {
             <div
               className="inline before:content-[''] first:ml-auto"
               key={skill.name}
+              id={skill.name}
             >
               <SkillLink
                 skill={skill}
-                className={`text-xs text-text_700 transition-all duration-300 group-hover:text-primary  dark:text-dark-text_700 dark:group-hover:text-dark-primary ${
+                id={skill.name}
+                className={`text-xs text-text_700 transition-all duration-300 group-hover:text-secondary  dark:text-dark-text_700 dark:group-hover:text-dark-secondary ${
                   isThemeChanging && themeChangeTransition
                 }`}
               />

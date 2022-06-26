@@ -4,7 +4,11 @@ import Button from "./Button";
 import { Link } from "react-scroll";
 import ScrollToLink from "./ScrollToLink";
 import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 
 const Hero = () => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -91,15 +95,16 @@ const Hero = () => {
           {heroData.description}
         </motion.p>
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
-          <div
+          <motion.div
             className={`btn mt-12 self-center sm:self-start ${
               isThemeChanging && themeChangeTransition
             }`}
+            whileHover={hoverAnimation}
           >
             <Link to="contact" smooth={true} duration={1000}>
               Get in Touch
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>

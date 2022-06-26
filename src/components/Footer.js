@@ -3,7 +3,11 @@ import { GlobalContext } from "../data/GlobalContext";
 import { getIcon } from "../utils/utils";
 import { SiNextdotjs as IconNextJs } from "react-icons/si";
 import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 
 const Footer = () => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -67,14 +71,17 @@ const Footer = () => {
             }`}
           >
             Built with{" "}
-            <a
-              className={`z-10 ${isThemeChanging && themeChangeTransition}`}
+            <motion.a
+              className={`z-10 inline-block ${
+                isThemeChanging && themeChangeTransition
+              }`}
               href="https://nextjs.org/"
               target="_blank"
               rel="noreferrer"
+              whileHover={hoverAnimation}
             >
               <IconNextJs />
-            </a>
+            </motion.a>
           </p>
         </div>
       </motion.div>

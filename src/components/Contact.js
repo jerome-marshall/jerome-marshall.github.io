@@ -2,7 +2,11 @@ import React, { useContext, useState, useRef } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import Button from "./Button";
 import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 
 const Contact = () => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -62,12 +66,15 @@ const Contact = () => {
         >
           {contactData.description}
         </p>
-        <a
+        <motion.a
           href="mailto:jeromemarshall0@gmail.com"
-          className={`btn mt-4 ${isThemeChanging && themeChangeTransition}`}
+          className={`btn mt-4 inline-block ${
+            isThemeChanging && themeChangeTransition
+          }`}
+          whileHover={hoverAnimation}
         >
           Say Hello
-        </a>
+        </motion.a>
       </motion.div>
     </div>
   );

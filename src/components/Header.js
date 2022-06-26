@@ -8,7 +8,11 @@ import ScrollToLink from "./ScrollToLink";
 import MobileMenuModal from "./MobileMenuModal";
 import { motion } from "framer-motion";
 import { useWindowSize } from "../hooks/window-size";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 import { Cross as Hamburger } from "hamburger-react";
 
 const Header = ({ isDark, handleThemeChange }) => {
@@ -62,7 +66,7 @@ const Header = ({ isDark, handleThemeChange }) => {
       initial="hidden"
       animate="visible"
     >
-      <div variants={navItemVarient}>
+      <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
         <Link
           className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
             isThemeChanging && themeChangeTransition
@@ -75,7 +79,7 @@ const Header = ({ isDark, handleThemeChange }) => {
         >
           JM
         </Link>
-      </div>
+      </motion.div>
 
       <motion.div
         className="descendant-a:header-link hidden gap-12 md:flex"
@@ -93,7 +97,7 @@ const Header = ({ isDark, handleThemeChange }) => {
         <ScrollToLink to="contact" variants={navItemVarient}>
           Contact
         </ScrollToLink>
-        <motion.div variants={navItemVarient}>
+        <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
           <a
             className={`transition-all duration-300 ${
               isThemeChanging && themeChangeTransition

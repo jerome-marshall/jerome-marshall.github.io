@@ -5,7 +5,11 @@ import ReactMarkdown from "react-markdown";
 import ExpAccordian from "./ExpAccordian";
 import { classNames } from "../utils/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import {
+  ThemeContext,
+  themeChangeTransition,
+  hoverAnimation,
+} from "../data/ThemeContext";
 
 const Experience = () => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -133,16 +137,17 @@ const Experience = () => {
                       >
                         @
                       </span>{" "}
-                      <a
-                        className={`z-10 font-bold text-primary dark:text-dark-primary ${
+                      <motion.a
+                        className={`z-10 inline-block font-bold text-primary dark:text-dark-primary ${
                           isThemeChanging && themeChangeTransition
                         }`}
                         href={job.url}
                         target="_blank"
                         rel="noreferrer"
+                        whileHover={hoverAnimation}
                       >
                         {job.companyName}
-                      </a>
+                      </motion.a>
                     </h4>
                     <p
                       className={`mt-1 text-sm text-text_500 dark:text-dark-text_500 ${
