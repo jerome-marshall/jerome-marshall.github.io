@@ -14,7 +14,7 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
 
   setTimeout(() => {
     setShowContinue(true);
-  }, 4000);
+  }, 5000);
 
   const wrapperVariant = {
     hidden: {
