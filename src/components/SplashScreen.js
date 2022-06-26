@@ -5,10 +5,6 @@ import { BsArrowRightCircle as IconGo } from "react-icons/bs";
 import ReactMarkdown from "react-markdown";
 
 const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
-  console.log(
-    "🚀 ~ file: SplashScreen.js ~ line 8 ~ SplashScreen ~ randomQuote",
-    randomQuote
-  );
   const [showContine, setShowContinue] = useState(false);
   const [startIconAniamation, setStartIconAniamation] = useState(false);
 
@@ -104,20 +100,20 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="flex h-screen w-screen items-center justify-center overflow-auto bg-dark-background_2"
+      className="flex h-screen w-screen items-center justify-center overflow-auto bg-background_2 dark:bg-dark-background_2"
       layout
     >
       <motion.div className="container flex items-center">
         <motion.div
           variants={containerVarient}
-          className="relative flex w-full flex-col items-center justify-center bg-dark-background_2 py-16 lg:px-12"
+          className="relative flex w-full flex-col items-center justify-center bg-background_2  py-16 dark:bg-dark-background_2 lg:px-12"
           layout
         >
           <motion.div className="flex flex-col items-center text-center" layout>
-            <div className="text-5xl text-dark-text_500 md:text-6xl lg:text-7xl">
+            <div className="text-5xl text-text_500 dark:text-dark-text_500 md:text-6xl lg:text-7xl">
               <IconQuote />
             </div>
-            <p className="mt-8 text-3xl leading-normal dark:text-dark-text_700 lg:text-5xl lg:leading-normal">
+            <p className="mt-8 text-3xl leading-normal text-text_700 dark:text-dark-text_700 lg:text-5xl lg:leading-normal">
               {randomQuote.quote}
             </p>
             <motion.div
@@ -137,7 +133,7 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
               >
                 {showContine ? (
                   <motion.div
-                    className="h-full w-full cursor-pointer text-dark-secondary hover:text-dark-primary child-svg:h-full child-svg:w-full child-svg:transition-all child-svg:duration-500 "
+                    className="h-full w-full cursor-pointer text-secondary hover:text-primary child-svg:h-full child-svg:w-full child-svg:transition-all child-svg:duration-500 dark:text-dark-secondary dark:hover:text-dark-primary "
                     variants={iconGoVarient}
                     initial="hidden"
                     animate={!startIconAniamation ? "visible" : "animation"}
@@ -150,7 +146,7 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
                   </motion.div>
                 ) : (
                   <motion.div
-                    className="h-1 w-full overflow-hidden rounded-xl bg-dark-secondary"
+                    className="h-1 w-full overflow-hidden rounded-xl bg-secondary dark:bg-dark-secondary"
                     key="divider"
                     exit={{
                       opacity: 0,
@@ -166,7 +162,7 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
             </motion.div>
 
             <motion.p
-              className="text-lg dark:text-dark-text_700 lg:text-xl"
+              className="text-lg text-text_700 dark:text-dark-text_700 lg:text-xl"
               layout
             >
               {randomQuote.author}
