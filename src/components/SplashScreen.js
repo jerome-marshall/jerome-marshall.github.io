@@ -11,7 +11,7 @@ const SplashScreen = ({ setIsLoading }) => {
 
   setTimeout(() => {
     setShowContinue(true);
-  }, 5000);
+  }, 4000);
 
   const wrapperVariant = {
     hidden: {
@@ -25,8 +25,6 @@ const SplashScreen = ({ setIsLoading }) => {
         duration: 1,
         ease: "easeInOut",
         when: "beforeChildren",
-        // staggerChildren: 0.1,
-        // delayChildren: 0.2,
       },
     },
     exit: {
@@ -48,8 +46,6 @@ const SplashScreen = ({ setIsLoading }) => {
       transition: {
         duration: 1,
         ease: "easeInOut",
-        // staggerChildren: 0.1,
-        // delayChildren: 0.2,
       },
     },
     exit: {
@@ -57,8 +53,6 @@ const SplashScreen = ({ setIsLoading }) => {
       transition: {
         duration: 0.7,
         ease: "easeInOut",
-        // staggerChildren: 0.1,
-        // delayChildren: 0.2,
       },
     },
   };
@@ -107,26 +101,28 @@ const SplashScreen = ({ setIsLoading }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="flex h-screen w-screen items-center justify-center bg-dark-background_2"
+      className="flex h-screen w-screen items-center justify-center overflow-auto bg-dark-background_2"
       layout
     >
       <motion.div className="container flex items-center">
         <motion.div
           variants={containerVarient}
-          className="relative flex w-full flex-col items-center justify-center bg-dark-background_2 px-12 py-16"
+          className="relative flex w-full flex-col items-center justify-center bg-dark-background_2 py-16 lg:px-12"
           layout
         >
           <motion.div className="flex flex-col items-center text-center" layout>
-            <div className="text-7xl text-dark-text_500">
+            <div className="text-5xl text-dark-text_500 md:text-6xl lg:text-7xl">
               <IconQuote />
             </div>
-            <p className="mt-8 text-4xl leading-normal dark:text-dark-text_700">
+            <p className="mt-8 text-3xl leading-normal dark:text-dark-text_700 lg:text-4xl lg:leading-normal">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
               quas odit est libero ipsam alias eius tempora, impedit aliquid ex
             </p>
             <motion.div
               className={` flex w-40 items-center justify-center ${
-                showContine ? "mt-10 mb-10 h-24" : "mt-14 mb-8 h-2"
+                showContine
+                  ? "md:h-22 mt-10 mb-10 h-20 lg:h-24"
+                  : "mt-10 mb-8 h-2 lg:mt-14"
               } transition-all duration-1000`}
             >
               <AnimatePresence
@@ -167,7 +163,10 @@ const SplashScreen = ({ setIsLoading }) => {
               </AnimatePresence>
             </motion.div>
 
-            <motion.p className="text-xl dark:text-dark-text_700" layout>
+            <motion.p
+              className="text-lg dark:text-dark-text_700 lg:text-xl"
+              layout
+            >
               Bat Man
             </motion.p>
           </motion.div>
