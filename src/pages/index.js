@@ -27,7 +27,7 @@ const Home = ({ data, quotes }) => {
   }, []);
 
   return (
-    <div className="bg-dark-background_1">
+    <div className="bg-background_1 dark:bg-dark-background_1">
       <GlobalProvider value={{ data }}>
         <AnimatePresence exitBeforeEnter>
           {isLoading ? (
