@@ -14,6 +14,7 @@ import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 const Home = ({ data, quotes }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,9 @@ const Home = ({ data, quotes }) => {
 
   return (
     <div className="bg-background_1 dark:bg-dark-background_1">
+      <Head>
+        <title>{data.name}</title>
+      </Head>
       <GlobalProvider value={{ data }}>
         <AnimatePresence exitBeforeEnter>
           {isLoading ? (
