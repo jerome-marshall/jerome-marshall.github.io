@@ -51,6 +51,22 @@
     );
   }
 
+  .show-scrollbar {
+    &::-webkit-scrollbar {
+      @apply h-1;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      @apply bg-background_1 transition-all duration-1000 dark:bg-dark-background_1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      @apply bg-text_500 transition-all duration-1000 dark:bg-dark-text_500;
+    }
+  }
+
   .btn {
     @apply z-10 rounded-full border-[2px] border-text_900 bg-background_1 py-3 px-5 text-base text-text_900 dark:border-dark-text_900 dark:bg-dark-background_1 dark:text-dark-text_900 md:px-6 md:py-4 lg:border-[3px] lg:text-lg;
     @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
@@ -101,6 +117,11 @@
 
   p {
     @apply text-base leading-relaxed text-text_700 dark:text-dark-text_700;
+
+    a {
+      @apply text-secondary transition-all duration-300 dark:text-dark-secondary;
+      @apply hover:text-primary dark:hover:text-dark-primary;
+    }
   }
 
   a {

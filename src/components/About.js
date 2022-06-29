@@ -77,7 +77,7 @@ const About = () => {
       >
         <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
         <div className="flex items-center md:gap-8 lg:gap-10 xl:gap-12">
-          <div className="mt-7 flex w-full flex-col md:basis-2/3">
+          <div className="z-10 mt-7 flex w-full flex-col md:basis-2/3">
             <ReactMarkdown className="">{aboutData.description}</ReactMarkdown>
 
             <ul className="mt-4 grid grid-cols-2 sm:mr-auto sm:gap-x-32">
@@ -105,7 +105,9 @@ const About = () => {
             <div className="relative z-10 hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-[50%] transition-all duration-500 hover:rounded-3xl md:block lg:hover:!scale-110">
               <div className="absolute z-10 h-full w-full bg-background_1/30 transition-all duration-500 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
               <Image
-                src={"https://live.staticflickr.com/65535/52176678364_3321678c1b_o.jpg"}
+                src={
+                  "https://live.staticflickr.com/65535/52176678364_3321678c1b_o.jpg"
+                }
                 alt={`Picture of ${data.name}`}
                 className="aspect-ratio-1/1"
                 layout="fill"

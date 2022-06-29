@@ -86,7 +86,7 @@ const ProjectCard = ({ project, index }) => {
             {project.description}
           </p>
         </div>
-        <div className="-mb-3 mt-auto flex w-full gap-4 overflow-auto pb-3">
+        <div className="show-scrollbar -mb-3 mt-auto flex w-full gap-4 overflow-auto pb-3">
           {project.techStack?.map((skill) => (
             <div
               className="inline before:content-[''] first:ml-auto"

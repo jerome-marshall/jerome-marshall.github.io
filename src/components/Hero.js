@@ -9,6 +9,7 @@ import {
   themeChangeTransition,
   hoverAnimation,
 } from "../data/ThemeContext";
+import ReactMarkdown from "react-markdown";
 
 const Hero = () => {
   const { isThemeChanging } = useContext(ThemeContext);
@@ -88,12 +89,12 @@ const Hero = () => {
         >
           {heroData.shortDescription}
         </motion.h3>
-        <motion.p
+        <motion.div
           variants={textVariant}
-          className="mt-5 max-w-[600px] text-text_500  dark:text-dark-text_500  md:text-lg"
+          className="z-10 mt-5 max-w-[600px] child-p:text-text_500  dark:child-p:text-dark-text_500  md:child-p:text-lg"
         >
-          {heroData.description}
-        </motion.p>
+          <ReactMarkdown>{heroData.description}</ReactMarkdown>
+        </motion.div>
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
           <motion.div
             className={`btn mt-12 self-center sm:self-start ${
