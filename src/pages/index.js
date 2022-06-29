@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useLayoutEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
@@ -20,12 +20,6 @@ const Home = ({ data, quotes }) => {
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-  useEffect(() => {
-    setTimeout(() => {
-      // setIsLoading(false);
-    }, 7000);
-  }, []);
-
   return (
     <div className="bg-background_1 dark:bg-dark-background_1">
       <GlobalProvider value={{ data }}>
@@ -34,7 +28,6 @@ const Home = ({ data, quotes }) => {
             <SplashScreen
               key="splash-container"
               setIsLoading={setIsLoading}
-              quotes={quotes}
               randomQuote={randomQuote}
             />
           ) : (
@@ -59,9 +52,6 @@ export async function getStaticProps() {
   try {
     const globalData = await getGlobalData();
     const quotes = await getQuotes();
-    // const response = await axios.get(
-    //   "https://portfolio-strapi3-api.herokuapp.com/global-data"
-    // );
     return { props: { data: globalData, quotes: quotes } };
   } catch (error) {
     console.error(error);

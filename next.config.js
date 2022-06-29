@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: "imgix",
-    path: "/",
+    loader: "custom",
+    domains: ["images.weserv.nl", "live.staticflickr.com"],
+    // path: "/",
   },
 };
 

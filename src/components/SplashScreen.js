@@ -4,7 +4,7 @@ import { FaQuoteLeft as IconQuote } from "react-icons/fa";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
 import ReactMarkdown from "react-markdown";
 
-const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
+const SplashScreen = ({ setIsLoading, randomQuote }) => {
   const [showContine, setShowContinue] = useState(false);
   const [startIconAniamation, setStartIconAniamation] = useState(false);
 
@@ -94,6 +94,7 @@ const SplashScreen = ({ setIsLoading, quotes, randomQuote }) => {
       },
     },
   };
+  
   return (
     <motion.div
       variants={wrapperVariant}

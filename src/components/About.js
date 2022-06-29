@@ -5,6 +5,7 @@ import SkillLink from "./SkillLink";
 import Image from "next/image";
 import myImg from "../assets/me.jpg";
 import { motion } from "framer-motion";
+import { imgLoader } from "../utils/utils";
 
 const About = () => {
   const { data } = useContext(GlobalContext);
@@ -104,10 +105,11 @@ const About = () => {
             <div className="relative z-10 hidden h-[270px] w-[270px] shrink-0 overflow-hidden rounded-[50%] transition-all duration-500 hover:rounded-3xl md:block lg:hover:!scale-110">
               <div className="absolute z-10 h-full w-full bg-background_1/30 transition-all duration-500 hover:bg-background_1/0 dark:bg-dark-background_1/30 dark:hover:bg-dark-background_1/0"></div>
               <Image
-                src={myImg}
+                src={"https://live.staticflickr.com/65535/52176678364_3321678c1b_o.jpg"}
                 alt={`Picture of ${data.name}`}
                 className="aspect-ratio-1/1"
-                // layout="fixed"
+                layout="fill"
+                loader={imgLoader}
               />
             </div>
           </motion.div>
