@@ -15,8 +15,8 @@ on:
         required: true
         default: 'warning'
       tags:
-        description: 'Test scenario tags'  
-
+        description: 'Test scenario tags'
+        
 jobs:
   build:
 
@@ -37,9 +37,9 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm run export
-    - run: touch ./out/.nojekyll
+
     - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: out # The folder the action should deploy.
-          branch: main
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: out # The folder the action should deploy.
+        branch: main
