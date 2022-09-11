@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { ThemeContext, hoverAnimation } from "../data/ThemeContext";
 import { motion } from "framer-motion";
+import React, { useContext } from "react";
+import { hoverAnimation, ThemeContext } from "../data/ThemeContext";
 
 const SkillLink = ({ skill, className }) => {
   const { isThemeChanging } = useContext(ThemeContext);

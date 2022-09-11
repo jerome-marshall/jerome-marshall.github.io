@@ -1,7 +1,7 @@
-import React, { useRef, useState, useContext } from "react";
-import { Tab, Disclosure, Transition } from "@headlessui/react";
+import { Disclosure, Transition } from "@headlessui/react";
+import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
 
 const ExpAccordian = (props) => {
   const { isThemeChanging } = useContext(ThemeContext);

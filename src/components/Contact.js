@@ -1,11 +1,10 @@
-import React, { useContext, useState, useRef } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-import Button from "./Button";
 import { motion } from "framer-motion";
+import React, { useContext } from "react";
+import { GlobalContext } from "../data/GlobalContext";
 import {
-  ThemeContext,
-  themeChangeTransition,
   hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
 } from "../data/ThemeContext";
 
 const Contact = () => {

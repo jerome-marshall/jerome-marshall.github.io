@@ -1,13 +1,9 @@
+import { useTheme } from "next-themes";
 import React, { useState } from "react";
+import { useLocalStorage } from "react-use";
+import { themeChangeTransition, ThemeProvider } from "../data/ThemeContext";
 import Footer from "./Footer";
 import Header from "./Header";
-import {
-  ThemeContext,
-  ThemeProvider,
-  themeChangeTransition,
-} from "../data/ThemeContext";
-import { useTheme } from "next-themes";
-import { useLocalStorage } from "react-use";
 
 const Layout = ({ children }) => {
   const [localIsDark, setLocalIsDark, removelocalIsDark] = useLocalStorage(

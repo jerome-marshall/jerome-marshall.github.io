@@ -1,14 +1,9 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
-import Slider from "react-slick";
 
-import { FiGithub as IconGitHub } from "react-icons/fi";
-import { FiExternalLink as IconExternal } from "react-icons/fi";
-import { FiFolder as IconFolder } from "react-icons/fi";
-import SkillLink from "./SkillLink";
-import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
+import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const { isThemeChanging } = useContext(ThemeContext);

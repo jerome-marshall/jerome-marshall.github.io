@@ -1,7 +1,7 @@
+import { motion } from "framer-motion";
 import React, { useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 import { getIcon } from "../utils/utils";
-import { motion } from "framer-motion";
 
 const SideBar = () => {
   const { data } = useContext(GlobalContext);

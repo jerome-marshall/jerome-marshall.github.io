@@ -1,15 +1,15 @@
-import React, { useContext, useState, useRef } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-import { Tab, Disclosure, Transition } from "@headlessui/react";
-import ReactMarkdown from "react-markdown";
-import ExpAccordian from "./ExpAccordian";
-import { classNames } from "../utils/utils";
+import { Tab } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
+import React, { useContext, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { GlobalContext } from "../data/GlobalContext";
 import {
-  ThemeContext,
-  themeChangeTransition,
   hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
 } from "../data/ThemeContext";
+import { classNames } from "../utils/utils";
+import ExpAccordian from "./ExpAccordian";
 
 const Experience = () => {
   const { isThemeChanging } = useContext(ThemeContext);

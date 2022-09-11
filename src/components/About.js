@@ -1,11 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-import ReactMarkdown from "react-markdown";
-import SkillLink from "./SkillLink";
-import Image from "next/image";
-import myImg from "../assets/me.jpg";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import React, { useContext } from "react";
+import ReactMarkdown from "react-markdown";
+import { GlobalContext } from "../data/GlobalContext";
 import { imgLoader } from "../utils/utils";
+import SkillLink from "./SkillLink";
 
 const About = () => {
   const { data } = useContext(GlobalContext);

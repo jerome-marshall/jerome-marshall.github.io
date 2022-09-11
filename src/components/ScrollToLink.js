@@ -1,10 +1,10 @@
+import { motion } from "framer-motion";
 import React, { useContext } from "react";
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
 import {
-  ThemeContext,
-  themeChangeTransition,
   hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
 } from "../data/ThemeContext";
 
 const ScrollToLink = ({ to, className, clickHandler, children, variants }) => {

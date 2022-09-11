@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
-import { FaQuoteLeft as IconQuote } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
-import ReactMarkdown from "react-markdown";
+import { FaQuoteLeft as IconQuote } from "react-icons/fa";
 
 const SplashScreen = ({ setIsLoading, randomQuote }) => {
   const [showContine, setShowContinue] = useState(false);
@@ -94,7 +93,7 @@ const SplashScreen = ({ setIsLoading, randomQuote }) => {
       },
     },
   };
-  
+
   return (
     <motion.div
       variants={wrapperVariant}

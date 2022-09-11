@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
-import { FiGithub as IconGitHub } from "react-icons/fi";
-import { FiExternalLink as IconExternal } from "react-icons/fi";
-import { FiFolder as IconFolder } from "react-icons/fi";
-import SkillLink from "./SkillLink";
 import { motion } from "framer-motion";
+import React, { useContext } from "react";
 import {
-  ThemeContext,
-  themeChangeTransition,
-  hoverAnimation,
-} from "../data/ThemeContext";
+  FiExternalLink as IconExternal,
+  FiFolder as IconFolder,
+  FiGithub as IconGitHub,
+} from "react-icons/fi";
+import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
+import SkillLink from "./SkillLink";
 
 const ProjectCard = ({ project, index }) => {
   const { isThemeChanging } = useContext(ThemeContext);

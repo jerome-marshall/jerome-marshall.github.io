@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-import Button from "./Button";
-import { Link } from "react-scroll";
-import ScrollToLink from "./ScrollToLink";
 import { motion } from "framer-motion";
-import {
-  ThemeContext,
-  themeChangeTransition,
-  hoverAnimation,
-} from "../data/ThemeContext";
+import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-scroll";
+import { GlobalContext } from "../data/GlobalContext";
+import {
+  hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
+} from "../data/ThemeContext";
 
 const Hero = () => {
   const { isThemeChanging } = useContext(ThemeContext);

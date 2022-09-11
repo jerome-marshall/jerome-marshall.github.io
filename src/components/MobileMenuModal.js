@@ -1,9 +1,7 @@
-import React, { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { FaTimes as IconClose } from "react-icons/fa";
+import React, { Fragment, useContext } from "react";
+import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
 import ScrollToLink from "./ScrollToLink";
-import { motion } from "framer-motion";
-import { ThemeContext, themeChangeTransition } from "../data/ThemeContext";
 
 const MobileMenuModal = (props) => {
   const { isThemeChanging } = useContext(ThemeContext);

@@ -1,19 +1,16 @@
-import React, { useState, useContext } from "react";
-import DayNightToggle from "react-day-and-night-toggle";
-import { FaBars } from "react-icons/fa";
-import { useTheme } from "next-themes";
-import Button from "./Button";
-import { Link, animateScroll as scroll } from "react-scroll";
-import ScrollToLink from "./ScrollToLink";
-import MobileMenuModal from "./MobileMenuModal";
 import { motion } from "framer-motion";
-import { useWindowSize } from "../hooks/window-size";
-import {
-  ThemeContext,
-  themeChangeTransition,
-  hoverAnimation,
-} from "../data/ThemeContext";
 import { Cross as Hamburger } from "hamburger-react";
+import React, { useContext, useState } from "react";
+import DayNightToggle from "react-day-and-night-toggle";
+import { animateScroll as scroll, Link } from "react-scroll";
+import {
+  hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
+} from "../data/ThemeContext";
+import { useWindowSize } from "../hooks/window-size";
+import MobileMenuModal from "./MobileMenuModal";
+import ScrollToLink from "./ScrollToLink";
 
 const Header = ({ isDark, handleThemeChange }) => {
   const { isThemeChanging } = useContext(ThemeContext);

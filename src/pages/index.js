@@ -1,20 +1,17 @@
-import React, { createContext, useLayoutEffect, useRef, useState } from "react";
-import Layout from "../components/Layout";
-import axios from "axios";
-import { GlobalContext, GlobalProvider } from "../data/GlobalContext";
-import Hero from "../components/Hero";
+import { AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import About from "../components/About";
 import Experience from "../components/Experience";
+import Hero from "../components/Hero";
+import Layout from "../components/Layout";
 import Projects from "../components/Projects";
-import { AnimatePresence } from "framer-motion";
+import { GlobalProvider } from "../data/GlobalContext";
 
-import { gql } from "@apollo/client";
-import { getGlobalData, getQuotes } from "../data/graphql-client";
+import Head from "next/head";
 import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
-import { motion } from "framer-motion";
-import Head from "next/head";
+import { getGlobalData, getQuotes } from "../data/graphql-client";
 
 const Home = ({ data, quotes }) => {
   const [isLoading, setIsLoading] = useState(true);

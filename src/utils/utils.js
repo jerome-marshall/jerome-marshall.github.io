@@ -1,10 +1,10 @@
+import { BsStackOverflow as IconStackoverflow } from "react-icons/bs";
 import {
   FiGithub as IconGitHub,
   FiLinkedin as IconLinkedIn,
-  FiPhone as IconPhone,
   FiMail as IconMail,
+  FiPhone as IconPhone,
 } from "react-icons/fi";
-import { BsStackOverflow as IconStackoverflow } from "react-icons/bs";
 
 export const getIcon = (iconName) => {
   const Icon =
@@ -27,6 +27,6 @@ export function classNames(...classes) {
 }
 
 export const imgLoader = ({ src, width, height, quality }) => {
-  const imgURL = `https://images.weserv.nl/?url=${src}&h=${height}&w=${width}`
+  const imgURL = `https://images.weserv.nl/?url=${src}&h=${height}&w=${width}`;
   return imgURL;
 };

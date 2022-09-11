@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-import { getIcon } from "../utils/utils";
-import { SiNextdotjs as IconNextJs } from "react-icons/si";
 import { motion } from "framer-motion";
+import React, { useContext } from "react";
+import { SiNextdotjs as IconNextJs } from "react-icons/si";
+import { GlobalContext } from "../data/GlobalContext";
 import {
-  ThemeContext,
-  themeChangeTransition,
   hoverAnimation,
+  themeChangeTransition,
+  ThemeContext,
 } from "../data/ThemeContext";
+import { getIcon } from "../utils/utils";
 
 const Footer = () => {
   const { isThemeChanging } = useContext(ThemeContext);
