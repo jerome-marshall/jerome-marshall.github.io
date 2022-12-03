@@ -1,4 +1,4 @@
-export type Maybe<T> = T | null;
+export type Maybe<T> = T | undefined;
 export type Scalars = {
   ID: string;
   String: string;
@@ -106,20 +106,20 @@ export type SkillRelationResponseCollection = {
   data: Array<SkillEntity>;
 };
 
-export type GlobalDatum = {
-  __typename?: "GlobalDatum";
-  name?: Maybe<Scalars["String"]>;
-  socials?: Maybe<Array<Maybe<ComponentComponentSocial>>>;
-  image?: Maybe<UploadFileEntityResponse>;
-  shortIntroduction?: Maybe<Scalars["String"]>;
-  introduction?: Maybe<Scalars["String"]>;
-  about?: Maybe<Scalars["String"]>;
-  contactText?: Maybe<Scalars["String"]>;
-  skillsHighlight?: Maybe<SkillRelationResponseCollection>;
-  projectsHighlight?: Maybe<ProjectRelationResponseCollection>;
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-};
+export type GlobalDatum = Partial<{
+  __typename: "GlobalDatum";
+  name: string;
+  socials: Maybe<Array<Maybe<ComponentComponentSocial>>>;
+  image: Maybe<UploadFileEntityResponse>;
+  shortIntroduction: string;
+  introduction: string;
+  about: Maybe<Scalars["String"]>;
+  contactText: Maybe<Scalars["String"]>;
+  skillsHighlight: Maybe<SkillRelationResponseCollection>;
+  projectsHighlight: Maybe<ProjectRelationResponseCollection>;
+  createdAt: Maybe<Scalars["DateTime"]>;
+  updatedAt: Maybe<Scalars["DateTime"]>;
+}>;
 
 export type Quote = {
   __typename?: "Quote";

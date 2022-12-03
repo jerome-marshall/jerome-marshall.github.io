@@ -1,15 +1,19 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import ReactMarkdown from "react-markdown";
+import parse from "html-react-parser";
+import { useContext } from "react";
 import { Link } from "react-scroll";
-import { GlobalContext } from "../data/GlobalContext";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
 
-const Hero = ({ name, shortIntro, introduction }) => {
+interface IHeroProps {
+  name?: string;
+  shortIntro?: string;
+  introduction?: string;
+}
+const Hero = ({ name, shortIntro, introduction }: IHeroProps) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {
@@ -70,12 +74,14 @@ const Hero = ({ name, shortIntro, introduction }) => {
         >
           {shortIntro}
         </motion.h3>
-        <motion.div
-          variants={textVariant}
-          className="z-10 mt-5 max-w-[600px] child-p:text-text_500  dark:child-p:text-dark-text_500  md:child-p:text-lg"
-        >
-          <ReactMarkdown>{introduction}</ReactMarkdown>
-        </motion.div>
+        {introduction && (
+          <motion.div
+            variants={textVariant}
+            className="z-10 mt-5 max-w-[600px] child-p:text-text_500  dark:child-p:text-dark-text_500  md:child-p:text-lg"
+          >
+            {parse(introduction)}
+          </motion.div>
+        )}
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
           <motion.div
             className={`btn mt-12 self-center sm:self-start ${

@@ -13,6 +13,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.2",
     "@headlessui/react": "^1.7.4",
+    "@types/react-scroll": "^1.8.5",
     "axios": "^1.2.0",
     "framer-motion": "^6.3.4",
     "graphql": "^16.5.0",

@@ -33,7 +33,7 @@ const customColors = {
 
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js,tsx}"],
   theme: {
     extend: {
       boxShadow: {

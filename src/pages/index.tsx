@@ -15,7 +15,7 @@ import { getGlobalData, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Quote } from "../types/types";
 
 const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
@@ -24,32 +24,30 @@ const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
       <Head>
         <title>{data.name}</title>
       </Head>
-      <GlobalProvider value={{ data }}>
-        <AnimatePresence exitBeforeEnter>
-          {isLoading ? (
-            <SplashScreen
-              key="splash-container"
-              setIsLoading={setIsLoading}
-              randomQuote={randomQuote}
-            />
-          ) : (
-            <>
-              <Layout>
-                <Hero
-                  name={data.name}
-                  shortIntro={data.shortIntroduction}
-                  introduction={data.introduction}
-                />
-                {/* <About />
+      <AnimatePresence exitBeforeEnter>
+        {isLoading ? (
+          <SplashScreen
+            key="splash-container"
+            setIsLoading={setIsLoading}
+            randomQuote={randomQuote}
+          />
+        ) : (
+          <>
+            <Layout>
+              <Hero
+                name={data.name}
+                shortIntro={data.shortIntroduction}
+                introduction={data.introduction}
+              />
+              {/* <About />
                 <Experience />
                 <Projects />
                 <Contact />
                 <SideBar /> */}
-              </Layout>
-            </>
-          )}
-        </AnimatePresence>
-      </GlobalProvider>
+            </Layout>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
