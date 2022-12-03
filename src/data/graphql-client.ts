@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { GlobalDatum, Quote, QuoteEntity } from "../types/types";
 
 const client = new ApolloClient({
   uri: process.env.STRAPI_GRAPHQL,
@@ -73,7 +74,7 @@ export const getGlobalData = async () => {
     `,
   });
 
-  return response.data.globalDatum.data.attributes;
+  return response.data.globalDatum.data.attributes as GlobalDatum;
 };
 
 export const getQuotes = async () => {
@@ -92,5 +93,7 @@ export const getQuotes = async () => {
     `,
   });
 
-  return response.data.quotes?.data.map((quote) => quote.attributes);
+  return response.data.quotes?.data.map(
+    (quote: QuoteEntity) => quote.attributes
+  ) as Quote[];
 };

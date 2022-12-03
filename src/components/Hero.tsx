@@ -7,6 +7,7 @@ import {
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
+import { IThemeContext } from "../types/types";
 
 interface IHeroProps {
   name?: string;
@@ -14,7 +15,7 @@ interface IHeroProps {
   introduction?: string;
 }
 const Hero = ({ name, shortIntro, introduction }: IHeroProps) => {
-  const { isThemeChanging } = useContext(ThemeContext);
+  const { isThemeChanging } = useContext<IThemeContext>(ThemeContext);
 
   const containerVariant = {
     hidden: {

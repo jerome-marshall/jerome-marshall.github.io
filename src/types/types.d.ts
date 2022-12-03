@@ -128,3 +128,13 @@ export type Quote = {
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
+
+export type QuoteEntity = {
+  __typename?: "QuoteEntity";
+  id?: Maybe<Scalars["ID"]>;
+  attributes: Quote;
+};
+
+export interface IThemeContext {
+  isThemeChanging?: boolean;
+}

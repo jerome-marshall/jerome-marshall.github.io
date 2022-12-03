@@ -39,11 +39,11 @@ const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
                 shortIntro={data.shortIntroduction}
                 introduction={data.introduction}
               />
-              {/* <About />
-                <Experience />
-                <Projects />
-                <Contact />
-                <SideBar /> */}
+              {/* <About /> */}
+              {/* <Experience /> */}
+              {/* <Projects /> */}
+              {/* <Contact /> */}
+              {/* <SideBar /> */}
             </Layout>
           </>
         )}
