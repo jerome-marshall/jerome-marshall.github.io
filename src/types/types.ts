@@ -24,13 +24,6 @@ export type Scalars = {
   Date: any;
   /** The `Upload` scalar type represents a file upload. */
   Upload: any;
-  GlobalDatumPageContentDynamicZoneInput: any;
-};
-
-export type Error = {
-  __typename?: "Error";
-  code: Scalars["String"];
-  message?: Maybe<Scalars["String"]>;
 };
 
 export type Pagination = {
@@ -660,21 +653,16 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type GlobalDatumPageContentDynamicZone =
-  | ComponentPageDataAboutPage
-  | ComponentPageDataContactPage
-  | ComponentPageDataExperiencePage
-  | ComponentPageDataHeroPage
-  | ComponentPageDataProjectsPage
-  | Error;
-
 export type GlobalDatumInput = {
   name?: InputMaybe<Scalars["String"]>;
   socials?: InputMaybe<Array<InputMaybe<ComponentComponentSocialInput>>>;
   image?: InputMaybe<Scalars["ID"]>;
-  pageContent?: InputMaybe<
-    Array<Scalars["GlobalDatumPageContentDynamicZoneInput"]>
-  >;
+  shortIntroduction?: InputMaybe<Scalars["String"]>;
+  introduction?: InputMaybe<Scalars["String"]>;
+  about?: InputMaybe<Scalars["String"]>;
+  contactText?: InputMaybe<Scalars["String"]>;
+  skillsHighlight?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  projectsHighlight?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
 };
 
 export type GlobalDatum = {
@@ -682,13 +670,30 @@ export type GlobalDatum = {
   name?: Maybe<Scalars["String"]>;
   socials?: Maybe<Array<Maybe<ComponentComponentSocial>>>;
   image?: Maybe<UploadFileEntityResponse>;
-  pageContent?: Maybe<Array<Maybe<GlobalDatumPageContentDynamicZone>>>;
+  shortIntroduction?: Maybe<Scalars["String"]>;
+  introduction?: Maybe<Scalars["String"]>;
+  about?: Maybe<Scalars["String"]>;
+  contactText?: Maybe<Scalars["String"]>;
+  skillsHighlight?: Maybe<SkillRelationResponseCollection>;
+  projectsHighlight?: Maybe<ProjectRelationResponseCollection>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
 export type GlobalDatumSocialsArgs = {
   filters?: InputMaybe<ComponentComponentSocialFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type GlobalDatumSkillsHighlightArgs = {
+  filters?: InputMaybe<SkillFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type GlobalDatumProjectsHighlightArgs = {
+  filters?: InputMaybe<ProjectFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
