@@ -120,3 +120,11 @@ export type GlobalDatum = {
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
+
+export type Quote = {
+  __typename?: "Quote";
+  author?: Maybe<Scalars["String"]>;
+  quote?: Maybe<Scalars["String"]>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+};

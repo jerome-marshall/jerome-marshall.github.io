@@ -9,12 +9,8 @@ import {
   ThemeContext,
 } from "../data/ThemeContext";
 
-const Hero = () => {
+const Hero = ({ name, shortIntro, introduction }) => {
   const { isThemeChanging } = useContext(ThemeContext);
-  const { data } = useContext(GlobalContext);
-  const heroData = data.pageContent.find(
-    (content) => content.__typename === "ComponentPageContentHeroPageContent"
-  );
 
   const containerVariant = {
     hidden: {
@@ -48,19 +44,6 @@ const Hero = () => {
     },
   };
 
-  const titleVariant = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   return (
     <div className="container h-screen">
       <motion.div
@@ -73,25 +56,25 @@ const Hero = () => {
           variants={textVariant}
           className="text-sm text-secondary dark:text-dark-secondary"
         >
-          {heroData.pageTitle}
+          Hi, my name is
         </motion.p>
         <motion.h1
           variants={textVariant}
           className="text-clamp-lg font-bold text-text_900 dark:text-dark-text_900"
         >
-          {data.name}.
+          {name}.
         </motion.h1>
         <motion.h3
           variants={textVariant}
           className="text-clamp-md text-text_700 dark:text-dark-text_700"
         >
-          {heroData.shortDescription}
+          {shortIntro}
         </motion.h3>
         <motion.div
           variants={textVariant}
           className="z-10 mt-5 max-w-[600px] child-p:text-text_500  dark:child-p:text-dark-text_500  md:child-p:text-lg"
         >
-          <ReactMarkdown>{heroData.description}</ReactMarkdown>
+          <ReactMarkdown>{introduction}</ReactMarkdown>
         </motion.div>
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
           <motion.div

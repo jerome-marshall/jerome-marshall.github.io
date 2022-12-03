@@ -12,8 +12,9 @@ import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { getGlobalData, getQuotes } from "../data/graphql-client";
+import { GlobalDatum, Quote } from "../types/types";
 
-const Home = ({ data, quotes }) => {
+const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -34,12 +35,16 @@ const Home = ({ data, quotes }) => {
           ) : (
             <>
               <Layout>
-                <Hero />
-                <About />
+                <Hero
+                  name={data.name}
+                  shortIntro={data.shortIntroduction}
+                  introduction={data.introduction}
+                />
+                {/* <About />
                 <Experience />
                 <Projects />
                 <Contact />
-                <SideBar />
+                <SideBar /> */}
               </Layout>
             </>
           )}

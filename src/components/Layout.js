@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
       >
         <Header isDark={isDark} handleThemeChange={handleThemeChange} />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );
