@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Hero from "../components/Hero";
@@ -12,6 +12,7 @@ import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Job, Quote } from "../types/types";
+import dynamic from "next/dynamic";
 
 const Home = ({
   data,
@@ -22,16 +23,36 @@ const Home = ({
   quotes: Quote[];
   jobs: Job[];
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  const DynamicHero = dynamic(() => import("../components/Hero"), {
+    suspense: true,
+  });
+  const DynamicAbout = dynamic(() => import("../components/About"), {
+    suspense: true,
+  });
+  const DynamicExperience = dynamic(() => import("../components/Experience"), {
+    suspense: true,
+  });
+  const DynamicProjects = dynamic(() => import("../components/Projects"), {
+    suspense: true,
+  });
+  const DynamicContact = dynamic(() => import("../components/Contact"), {
+    suspense: true,
+  });
 
   return (
     <div className="bg-background_1 dark:bg-dark-background_1">
       <Head>
         <title>{data.name}</title>
+        <meta
+          name="description"
+          content={`${data.name}'s portfolio. Has all the info on ${data.name}'s career. This portfolio was made with Next js`}
+        />
       </Head>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {isLoading ? (
           <SplashScreen
             key="splash-container"
@@ -39,18 +60,23 @@ const Home = ({
             randomQuote={randomQuote}
           />
         ) : (
-          <Layout data={data}>
-            <Hero
-              name={data.name}
-              shortIntro={data.shortIntroduction}
-              introduction={data.introduction}
-            />
-            <About aboutMe={data.about} skillsData={data.skillsHighlight} />
-            <Experience jobs={jobs} />
-            <Projects projectsData={data.projectsHighlight} />
-            <Contact content={data.contactText} />
-            <SideBar socials={data.socials} />
-          </Layout>
+          <Suspense>
+            <Layout data={data}>
+              <DynamicHero
+                name={data.name}
+                shortIntro={data.shortIntroduction}
+                introduction={data.introduction}
+              />
+              <DynamicAbout
+                aboutMe={data.about}
+                skillsData={data.skillsHighlight}
+              />
+              <DynamicExperience jobs={jobs} />
+              <DynamicProjects projectsData={data.projectsHighlight} />
+              <DynamicContact content={data.contactText} />
+              <SideBar socials={data.socials} />
+            </Layout>
+          </Suspense>
         )}
       </AnimatePresence>
     </div>
