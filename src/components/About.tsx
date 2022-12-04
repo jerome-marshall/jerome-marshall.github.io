@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
+import parse from "html-react-parser";
 import Image from "next/image";
-import React, { FC, useContext } from "react";
-import ReactMarkdown from "react-markdown";
-import { GlobalContext } from "../data/GlobalContext";
+import { FC } from "react";
+import { SkillRelationResponseCollection } from "../types/types";
 import { imgLoader } from "../utils/utils";
 import SkillLink from "./SkillLink";
-import parse from "html-react-parser";
-import { SkillRelationResponseCollection } from "../types/types";
 
 interface IAboutProps {
   aboutMe: string;

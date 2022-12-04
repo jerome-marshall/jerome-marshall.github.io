@@ -1,29 +1,46 @@
 import { Disclosure, Transition } from "@headlessui/react";
-import React, { useContext } from "react";
+import React, { FC, ReactElement, Ref, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
+import { Job } from "../types/types";
+import parse from "html-react-parser";
 
-const ExpAccordian = (props) => {
+interface IExpAccordianProps {
+  job: Job;
+  length: number;
+  pannelRef: React.MutableRefObject<null>;
+  openedDisclosure: number;
+  toggleDisclosure: (index: number) => void;
+  index: number;
+}
+
+const ExpAccordian: FC<IExpAccordianProps> = ({
+  index,
+  job,
+  toggleDisclosure,
+  openedDisclosure,
+}) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   return (
     <Disclosure
+      as={"div"}
       className="bg-background_3 dark:bg-dark-background_3"
-      defaultOpen={props.i === 0}
+      defaultOpen={index === 0}
     >
       {({ open }) => {
         return (
           <>
             <Disclosure.Button
-              key={props.job.companyName + "_tab"}
+              key={job.name + "_tab"}
               className={`w-full px-4 py-3 text-base transition-all duration-500 ${
                 open
                   ? " text-text-700 bg-background_3 text-lg font-bold dark:bg-dark-background_3 dark:text-dark-text_700"
                   : " bg-background_2 text-text_500 dark:bg-dark-background_2 dark:text-dark-text_500"
               } ${isThemeChanging && themeChangeTransition}`}
-              onClick={() => props.toggleDisclosure(props.i)}
+              onClick={() => toggleDisclosure(index)}
             >
-              {props.job.companyName}
+              {job.name}
             </Disclosure.Button>
 
             <Transition
@@ -36,15 +53,15 @@ const ExpAccordian = (props) => {
               leaveTo=" max-h-0"
             >
               <Disclosure.Panel
-                key={props.job.companyName + "_panel"}
+                key={job.name + "_panel"}
                 className={` bg-background_2 px-4 py-5 dark:bg-dark-background_2 ${
-                  open && props.i != props.length - 1
+                  open && index != length - 1
                     ? "border-b-2 border-background_3 dark:border-dark-background_3"
                     : ""
                 } ${isThemeChanging && themeChangeTransition}`}
               >
                 {({ close }) => {
-                  props.openedDisclosure !== props.i && close();
+                  openedDisclosure !== index && close();
                   return (
                     <div>
                       <p className="">
@@ -53,7 +70,7 @@ const ExpAccordian = (props) => {
                             isThemeChanging && themeChangeTransition
                           }`}
                         >
-                          {props.job.designation}
+                          {job.designation}
                         </span>
                         <span className="">{" @ "}</span>
                         <span
@@ -61,7 +78,7 @@ const ExpAccordian = (props) => {
                             isThemeChanging && themeChangeTransition
                           }`}
                         >
-                          {props.job.companyName}
+                          {job.name}
                         </span>
                       </p>
                       <p
@@ -69,15 +86,15 @@ const ExpAccordian = (props) => {
                           isThemeChanging && themeChangeTransition
                         }`}
                       >
-                        {props.job.range}
+                        {job.joiningDate}
                       </p>
-                      <ReactMarkdown
+                      <div
                         className={`descendant-li:text-text_700 descendant-li:dark:text-dark-text_700 ${
                           isThemeChanging && themeChangeTransition
                         }`}
                       >
-                        {props.job.workDescription}
-                      </ReactMarkdown>
+                        {parse(job.workDescription)}
+                      </div>
                     </div>
                   );
                 }}

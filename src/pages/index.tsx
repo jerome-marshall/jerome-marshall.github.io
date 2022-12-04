@@ -11,10 +11,19 @@ import Head from "next/head";
 import Contact from "../components/Contact";
 import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
-import { getGlobalData, getQuotes } from "../data/graphql-client";
-import { GlobalDatum, Quote } from "../types/types";
+import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
+import { GlobalDatum, Job, Quote } from "../types/types";
 
-const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
+const Home = ({
+  data,
+  quotes,
+  jobs,
+}: {
+  data: GlobalDatum;
+  quotes: Quote[];
+  jobs: Job[];
+}) => {
+  console.log("🚀 ~ file: index.tsx:25 ~ jobs", jobs);
   const [isLoading, setIsLoading] = useState(false);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -40,7 +49,7 @@ const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
                 introduction={data.introduction}
               />
               <About aboutMe={data.about} skillsData={data.skillsHighlight} />
-              {/* <Experience /> */}
+              <Experience jobs={jobs} />
               {/* <Projects /> */}
               {/* <Contact /> */}
               {/* <SideBar /> */}
@@ -56,7 +65,8 @@ export async function getStaticProps() {
   try {
     const globalData = await getGlobalData();
     const quotes = await getQuotes();
-    return { props: { data: globalData, quotes: quotes } };
+    const jobs = await getJobs();
+    return { props: { data: globalData, quotes, jobs } };
   } catch (error) {
     console.error(error);
     return { props: { data: "error" } };

@@ -1,29 +1,27 @@
 import { Tab } from "@headlessui/react";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useContext, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import { GlobalContext } from "../data/GlobalContext";
+import parse from "html-react-parser";
+import { FC, useContext, useRef, useState } from "react";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
-import { classNames } from "../utils/utils";
+import { Job } from "../types/types";
 import ExpAccordian from "./ExpAccordian";
 
-const Experience = () => {
-  const { isThemeChanging } = useContext(ThemeContext);
+interface IExperienceProps {
+  jobs: Job[];
+}
 
-  const { data } = useContext(GlobalContext);
-  const expData = data.pageContent.find(
-    (content) =>
-      content.__typename === "ComponentPageContentExperiencePageContent"
-  );
+const Experience: FC<IExperienceProps> = ({ jobs }) => {
+  const { isThemeChanging } = useContext(ThemeContext);
 
   const pannelRef = useRef(null);
 
   const [openedDisclosure, setOpenedDisclosure] = useState(0);
-  const toggleDisclosure = (index) => {
+  const toggleDisclosure = (index: number) => {
     setOpenedDisclosure(index);
   };
 
@@ -44,7 +42,7 @@ const Experience = () => {
     },
   };
 
-  const itemVariant = (index) => {
+  const itemVariant = (index: number) => {
     return {
       hidden: {
         opacity: 0,
@@ -79,33 +77,32 @@ const Experience = () => {
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {expData.pageTitle}
+          Where I&apos;ve worked
         </h3>
         <div className="mt-12 w-full">
           <Tab.Group vertical as="div" className="hidden md:flex">
             <Tab.List className="flex flex-col">
-              {expData.jobs.map((job, i) => (
+              {jobs.map((job, i) => (
                 <motion.div
                   className="z-10 mr-8"
-                  key={job.companyName + "Tab"}
+                  key={job.name + "Tab"}
                   variants={itemVariant(i)}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
                   <Tab
-                    key={job.companyName + "Tab"}
+                    key={job.name + "Tab"}
                     className={({ selected }) =>
-                      classNames(
+                      clsx(
                         "z-10 w-full whitespace-nowrap border-l-[3px] p-3 text-left text-sm transition-all duration-500 hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
                         selected
                           ? "border-secondary text-secondary dark:border-dark-secondary  dark:text-dark-secondary"
-                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500",
-                        ""
+                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500"
                       )
                     }
                   >
-                    {job.companyName}
+                    {job.name}
                   </Tab>
                 </motion.div>
               ))}
@@ -113,14 +110,14 @@ const Experience = () => {
 
             <Tab.Panels className="z-10">
               <AnimatePresence>
-                {expData.jobs.map((job, i) => (
+                {jobs.map((job, i) => (
                   <Tab.Panel
                     as={motion.div}
                     className="z-10"
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    key={job.companyName + "Panel12"}
+                    key={job.name + "Panel12"}
                   >
                     <h4 className="z-10 text-xl">
                       <span
@@ -146,7 +143,7 @@ const Experience = () => {
                         rel="noreferrer"
                         whileHover={hoverAnimation}
                       >
-                        {job.companyName}
+                        {job.name}
                       </motion.a>
                     </h4>
                     <p
@@ -154,31 +151,31 @@ const Experience = () => {
                         isThemeChanging && themeChangeTransition
                       }`}
                     >
-                      {job.range}
+                      {job.joiningDate}
                     </p>
-                    <ReactMarkdown
+                    <div
                       className={`mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700 ${
                         isThemeChanging && themeChangeTransition
                       }`}
                     >
-                      {job.workDescription}
-                    </ReactMarkdown>
+                      {parse(job.workDescription)}
+                    </div>
                   </Tab.Panel>
                 ))}
               </AnimatePresence>
             </Tab.Panels>
           </Tab.Group>
           <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-background_3 dark:border-dark-background_3 md:hidden">
-            {expData.jobs.map((job, i) => {
+            {jobs.map((job, i) => {
               return (
                 <ExpAccordian
-                  key={job.companyName}
-                  length={expData.jobs.length}
+                  key={job.name}
+                  length={jobs.length}
                   pannelRef={pannelRef}
                   openedDisclosure={openedDisclosure}
                   toggleDisclosure={toggleDisclosure}
                   job={job}
-                  i={i}
+                  index={i}
                 ></ExpAccordian>
               );
             })}

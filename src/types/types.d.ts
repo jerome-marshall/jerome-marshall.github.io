@@ -135,6 +135,26 @@ export type QuoteEntity = {
   attributes: Quote;
 };
 
+export type Job = {
+  __typename?: "Job";
+  designation?: string;
+  joiningDate?: Maybe<Scalars["Date"]>;
+  leavingDate?: Maybe<Scalars["Date"]>;
+  url?: string;
+  workDescription: string;
+  present?: Maybe<Scalars["Boolean"]>;
+  rank?: Maybe<Scalars["Int"]>;
+  name?: string;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type JobEntity = {
+  __typename?: "JobEntity";
+  id?: Maybe<Scalars["ID"]>;
+  attributes?: Maybe<Job>;
+};
+
 export interface IThemeContext {
   isThemeChanging?: boolean;
 }

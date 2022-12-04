@@ -1,6 +1,12 @@
 import { gql } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GlobalDatum, Quote, QuoteEntity } from "../types/types";
+import {
+  GlobalDatum,
+  Job,
+  JobEntity,
+  Quote,
+  QuoteEntity,
+} from "../types/types";
 
 const client = new ApolloClient({
   uri: process.env.STRAPI_GRAPHQL,
@@ -75,6 +81,33 @@ export const getGlobalData = async () => {
   });
 
   return response.data.globalDatum.data.attributes;
+};
+
+export const getJobs = async () => {
+  const response = await client.query({
+    query: gql`
+      query getJobs {
+        jobs {
+          data {
+            attributes {
+              designation
+              joiningDate
+              leavingDate
+              url
+              workDescription
+              present
+              rank
+              name
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  return response.data.jobs?.data.map(
+    (job: JobEntity) => job.attributes
+  ) as Job[];
 };
 
 export const getQuotes = async () => {
