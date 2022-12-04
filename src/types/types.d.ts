@@ -18,24 +18,24 @@ export type Scalars = {
 export type ComponentComponentSocial = {
   __typename?: "ComponentComponentSocial";
   id: Scalars["ID"];
-  name?: Maybe<Scalars["String"]>;
-  url?: Maybe<Scalars["String"]>;
+  name?: string;
+  url?: string;
 };
 
 export type UploadFile = {
   __typename?: "UploadFile";
   name: Scalars["String"];
-  alternativeText?: Maybe<Scalars["String"]>;
-  caption?: Maybe<Scalars["String"]>;
+  alternativeText?: string;
+  caption?: string;
   width?: Maybe<Scalars["Int"]>;
   height?: Maybe<Scalars["Int"]>;
   formats?: Maybe<Scalars["JSON"]>;
   hash: Scalars["String"];
-  ext?: Maybe<Scalars["String"]>;
+  ext?: string;
   mime: Scalars["String"];
   size: Scalars["Float"];
   url: Scalars["String"];
-  previewUrl?: Maybe<Scalars["String"]>;
+  previewUrl?: string;
   provider: Scalars["String"];
   provider_metadata?: Maybe<Scalars["JSON"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
@@ -60,16 +60,16 @@ export type UploadFileRelationResponseCollection = {
 
 export type Project = {
   __typename?: "Project";
-  name?: Maybe<Scalars["String"]>;
+  name?: string;
   date?: Maybe<Scalars["Date"]>;
-  githubURL?: Maybe<Scalars["String"]>;
-  externalURL?: Maybe<Scalars["String"]>;
+  githubURL?: string;
+  externalURL?: string;
   techStack?: Maybe<SkillRelationResponseCollection>;
-  projectFor?: Maybe<Scalars["String"]>;
+  projectFor?: string;
   personal?: Maybe<Scalars["Boolean"]>;
-  description?: Maybe<Scalars["String"]>;
+  description?: string;
   images?: Maybe<UploadFileRelationResponseCollection>;
-  shortDescription?: Maybe<Scalars["String"]>;
+  shortDescription?: string;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
@@ -87,8 +87,8 @@ export type ProjectRelationResponseCollection = {
 
 export type Skill = {
   __typename?: "Skill";
-  name?: Maybe<Scalars["String"]>;
-  url?: Maybe<Scalars["String"]>;
+  name?: string;
+  url?: string;
   projects?: Maybe<ProjectRelationResponseCollection>;
   rank?: Maybe<Scalars["Int"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
@@ -98,7 +98,7 @@ export type Skill = {
 export type SkillEntity = {
   __typename?: "SkillEntity";
   id?: Maybe<Scalars["ID"]>;
-  attributes?: Maybe<Skill>;
+  attributes: Skill;
 };
 
 export type SkillRelationResponseCollection = {
@@ -106,25 +106,25 @@ export type SkillRelationResponseCollection = {
   data: Array<SkillEntity>;
 };
 
-export type GlobalDatum = Partial<{
+export type GlobalDatum = {
   __typename: "GlobalDatum";
   name: string;
   socials: Maybe<Array<Maybe<ComponentComponentSocial>>>;
   image: Maybe<UploadFileEntityResponse>;
   shortIntroduction: string;
   introduction: string;
-  about: Maybe<Scalars["String"]>;
-  contactText: Maybe<Scalars["String"]>;
-  skillsHighlight: Maybe<SkillRelationResponseCollection>;
+  about: string;
+  contactText: string;
+  skillsHighlight: SkillRelationResponseCollection;
   projectsHighlight: Maybe<ProjectRelationResponseCollection>;
   createdAt: Maybe<Scalars["DateTime"]>;
   updatedAt: Maybe<Scalars["DateTime"]>;
-}>;
+};
 
 export type Quote = {
   __typename?: "Quote";
-  author?: Maybe<Scalars["String"]>;
-  quote?: Maybe<Scalars["String"]>;
+  author?: string;
+  quote?: string;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };

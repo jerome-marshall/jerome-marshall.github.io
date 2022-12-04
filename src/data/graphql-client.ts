@@ -74,7 +74,7 @@ export const getGlobalData = async () => {
     `,
   });
 
-  return response.data.globalDatum.data.attributes as GlobalDatum;
+  return response.data.globalDatum.data.attributes;
 };
 
 export const getQuotes = async () => {

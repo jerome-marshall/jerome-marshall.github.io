@@ -6,7 +6,7 @@ import {
   FiPhone as IconPhone,
 } from "react-icons/fi";
 
-export const getIcon = (iconName) => {
+export const getIcon = (iconName: string) => {
   const Icon =
     iconName === "github"
       ? IconGitHub
@@ -22,11 +22,18 @@ export const getIcon = (iconName) => {
 
   return Icon;
 };
-export function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
-export const imgLoader = ({ src, width, height, quality }) => {
+export const imgLoader = ({
+  src,
+  width,
+  height,
+  quality,
+}: {
+  src: string;
+  width?: number;
+  height?: number;
+  quality?: number;
+}) => {
   const imgURL = `https://images.weserv.nl/?url=${src}&h=${height}&w=${width}`;
   return imgURL;
 };

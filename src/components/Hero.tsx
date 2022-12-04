@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { Link } from "react-scroll";
 import {
   hoverAnimation,
@@ -14,7 +14,7 @@ interface IHeroProps {
   shortIntro?: string;
   introduction?: string;
 }
-const Hero = ({ name, shortIntro, introduction }: IHeroProps) => {
+const Hero: FC<IHeroProps> = ({ name, shortIntro, introduction }) => {
   const { isThemeChanging } = useContext<IThemeContext>(ThemeContext);
 
   const containerVariant = {

@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import { hoverAnimation, ThemeContext } from "../data/ThemeContext";
+import type { FC } from "react";
+import { hoverAnimation } from "../data/ThemeContext";
+import type { Skill } from "../types/types";
 
-const SkillLink = ({ skill, className }) => {
-  const { isThemeChanging } = useContext(ThemeContext);
-
+const SkillLink: FC<{
+  skill: Skill;
+  className?: string;
+}> = ({ skill, className }) => {
   return (
     <motion.a
       className={`inline-block whitespace-nowrap text-sm transition-all duration-300 ease-linear hover:text-primary dark:hover:text-dark-secondary ${className}`}

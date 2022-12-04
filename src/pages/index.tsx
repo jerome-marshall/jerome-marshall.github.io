@@ -39,7 +39,7 @@ const Home = ({ data, quotes }: { data: GlobalDatum; quotes: Quote[] }) => {
                 shortIntro={data.shortIntroduction}
                 introduction={data.introduction}
               />
-              {/* <About /> */}
+              <About aboutMe={data.about} skillsData={data.skillsHighlight} />
               {/* <Experience /> */}
               {/* <Projects /> */}
               {/* <Contact /> */}

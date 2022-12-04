@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import { GlobalContext } from "../data/GlobalContext";
 import { imgLoader } from "../utils/utils";
 import SkillLink from "./SkillLink";
+import parse from "html-react-parser";
+import { SkillRelationResponseCollection } from "../types/types";
 
-const About = () => {
-  const { data } = useContext(GlobalContext);
-  const aboutData = data.pageContent.find(
-    (content) => content.__typename === "ComponentPageContentAboutPageContent"
-  );
-
+interface IAboutProps {
+  aboutMe: string;
+  skillsData: SkillRelationResponseCollection;
+}
+const About: FC<IAboutProps> = ({ aboutMe, skillsData }) => {
+  const skills = skillsData.data.map((skill) => skill.attributes);
   const containerVariant = {
     hidden: {
       opacity: 0,
@@ -28,7 +30,7 @@ const About = () => {
     },
   };
 
-  const itemVariant = (index) => {
+  const itemVariant = (index: number) => {
     return {
       hidden: {
         opacity: 0,
@@ -74,13 +76,15 @@ const About = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="flex h-full flex-col items-center justify-center"
       >
-        <h3 className="self-center md:self-start">{aboutData.pageTitle}</h3>
+        <h3 className="self-center md:self-start">About Me</h3>
         <div className="flex items-center md:gap-8 lg:gap-10 xl:gap-12">
           <div className="z-10 mt-7 flex w-full flex-col md:basis-2/3">
-            <ReactMarkdown className="">{aboutData.description}</ReactMarkdown>
-
+            {parse(aboutMe)}
+            <p className="mt-6">
+              {"Here are a few technologies I've been working with recently:"}
+            </p>
             <ul className="mt-4 grid grid-cols-2 sm:mr-auto sm:gap-x-32">
-              {aboutData.skillset.map((skill, i) => (
+              {skills.map((skill, i) => (
                 <motion.li
                   whileInView="visible"
                   initial="hidden"
@@ -107,9 +111,9 @@ const About = () => {
                 src={
                   "https://live.staticflickr.com/65535/52176678364_3321678c1b_o.jpg"
                 }
-                alt={`Picture of ${data.name}`}
+                alt={`my picture`}
                 className="aspect-ratio-1/1"
-                layout="fill"
+                fill
                 loader={imgLoader}
               />
             </div>
