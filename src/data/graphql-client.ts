@@ -9,7 +9,7 @@ import {
 } from "../types/types";
 
 const client = new ApolloClient({
-  uri: process.env.STRAPI_GRAPHQL,
+  uri: "https://portfolio-strapi-yha5.onrender.com/graphql",
   cache: new InMemoryCache(),
 });
 
