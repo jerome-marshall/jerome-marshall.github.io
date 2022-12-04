@@ -1,11 +1,15 @@
 import { useTheme } from "next-themes";
-import React, { useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { useLocalStorage } from "react-use";
 import { themeChangeTransition, ThemeProvider } from "../data/ThemeContext";
+import { GlobalDatum } from "../types/types";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout: FC<{ children: ReactNode; data: GlobalDatum }> = ({
+  children,
+  data,
+}) => {
   const [localIsDark, setLocalIsDark, removelocalIsDark] = useLocalStorage(
     "isDark",
     true
@@ -22,7 +26,6 @@ const Layout = ({ children }) => {
 
     setTimeout(() => {
       setIsThemeChanging(false);
-      console.log("theme changed");
     }, 2000);
   };
 
@@ -35,7 +38,7 @@ const Layout = ({ children }) => {
       >
         <Header isDark={isDark} handleThemeChange={handleThemeChange} />
         {children}
-        {/* <Footer /> */}
+        <Footer socials={data.socials} name={data.name} />
       </div>
     </ThemeProvider>
   );

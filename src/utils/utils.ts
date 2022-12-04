@@ -1,25 +1,27 @@
+import { IconType } from "react-icons";
 import { BsStackOverflow as IconStackoverflow } from "react-icons/bs";
 import {
   FiGithub as IconGitHub,
   FiLinkedin as IconLinkedIn,
   FiMail as IconMail,
   FiPhone as IconPhone,
+  FiSquare,
 } from "react-icons/fi";
 import format from "date-fns/format";
 
-export const getIcon = (iconName: string) => {
+export const getIcon = (iconName: string): IconType => {
   const Icon =
-    iconName === "github"
+    iconName === "GitHub"
       ? IconGitHub
-      : iconName === "linkedin"
+      : iconName === "LinkedIn"
       ? IconLinkedIn
-      : iconName === "stackoverflow"
+      : iconName === "Stack Overflow"
       ? IconStackoverflow
-      : iconName === "phone"
+      : iconName === "+91 9159115328"
       ? IconPhone
-      : iconName === "email"
+      : iconName === "jeromemarshall0@gmail.com"
       ? IconMail
-      : null;
+      : FiSquare;
 
   return Icon;
 };

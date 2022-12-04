@@ -14,7 +14,6 @@ interface IProjectCardProps {
   index: number;
 }
 const ProjectCard: FC<IProjectCardProps> = ({ project, index }) => {
-  console.log("🚀 ~ file: ProjectCard.tsx:17 ~ project", project);
   const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {

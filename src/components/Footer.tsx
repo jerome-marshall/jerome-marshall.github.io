@@ -1,18 +1,21 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import { FC, useContext } from "react";
 import { SiNextdotjs as IconNextJs } from "react-icons/si";
-import { GlobalContext } from "../data/GlobalContext";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
+import { ComponentComponentSocial } from "../types/types";
 import { getIcon } from "../utils/utils";
 
-const Footer = () => {
-  const { isThemeChanging } = useContext(ThemeContext);
+interface IFOoterProps {
+  socials: ComponentComponentSocial[];
+  name: string;
+}
 
-  const { data } = useContext(GlobalContext);
+const Footer: FC<IFOoterProps> = ({ socials, name }) => {
+  const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {
     hidden: {
@@ -31,12 +34,12 @@ const Footer = () => {
     },
   };
 
-  const CreditSectionIcons = data.socials.map((social, index) => {
+  const CreditSectionIcons = socials.map((social) => {
     const Icon = getIcon(social.name);
 
     return (
       <a
-        key={social.displayName + "creditSection"}
+        key={social.name + "creditSection"}
         className="social-card"
         href={social.url}
         target={social.name !== "phone" ? "_blank" : ""}
@@ -63,7 +66,7 @@ const Footer = () => {
               isThemeChanging && themeChangeTransition
             }`}
           >
-            Designed by {data.name}
+            Designed by {name}
           </p>
           <p
             className={`mt-1 flex items-center gap-2 text-sm text-text_500 descendant:duration-1000 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary descendant-svg:transition-all dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary ${

@@ -18,8 +18,8 @@ export type Scalars = {
 export type ComponentComponentSocial = {
   __typename?: "ComponentComponentSocial";
   id: Scalars["ID"];
-  name?: string;
-  url?: string;
+  name: string;
+  url: string;
 };
 
 export type UploadFile = {
@@ -109,7 +109,7 @@ export type SkillRelationResponseCollection = {
 export type GlobalDatum = {
   __typename: "GlobalDatum";
   name: string;
-  socials: Maybe<Array<Maybe<ComponentComponentSocial>>>;
+  socials: ComponentComponentSocial[];
   image: Maybe<UploadFileEntityResponse>;
   shortIntroduction: string;
   introduction: string;

@@ -1,25 +1,23 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import { GlobalContext } from "../data/GlobalContext";
+import { FC } from "react";
+import { ComponentComponentSocial } from "../types/types";
 import { getIcon } from "../utils/utils";
 
-const SideBar = () => {
-  const { data } = useContext(GlobalContext);
-
+const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
   const iconsLocation = [
-    ["github", "linkedin", "stackoverflow"], // left icons
-    ["phone", "email"], // right icons
+    ["GitHub", "LinkedIn", "Stack Overflow"], // left icons
+    ["+91 9159115328", "jeromemarshall0@gmail.com"], // right icons
   ];
 
-  const iconCardWidths = {
-    github: "hover:w-[107px]",
-    linkedin: "hover:w-[117px]",
-    stackoverflow: "hover:w-[158px]",
-    phone: "hover:w-[164px]",
-    email: "hover:w-[253px]",
+  const iconCardWidths: Record<string, string> = {
+    GitHub: "hover:w-[107px]",
+    LinkedIn: "hover:w-[117px]",
+    "Stack Overflow": "hover:w-[158px]",
+    "+91 9159115328": "hover:w-[164px]",
+    "jeromemarshall0@gmail.com": "hover:w-[253px]",
   };
 
-  const sideContainerVariant = (isLeft) => {
+  const sideContainerVariant = (isLeft: boolean) => {
     return {
       hidden: {
         // x: isLeft ? -100 : 100,
@@ -41,7 +39,7 @@ const SideBar = () => {
     };
   };
 
-  const iconVariant = (isLeft) => {
+  const iconVariant = (isLeft?: boolean) => {
     return {
       hidden: {
         x: isLeft ? -100 : 100,
@@ -64,13 +62,17 @@ const SideBar = () => {
   //   adjustment = 20;
   // }
 
-  const GetIconCard = ({ social, left, right }) => {
+  const GetIconCard: FC<{
+    social: ComponentComponentSocial;
+    left?: boolean;
+    right?: boolean;
+  }> = ({ social, left, right }) => {
     const Icon = getIcon(social.name);
 
     return (
       <motion.div variants={iconVariant(left)}>
         <a
-          key={social.displayName + "creditSection"}
+          key={social.name + "creditSection"}
           className={`social-card group flex w-[48px] items-center gap-3 ${
             iconCardWidths[social.name]
           } ${right ? "flex-row-reverse" : ""}`}
@@ -80,23 +82,23 @@ const SideBar = () => {
         >
           <Icon />
           <span className=" whitespace-nowrap text-sm text-text_900 opacity-0 transition-all duration-500 group-hover:opacity-100 dark:text-dark-text_900">
-            {social.displayName}
+            {social.name}
           </span>
         </a>
       </motion.div>
     );
   };
 
-  const LeftSection = data.socials
+  const LeftSection = socials
     .filter((social) => iconsLocation[0].includes(social.name))
-    .map((social, index) => (
-      <GetIconCard key={social.displayName + "left"} social={social} left />
+    .map((social) => (
+      <GetIconCard key={social.name + "left"} social={social} left />
     ));
 
-  const RightSection = data.socials
+  const RightSection = socials
     .filter((social) => iconsLocation[1].includes(social.name))
     .map((social) => (
-      <GetIconCard key={social.displayName + "right"} social={social} right />
+      <GetIconCard key={social.name + "right"} social={social} right />
     ));
 
   return (

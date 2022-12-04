@@ -1,19 +1,13 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import { GlobalContext } from "../data/GlobalContext";
+import { FC, useContext } from "react";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
 
-const Contact = () => {
+const Contact: FC<{ content: string }> = ({ content }) => {
   const { isThemeChanging } = useContext(ThemeContext);
-
-  const { data } = useContext(GlobalContext);
-  const contactData = data.pageContent.find(
-    (content) => content.__typename === "ComponentPageContentContactPageCotent"
-  );
 
   const containerVariant = {
     hidden: {
@@ -49,21 +43,21 @@ const Contact = () => {
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {contactData.pageTitleIntro}
+          {"What's Next?"}
         </h6>
         <h3
           className={`md:text-4xl lg:my-3 lg:text-[50px] ${
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {contactData.pageTitle}
+          {"Get In Touch"}
         </h3>
         <p
           className={`mt-4 mb-6 max-w-xl lg:text-lg ${
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {contactData.description}
+          {content}
         </p>
         <motion.a
           href="mailto:jeromemarshall0@gmail.com"

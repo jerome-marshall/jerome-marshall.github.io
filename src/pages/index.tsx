@@ -1,11 +1,10 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import Projects from "../components/Projects";
-import { GlobalProvider } from "../data/GlobalContext";
 
 import Head from "next/head";
 import Contact from "../components/Contact";
@@ -23,7 +22,6 @@ const Home = ({
   quotes: Quote[];
   jobs: Job[];
 }) => {
-  console.log("🚀 ~ file: index.tsx:25 ~ jobs", jobs);
   const [isLoading, setIsLoading] = useState(false);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -41,7 +39,7 @@ const Home = ({
             randomQuote={randomQuote}
           />
         ) : (
-          <Layout>
+          <Layout data={data}>
             <Hero
               name={data.name}
               shortIntro={data.shortIntroduction}
@@ -50,8 +48,8 @@ const Home = ({
             <About aboutMe={data.about} skillsData={data.skillsHighlight} />
             <Experience jobs={jobs} />
             <Projects projectsData={data.projectsHighlight} />
-            {/* <Contact /> */}
-            {/* <SideBar /> */}
+            <Contact content={data.contactText} />
+            <SideBar socials={data.socials} />
           </Layout>
         )}
       </AnimatePresence>
