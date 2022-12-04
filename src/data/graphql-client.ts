@@ -55,6 +55,7 @@ export const getGlobalData = async () => {
                       data {
                         attributes {
                           name
+                          url
                         }
                       }
                     }

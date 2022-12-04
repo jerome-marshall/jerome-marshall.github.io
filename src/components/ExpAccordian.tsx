@@ -21,7 +21,6 @@ const ExpAccordian: FC<IExpAccordianProps> = ({
   openedDisclosure,
   length,
 }) => {
-  console.log("🚀 ~ file: ExpAccordian.tsx:22 ~ job", job);
   const { isThemeChanging } = useContext(ThemeContext);
 
   return (

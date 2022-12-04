@@ -6,7 +6,8 @@ import type { Skill } from "../types/types";
 const SkillLink: FC<{
   skill: Skill;
   className?: string;
-}> = ({ skill, className }) => {
+  id?: string;
+}> = ({ skill, className, id }) => {
   return (
     <motion.a
       className={`inline-block whitespace-nowrap text-sm transition-all duration-300 ease-linear hover:text-primary dark:hover:text-dark-secondary ${className}`}
@@ -14,6 +15,7 @@ const SkillLink: FC<{
       target="_blank"
       rel="noopener noreferrer"
       whileHover={hoverAnimation}
+      id={id}
     >
       {skill.name}
     </motion.a>

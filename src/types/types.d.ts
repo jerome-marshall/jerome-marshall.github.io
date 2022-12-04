@@ -60,11 +60,11 @@ export type UploadFileRelationResponseCollection = {
 
 export type Project = {
   __typename?: "Project";
-  name?: string;
+  name: string;
   date?: Maybe<Scalars["Date"]>;
   githubURL?: string;
   externalURL?: string;
-  techStack?: Maybe<SkillRelationResponseCollection>;
+  techStack: SkillRelationResponseCollection;
   projectFor?: string;
   personal?: Maybe<Scalars["Boolean"]>;
   description?: string;
@@ -77,7 +77,7 @@ export type Project = {
 export type ProjectEntity = {
   __typename?: "ProjectEntity";
   id?: Maybe<Scalars["ID"]>;
-  attributes?: Maybe<Project>;
+  attributes: Project;
 };
 
 export type ProjectRelationResponseCollection = {
@@ -116,7 +116,7 @@ export type GlobalDatum = {
   about: string;
   contactText: string;
   skillsHighlight: SkillRelationResponseCollection;
-  projectsHighlight: Maybe<ProjectRelationResponseCollection>;
+  projectsHighlight: ProjectRelationResponseCollection;
   createdAt: Maybe<Scalars["DateTime"]>;
   updatedAt: Maybe<Scalars["DateTime"]>;
 };

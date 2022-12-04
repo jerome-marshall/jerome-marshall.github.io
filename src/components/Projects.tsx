@@ -1,28 +1,18 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { GlobalContext } from "../data/GlobalContext";
 
 import { motion } from "framer-motion";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
 import ProjectCard from "./ProjectCard";
+import { ProjectRelationResponseCollection } from "../types/types";
 
-const Projects = () => {
+interface IProjectsProps {
+  projectsData: ProjectRelationResponseCollection;
+}
+const Projects: FC<IProjectsProps> = ({ projectsData }) => {
+  const projects = projectsData.data.map((project) => project.attributes);
+
   const { isThemeChanging } = useContext(ThemeContext);
-
-  const { data } = useContext(GlobalContext);
-  const projectsData = data.pageContent.find(
-    (content) =>
-      content.__typename === "ComponentPageContentProjectsPageContent"
-  );
-
-  const projects = projectsData.projects;
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 500,
-  };
 
   const containerVariant = {
     hidden: {
@@ -57,7 +47,7 @@ const Projects = () => {
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {projectsData.pageTitle}
+          {"Some things I've built"}
         </h3>
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {projects.map((project, index) => (

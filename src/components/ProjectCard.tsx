@@ -1,14 +1,20 @@
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import {
   FiExternalLink as IconExternal,
   FiFolder as IconFolder,
   FiGithub as IconGitHub,
 } from "react-icons/fi";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
+import { Project } from "../types/types";
 import SkillLink from "./SkillLink";
 
-const ProjectCard = ({ project, index }) => {
+interface IProjectCardProps {
+  project: Project;
+  index: number;
+}
+const ProjectCard: FC<IProjectCardProps> = ({ project, index }) => {
+  console.log("🚀 ~ file: ProjectCard.tsx:17 ~ project", project);
   const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {
@@ -81,19 +87,19 @@ const ProjectCard = ({ project, index }) => {
               isThemeChanging && themeChangeTransition
             }`}
           >
-            {project.description}
+            {project.shortDescription}
           </p>
         </div>
         <div className="show-scrollbar -mb-3 mt-auto flex w-full gap-4 overflow-auto pb-3">
-          {project.techStack?.map((skill) => (
+          {project.techStack.data.map((skill) => (
             <div
               className="inline before:content-[''] first:ml-auto"
-              key={skill.name}
-              id={skill.name}
+              key={skill.attributes.name}
+              id={skill.attributes.name}
             >
               <SkillLink
-                skill={skill}
-                id={skill.name}
+                skill={skill.attributes}
+                id={skill.attributes.name}
                 className={`text-xs text-text_700 transition-all duration-300 group-hover:text-secondary  dark:text-dark-text_700 dark:group-hover:text-dark-secondary ${
                   isThemeChanging && themeChangeTransition
                 }`}

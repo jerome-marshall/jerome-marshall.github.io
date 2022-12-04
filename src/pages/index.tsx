@@ -41,20 +41,18 @@ const Home = ({
             randomQuote={randomQuote}
           />
         ) : (
-          <>
-            <Layout>
-              <Hero
-                name={data.name}
-                shortIntro={data.shortIntroduction}
-                introduction={data.introduction}
-              />
-              <About aboutMe={data.about} skillsData={data.skillsHighlight} />
-              <Experience jobs={jobs} />
-              {/* <Projects /> */}
-              {/* <Contact /> */}
-              {/* <SideBar /> */}
-            </Layout>
-          </>
+          <Layout>
+            <Hero
+              name={data.name}
+              shortIntro={data.shortIntroduction}
+              introduction={data.introduction}
+            />
+            <About aboutMe={data.about} skillsData={data.skillsHighlight} />
+            <Experience jobs={jobs} />
+            <Projects projectsData={data.projectsHighlight} />
+            {/* <Contact /> */}
+            {/* <SideBar /> */}
+          </Layout>
         )}
       </AnimatePresence>
     </div>
