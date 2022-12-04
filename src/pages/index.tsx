@@ -12,6 +12,8 @@ import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Job, Quote } from "../types/types";
+import Script from "next/script";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 const Home = ({
   data,
@@ -35,6 +37,7 @@ const Home = ({
           content={`${data.name}'s portfolio. Has all the info on ${data.name}'s career. This portfolio was made with Next js`}
         />
       </Head>
+      <GoogleAnalytics mID={"G-K0X6YXQ2PG"} />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <SplashScreen
