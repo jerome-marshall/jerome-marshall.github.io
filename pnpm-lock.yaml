@@ -10,6 +10,7 @@ specifiers:
   autoprefixer: ^10.4.4
   axios: ^1.2.0
   clsx: ^1.2.1
+  date-fns: ^2.29.3
   eslint: 8.13.0
   eslint-config-next: 12.1.5
   framer-motion: ^6.3.4
@@ -42,6 +43,7 @@ dependencies:
   '@types/react-scroll': 1.8.5
   axios: 1.2.0
   clsx: 1.2.1
+  date-fns: 2.29.3
   framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
   graphql: 16.6.0
   hamburger-react: 2.5.0_react@18.2.0
@@ -1085,6 +1087,11 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /deasync/0.1.28:
     resolution: {integrity: sha512-QqLF6inIDwiATrfROIyQtwOQxjZuek13WRYZ7donU5wJPLoP67MnYxA6QtqdvdBy2mMqv5m3UefBVdJjvevOYg==}

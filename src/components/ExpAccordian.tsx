@@ -1,9 +1,9 @@
 import { Disclosure, Transition } from "@headlessui/react";
-import React, { FC, ReactElement, Ref, useContext } from "react";
-import ReactMarkdown from "react-markdown";
+import parse from "html-react-parser";
+import React, { FC, useContext } from "react";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
 import { Job } from "../types/types";
-import parse from "html-react-parser";
+import { calculateRange } from "../utils/utils";
 
 interface IExpAccordianProps {
   job: Job;
@@ -19,7 +19,9 @@ const ExpAccordian: FC<IExpAccordianProps> = ({
   job,
   toggleDisclosure,
   openedDisclosure,
+  length,
 }) => {
+  console.log("🚀 ~ file: ExpAccordian.tsx:22 ~ job", job);
   const { isThemeChanging } = useContext(ThemeContext);
 
   return (
@@ -86,7 +88,11 @@ const ExpAccordian: FC<IExpAccordianProps> = ({
                           isThemeChanging && themeChangeTransition
                         }`}
                       >
-                        {job.joiningDate}
+                        {calculateRange({
+                          startDate: job.joiningDate,
+                          endDate: job.leavingDate,
+                          present: job.present,
+                        })}
                       </p>
                       <div
                         className={`descendant-li:text-text_700 descendant-li:dark:text-dark-text_700 ${

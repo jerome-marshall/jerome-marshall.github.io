@@ -9,6 +9,7 @@ import {
   ThemeContext,
 } from "../data/ThemeContext";
 import { Job } from "../types/types";
+import { calculateRange } from "../utils/utils";
 import ExpAccordian from "./ExpAccordian";
 
 interface IExperienceProps {
@@ -151,7 +152,11 @@ const Experience: FC<IExperienceProps> = ({ jobs }) => {
                         isThemeChanging && themeChangeTransition
                       }`}
                     >
-                      {job.joiningDate}
+                      {calculateRange({
+                        startDate: job.joiningDate,
+                        endDate: job.leavingDate,
+                        present: job.present,
+                      })}
                     </p>
                     <div
                       className={`mt-6 text-text_700 descendant-li:mb-2 descendant-li:leading-loose dark:text-dark-text_700 ${
