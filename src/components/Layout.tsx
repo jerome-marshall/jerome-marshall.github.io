@@ -15,7 +15,7 @@ const Layout: FC<{ children: ReactNode; data: GlobalDatum }> = ({
     true
   );
   const { theme, setTheme } = useTheme();
-  const [isDark, setIsDark] = useState(localIsDark);
+  const [isDark, setIsDark] = useState(localIsDark as boolean);
   const [isThemeChanging, setIsThemeChanging] = useState(false);
 
   const handleThemeChange = () => {

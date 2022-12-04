@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import React, { useContext } from "react";
+import { motion, Variant, Variants } from "framer-motion";
+import React, { FC, ReactNode, useContext } from "react";
 import { Link } from "react-scroll";
 import {
   hoverAnimation,
@@ -7,7 +7,21 @@ import {
   ThemeContext,
 } from "../data/ThemeContext";
 
-const ScrollToLink = ({ to, className, clickHandler, children, variants }) => {
+interface IScrollToLinkProps {
+  to: string;
+  className?: string;
+  children: ReactNode;
+  variants?: Variants;
+  clickHandler?: () => void;
+}
+
+const ScrollToLink: FC<IScrollToLinkProps> = ({
+  to,
+  className,
+  clickHandler,
+  children,
+  variants,
+}) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   return (

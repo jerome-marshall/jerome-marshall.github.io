@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Cross as Hamburger } from "hamburger-react";
-import React, { useContext, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import DayNightToggle from "react-day-and-night-toggle";
 import { animateScroll as scroll, Link } from "react-scroll";
 import {
@@ -12,7 +12,12 @@ import { useWindowSize } from "../hooks/window-size";
 import MobileMenuModal from "./MobileMenuModal";
 import ScrollToLink from "./ScrollToLink";
 
-const Header = ({ isDark, handleThemeChange }) => {
+interface IHeaderProps {
+  isDark: boolean;
+  handleThemeChange: () => void;
+}
+
+const Header: FC<IHeaderProps> = ({ isDark, handleThemeChange }) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
