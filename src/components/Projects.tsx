@@ -1,10 +1,8 @@
-import React, { FC, useContext } from "react";
-import { GlobalContext } from "../data/GlobalContext";
-
+import { FC, useContext } from "react";
 import { motion } from "framer-motion";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
-import ProjectCard from "./ProjectCard";
 import { ProjectRelationResponseCollection } from "../types/types";
+import ProjectCard from "./ProjectCard";
 
 interface IProjectsProps {
   projectsData: ProjectRelationResponseCollection;
