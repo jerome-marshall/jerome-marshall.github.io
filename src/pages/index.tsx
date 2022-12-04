@@ -22,7 +22,7 @@ const Home = ({
   quotes: Quote[];
   jobs: Job[];
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 

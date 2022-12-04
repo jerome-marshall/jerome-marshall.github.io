@@ -1,9 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
 import { FaQuoteLeft as IconQuote } from "react-icons/fa";
+import { Quote } from "../types/types";
 
-const SplashScreen = ({ setIsLoading, randomQuote }) => {
+const SplashScreen: FC<{
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  randomQuote: Quote;
+}> = ({ setIsLoading, randomQuote }) => {
   const [showContine, setShowContinue] = useState(false);
   const [startIconAniamation, setStartIconAniamation] = useState(false);
 
