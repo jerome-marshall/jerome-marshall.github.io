@@ -1,12 +1,14 @@
 import { ThemeProvider } from "next-themes";
 import { AppProps } from "next/app";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import { useRouter } from "next/router";
+
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
-      <GoogleAnalytics mID={"G-K0X6YXQ2PG"} />
+      <GoogleAnalytics />
       <Component {...pageProps} />
     </ThemeProvider>
   );
