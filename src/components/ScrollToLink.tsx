@@ -6,6 +6,7 @@ import {
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
+import { event } from "../libs/gtag";
 
 interface IScrollToLinkProps {
   to: string;
@@ -35,7 +36,15 @@ const ScrollToLink: FC<IScrollToLinkProps> = ({
         className={`transition-all duration-300 ease-linear ${
           isThemeChanging && themeChangeTransition
         }`}
-        onClick={clickHandler}
+        onClick={() => {
+          if (clickHandler) clickHandler();
+          event({
+            action: "click",
+            category: "menu link click",
+            label: to + " menu clicked",
+            value: to + "_clicked",
+          });
+        }}
         smooth={true}
         duration={1000}
       >

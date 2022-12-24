@@ -9,6 +9,7 @@ import {
   ThemeContext,
 } from "../data/ThemeContext";
 import { useWindowSize } from "../hooks/window-size";
+import { event } from "../libs/gtag";
 import MobileMenuModal from "./MobileMenuModal";
 import ScrollToLink from "./ScrollToLink";
 
@@ -107,6 +108,14 @@ const Header: FC<IHeaderProps> = ({ isDark, handleThemeChange }) => {
             href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
             target="_blank"
             rel="noreferrer"
+            onClick={() => {
+              event({
+                action: "click",
+                category: " link click",
+                label: "resume link clicked",
+                value: "resume_clicked",
+              });
+            }}
           >
             Resume
           </a>

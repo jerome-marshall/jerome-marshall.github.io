@@ -158,3 +158,10 @@ export type JobEntity = {
 export interface IThemeContext {
   isThemeChanging?: boolean;
 }
+
+
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}

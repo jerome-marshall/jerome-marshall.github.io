@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { FC, Fragment, useContext } from "react";
 import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
+import { event } from "../libs/gtag";
 import ScrollToLink from "./ScrollToLink";
 
 const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = (
@@ -63,6 +64,14 @@ const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = (
                       isThemeChanging && themeChangeTransition
                     }`}
                     rel="noreferrer"
+                    onClick={() => {
+                      event({
+                        action: "click",
+                        category: " link click",
+                        label: "resume link clicked",
+                        value: "resume_clicked",
+                      });
+                    }}
                   >
                     Resume
                   </a>

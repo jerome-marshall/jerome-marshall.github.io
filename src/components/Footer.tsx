@@ -6,6 +6,7 @@ import {
   themeChangeTransition,
   ThemeContext,
 } from "../data/ThemeContext";
+import { event } from "../libs/gtag";
 import { ComponentComponentSocial } from "../types/types";
 import { getIcon } from "../utils/utils";
 
@@ -44,6 +45,14 @@ const Footer: FC<IFOoterProps> = ({ socials, name }) => {
         href={social.url}
         target={social.name !== "phone" ? "_blank" : ""}
         rel="noreferrer"
+        onClick={() => {
+          event({
+            action: "click",
+            category: " link click",
+            label: social.name + " link clicked",
+            value: social.name + "_footer_clicked",
+          });
+        }}
       >
         <Icon />
       </a>

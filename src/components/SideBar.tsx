@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
+import { event } from "../libs/gtag";
 import { ComponentComponentSocial } from "../types/types";
 import { getIcon } from "../utils/utils";
 
@@ -79,6 +80,14 @@ const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
           href={social.url}
           target={social.name !== "phone" ? "_blank" : ""}
           rel="noreferrer"
+          onClick={() => {
+            event({
+              action: "click",
+              category: " link click",
+              label: social.name + " link clicked",
+              value: social.name + "_clicked",
+            });
+          }}
         >
           <Icon />
           <span className=" whitespace-nowrap text-sm text-text_900 opacity-0 transition-all duration-500 group-hover:opacity-100 dark:text-dark-text_900">

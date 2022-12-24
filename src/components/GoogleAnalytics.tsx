@@ -1,7 +1,7 @@
 import { useRouter } from "next/router.js";
 import Script from "next/script";
 import React, { useEffect } from "react";
-import * as gtag from "../libs/gtag.js";
+import * as gtag from "../libs/gtag";
 
 const GoogleAnalytics = () => {
   const router = useRouter();
