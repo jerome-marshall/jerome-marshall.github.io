@@ -9,7 +9,10 @@ import {
 } from "../types/types";
 
 const client = new ApolloClient({
-  uri: "https://portfolio-strapi-yha5.onrender.com/graphql",
+  uri:
+    process.env.NEXT_PUBLIC_ENV === "dev"
+      ? "http://localhost:1337/graphql"
+      : "https://portfolio-strapi-yha5.onrender.com/graphql",
   cache: new InMemoryCache(),
 });
 
