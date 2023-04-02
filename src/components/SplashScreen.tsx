@@ -128,7 +128,7 @@ const SplashScreen: FC<{
               } transition-all duration-1000`}
             >
               <AnimatePresence
-                exitBeforeEnter
+                mode='wait'
                 onExitComplete={() => {
                   setTimeout(() => {
                     setStartIconAniamation(true);
