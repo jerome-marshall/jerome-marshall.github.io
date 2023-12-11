@@ -17,6 +17,7 @@ import SplashScreen from "../components/SplashScreen";
 import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Job, Quote } from "../types/types";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 const Home = ({
   data,
@@ -54,20 +55,22 @@ const Home = ({
           content={`${data.name}'s portfolio. Has all the info on ${data.name}'s career. This portfolio was made with Next js`}
         />
       </Head>
-      <motion.div
-        className="fixed h-full w-full transition-all duration-300"
-        style={{
-          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, var(--gradientColor) 10%, transparent 80%)`,
-        }}
-      />
+
       <AnimatePresence mode="wait">
-        {isLoading ? (
+        {isLoading && (
           <SplashScreen
             key="splash-container"
             setIsLoading={setIsLoading}
             randomQuote={randomQuote}
           />
-        ) : (
+        )}
+        <div className={clsx("w-full h-full", isLoading && "hidden")}>
+          <motion.div
+            className="fixed h-full w-full transition-all duration-300"
+            style={{
+              background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, var(--gradientColor) 10%, transparent 80%)`,
+            }}
+          />
           <Layout data={data} mousePosition={{ mouseX, mouseY }}>
             <Hero
               name={data.name}
@@ -80,7 +83,7 @@ const Home = ({
             <Contact content={data.contactText} />
             <SideBar socials={data.socials} />
           </Layout>
-        )}
+        </div>
       </AnimatePresence>
     </div>
   );

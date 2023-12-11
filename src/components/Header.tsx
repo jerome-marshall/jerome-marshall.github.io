@@ -67,7 +67,7 @@ const Header: FC<IHeaderProps> = ({
 
   return (
     <motion.nav
-      className={`wrapper fixed inset-0 z-50 flex h-20 w-full items-center justify-between border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1 ${
+      className={` fixed inset-0 z-50 w-full h-fit border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1 ${
         isThemeChanging && themeChangeTransition
       }`}
       variants={navContainerVarient}
@@ -80,79 +80,81 @@ const Header: FC<IHeaderProps> = ({
           background: useMotionTemplate`radial-gradient(600px circle at ${mousePosition.mouseX}px ${mousePosition.mouseY}px, var(--gradientColor) 40%, transparent 100%)`,
         }}
       />
-      <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
-        <Link
-          className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
-            isThemeChanging && themeChangeTransition
-          }`}
-          to="/"
-          onClick={() => {
-            if (isModalOpen) closeModal();
-            scroll.scrollToTop();
-          }}
-        >
-          JM
-        </Link>
-      </motion.div>
-
-      <motion.div
-        className="descendant-a:header-link hidden gap-12 md:flex"
-        variants={navContainerVarient}
-      >
-        <ScrollToLink to="about" variants={navItemVarient}>
-          About
-        </ScrollToLink>
-        <ScrollToLink to="experience" variants={navItemVarient}>
-          Experience
-        </ScrollToLink>
-        <ScrollToLink to="projects" variants={navItemVarient}>
-          Projects
-        </ScrollToLink>
-        <ScrollToLink to="contact" variants={navItemVarient}>
-          Contact
-        </ScrollToLink>
+      <div className="wrapper flex items-center justify-between h-20">
         <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
-          <a
-            className={`transition-all duration-300 ${
+          <Link
+            className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
               isThemeChanging && themeChangeTransition
             }`}
-            href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
-            target="_blank"
-            rel="noreferrer"
+            to="/"
             onClick={() => {
-              event({
-                action: "click",
-                category: " link click",
-                label: "resume link clicked",
-                value: "resume_clicked",
-              });
+              if (isModalOpen) closeModal();
+              scroll.scrollToTop();
             }}
           >
-            Resume
-          </a>
+            JM
+          </Link>
         </motion.div>
-      </motion.div>
 
-      <div className="theme-toggle ml-auto md:ml-0">
-        <DayNightToggle
-          onChange={handleThemeChange}
-          checked={isDark}
-          size={windowSize.width > 768 ? 28 : 26}
-        />
-      </div>
-      <div className="ml-4 text-2xl md:hidden">
-        <Hamburger
-          toggled={isModalOpen}
-          toggle={isModalOpen ? closeModal : openModal}
-          rounded
-          size={30}
-          duration={0.5}
-          distance="md"
-          // easing="linear"
-        />
-      </div>
+        <motion.div
+          className="descendant-a:header-link hidden gap-12 md:flex"
+          variants={navContainerVarient}
+        >
+          <ScrollToLink to="about" variants={navItemVarient}>
+            About
+          </ScrollToLink>
+          <ScrollToLink to="experience" variants={navItemVarient}>
+            Experience
+          </ScrollToLink>
+          <ScrollToLink to="projects" variants={navItemVarient}>
+            Projects
+          </ScrollToLink>
+          <ScrollToLink to="contact" variants={navItemVarient}>
+            Contact
+          </ScrollToLink>
+          <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
+            <a
+              className={`transition-all duration-300 ${
+                isThemeChanging && themeChangeTransition
+              }`}
+              href="https://drive.google.com/file/d/1eh_IK2jKvSl-f7UvOLKPq-A6GfEOHd1I/view"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => {
+                event({
+                  action: "click",
+                  category: " link click",
+                  label: "resume link clicked",
+                  value: "resume_clicked",
+                });
+              }}
+            >
+              Resume
+            </a>
+          </motion.div>
+        </motion.div>
 
-      <MobileMenuModal isModalOpen={isModalOpen} closeModal={closeModal} />
+        <div className="theme-toggle ml-auto md:ml-0">
+          <DayNightToggle
+            onChange={handleThemeChange}
+            checked={isDark}
+            size={windowSize.width > 768 ? 28 : 26}
+          />
+        </div>
+        <div className="ml-4 text-2xl md:hidden">
+          <Hamburger
+            toggled={isModalOpen}
+            toggle={isModalOpen ? closeModal : openModal}
+            rounded
+            size={30}
+            duration={0.5}
+            distance="md"
+            // easing="linear"
+          />
+        </div>
+
+        <MobileMenuModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      </div>
     </motion.nav>
   );
 };
