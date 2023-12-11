@@ -12,6 +12,8 @@ import { useWindowSize } from "../hooks/window-size";
 import { event } from "../libs/gtag";
 import MobileMenuModal from "./MobileMenuModal";
 import ScrollToLink from "./ScrollToLink";
+import useDeviceMedia from "../hooks/useDeviceMedia";
+import clsx from "clsx";
 
 interface IHeaderProps {
   isDark: boolean;
@@ -24,6 +26,7 @@ const Header: FC<IHeaderProps> = ({
   handleThemeChange,
   mousePosition,
 }) => {
+  const { isMobile } = useDeviceMedia();
   const { isThemeChanging } = useContext(ThemeContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,7 +78,10 @@ const Header: FC<IHeaderProps> = ({
       animate="visible"
     >
       <motion.div
-        className="absolute inset-0 h-full w-full -z-10 transition-all duration-300"
+        className={clsx(
+          "absolute inset-0 h-full w-full -z-10 transition-all duration-300",
+          isMobile && "hidden",
+        )}
         style={{
           background: useMotionTemplate`radial-gradient(600px circle at ${mousePosition.mouseX}px ${mousePosition.mouseY}px, var(--gradientColor) 40%, transparent 100%)`,
         }}

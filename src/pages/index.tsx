@@ -18,6 +18,7 @@ import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Job, Quote } from "../types/types";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import useDeviceMedia from "../hooks/useDeviceMedia";
 
 const Home = ({
   data,
@@ -28,6 +29,7 @@ const Home = ({
   quotes: Quote[];
   jobs: Job[];
 }) => {
+  const { isMobile } = useDeviceMedia();
   const [isLoading, setIsLoading] = useState(true);
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -66,7 +68,10 @@ const Home = ({
         )}
         <div className={clsx("w-full h-full", isLoading && "hidden")}>
           <motion.div
-            className="fixed h-full w-full transition-all duration-300"
+            className={clsx(
+              "fixed h-full w-full transition-all duration-300",
+              isMobile && "hidden",
+            )}
             style={{
               background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, var(--gradientColor) 10%, transparent 80%)`,
             }}
