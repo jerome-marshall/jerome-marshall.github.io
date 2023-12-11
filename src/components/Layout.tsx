@@ -5,14 +5,16 @@ import { themeChangeTransition, ThemeProvider } from "../data/ThemeContext";
 import { GlobalDatum } from "../types/types";
 import Footer from "./Footer";
 import Header from "./Header";
+import { MotionValue } from "framer-motion";
 
-const Layout: FC<{ children: ReactNode; data: GlobalDatum }> = ({
-  children,
-  data,
-}) => {
+const Layout: FC<{
+  children: ReactNode;
+  data: GlobalDatum;
+  mousePosition: { mouseX: MotionValue<number>; mouseY: MotionValue<number> };
+}> = ({ children, data, mousePosition }) => {
   const [localIsDark, setLocalIsDark, removelocalIsDark] = useLocalStorage(
     "isDark",
-    true
+    true,
   );
   const { theme, setTheme } = useTheme();
   const [isDark, setIsDark] = useState(localIsDark as boolean);
@@ -36,7 +38,11 @@ const Layout: FC<{ children: ReactNode; data: GlobalDatum }> = ({
           isThemeChanging && themeChangeTransition
         }`}
       >
-        <Header isDark={isDark} handleThemeChange={handleThemeChange} />
+        <Header
+          isDark={isDark}
+          handleThemeChange={handleThemeChange}
+          mousePosition={mousePosition}
+        />
         {children}
         <Footer socials={data.socials} name={data.name} />
       </div>

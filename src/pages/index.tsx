@@ -1,4 +1,8 @@
-import { AnimatePresence } from "framer-motion";
+import {
+  AnimatePresence,
+  useMotionTemplate,
+  useMotionValue,
+} from "framer-motion";
 import { useState } from "react";
 import About from "../components/About";
 import Experience from "../components/Experience";
@@ -12,6 +16,7 @@ import SideBar from "../components/SideBar";
 import SplashScreen from "../components/SplashScreen";
 import { getGlobalData, getJobs, getQuotes } from "../data/graphql-client";
 import { GlobalDatum, Job, Quote } from "../types/types";
+import { motion } from "framer-motion";
 
 const Home = ({
   data,
@@ -26,8 +31,22 @@ const Home = ({
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = ({
+    clientX,
+    clientY,
+  }: React.MouseEvent<HTMLDivElement>) => {
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
   return (
-    <div className="bg-background_1 dark:bg-dark-background_1">
+    <div
+      className="bg-background_1 dark:bg-dark-background_1"
+      onMouseMove={handleMouseMove}
+    >
       <Head>
         <title>{data.name}</title>
         <meta
@@ -35,15 +54,21 @@ const Home = ({
           content={`${data.name}'s portfolio. Has all the info on ${data.name}'s career. This portfolio was made with Next js`}
         />
       </Head>
+      <motion.div
+        className="fixed h-full w-full transition-all duration-300"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, var(--gradientColor) 10%, transparent 80%)`,
+        }}
+      />
       <AnimatePresence mode="wait">
-        {isLoading ? (
+        {false ? (
           <SplashScreen
             key="splash-container"
             setIsLoading={setIsLoading}
             randomQuote={randomQuote}
           />
         ) : (
-          <Layout data={data}>
+          <Layout data={data} mousePosition={{ mouseX, mouseY }}>
             <Hero
               name={data.name}
               shortIntro={data.shortIntroduction}

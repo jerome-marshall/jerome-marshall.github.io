@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { MotionValue, motion, useMotionTemplate } from "framer-motion";
 import { Cross as Hamburger } from "hamburger-react";
 import React, { FC, useContext, useState } from "react";
 import DayNightToggle from "react-day-and-night-toggle";
@@ -16,9 +16,14 @@ import ScrollToLink from "./ScrollToLink";
 interface IHeaderProps {
   isDark: boolean;
   handleThemeChange: () => void;
+  mousePosition: { mouseX: MotionValue<number>; mouseY: MotionValue<number> };
 }
 
-const Header: FC<IHeaderProps> = ({ isDark, handleThemeChange }) => {
+const Header: FC<IHeaderProps> = ({
+  isDark,
+  handleThemeChange,
+  mousePosition,
+}) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,6 +74,12 @@ const Header: FC<IHeaderProps> = ({ isDark, handleThemeChange }) => {
       initial="hidden"
       animate="visible"
     >
+      <motion.div
+        className="absolute inset-0 h-full w-full -z-10 transition-all duration-300"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${mousePosition.mouseX}px ${mousePosition.mouseY}px, var(--gradientColor) 40%, transparent 100%)`,
+        }}
+      />
       <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
         <Link
           className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
