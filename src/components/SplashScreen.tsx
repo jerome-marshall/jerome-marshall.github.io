@@ -1,8 +1,10 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { type Dispatch, type FC, type SetStateAction, useState } from "react";
 import { BsArrowRightCircle as IconGo } from "react-icons/bs";
 import { FaQuoteLeft as IconQuote } from "react-icons/fa";
-import { Quote } from "../types/types";
+import { type Quote } from "~/types/types";
 
 const SplashScreen: FC<{
   setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -110,25 +112,25 @@ const SplashScreen: FC<{
       <motion.div className="container flex items-center">
         <motion.div
           variants={containerVarient}
-          className="relative flex w-full flex-col items-center justify-center bg-background_2  py-16 dark:bg-dark-background_2 lg:px-12"
+          className="relative flex w-full flex-col items-center justify-center bg-background_2  py-16 lg:px-12 dark:bg-dark-background_2"
           layout
         >
           <motion.div className="flex flex-col items-center text-center" layout>
-            <div className="text-5xl text-text_500 dark:text-dark-text_500 md:text-6xl lg:text-7xl">
+            <div className="text-5xl text-text_500 md:text-6xl lg:text-7xl dark:text-dark-text_500">
               <IconQuote />
             </div>
-            <p className="mt-8 text-3xl leading-normal text-text_700 dark:text-dark-text_700 lg:text-5xl lg:leading-normal">
+            <p className="mt-8 text-3xl leading-normal text-text_700 lg:text-5xl lg:leading-normal dark:text-dark-text_700">
               {randomQuote.quote}
             </p>
             <motion.div
               className={` flex w-40 items-center justify-center ${
                 showContine
-                  ? "md:h-22 mt-10 mb-10 h-20 lg:h-24"
-                  : "mt-10 mb-8 h-2 lg:mt-14"
+                  ? "md:h-22 mb-10 mt-10 h-20 lg:h-24"
+                  : "mb-8 mt-10 h-2 lg:mt-14"
               } transition-all duration-1000`}
             >
               <AnimatePresence
-                mode='wait'
+                mode="wait"
                 onExitComplete={() => {
                   setTimeout(() => {
                     setStartIconAniamation(true);
@@ -166,7 +168,7 @@ const SplashScreen: FC<{
             </motion.div>
 
             <motion.p
-              className="text-lg text-text_700 dark:text-dark-text_700 lg:text-xl"
+              className="text-lg text-text_700 lg:text-xl dark:text-dark-text_700"
               layout
             >
               {randomQuote.author}

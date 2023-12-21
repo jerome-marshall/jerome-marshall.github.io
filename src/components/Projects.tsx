@@ -1,14 +1,15 @@
-import { FC, useContext } from "react";
+"use client";
+
 import { motion } from "framer-motion";
-import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
-import { ProjectRelationResponseCollection } from "../types/types";
+import { useContext, type FC } from "react";
+import { ThemeContext, themeChangeTransition } from "~/contexts/ThemeContext";
+import data from "~/data";
 import ProjectCard from "./ProjectCard";
 
-interface IProjectsProps {
-  projectsData: ProjectRelationResponseCollection;
-}
-const Projects: FC<IProjectsProps> = ({ projectsData }) => {
-  const projects = projectsData.data.map((project) => project.attributes);
+const Projects: FC = () => {
+  const projects = data.projectsHighlight.data.map(
+    (project) => project.attributes,
+  );
 
   const { isThemeChanging } = useContext(ThemeContext);
 

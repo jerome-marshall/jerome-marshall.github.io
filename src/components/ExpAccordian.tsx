@@ -1,9 +1,11 @@
+"use client";
+
 import { Disclosure, Transition } from "@headlessui/react";
 import parse from "html-react-parser";
-import React, { FC, useContext } from "react";
-import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
-import { Job } from "../types/types";
-import { calculateRange } from "../utils/utils";
+import React, { type FC, useContext } from "react";
+import { ThemeContext, themeChangeTransition } from "~/contexts/ThemeContext";
+import { calculateRange } from "~/lib/utils";
+import { type Job } from "~/types/types";
 
 interface IExpAccordianProps {
   job: Job;
@@ -83,7 +85,7 @@ const ExpAccordian: FC<IExpAccordianProps> = ({
                         </span>
                       </p>
                       <p
-                        className={`mt-1 mb-6 text-sm text-text_500 dark:text-dark-text_500 ${
+                        className={`mb-6 mt-1 text-sm text-text_500 dark:text-dark-text_500 ${
                           isThemeChanging && themeChangeTransition
                         }`}
                       >

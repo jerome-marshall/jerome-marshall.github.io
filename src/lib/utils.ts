@@ -1,5 +1,8 @@
-import { IconType } from "react-icons";
-import { BsStackOverflow as IconStackoverflow } from "react-icons/bs";
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import clsx from "clsx";
+import { type ClassValue } from "clsx";
+import { type IconType } from "react-icons";
+import { twMerge } from "tailwind-merge";
 import {
   FiGithub as IconGitHub,
   FiLinkedin as IconLinkedIn,
@@ -7,23 +10,38 @@ import {
   FiPhone as IconPhone,
   FiSquare,
 } from "react-icons/fi";
-import format from "date-fns/format";
+import { BsStackOverflow as IconStackoverflow } from "react-icons/bs";
+import { format } from "date-fns";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export const getIcon = (iconName: string): IconType => {
-  const Icon =
-    iconName === "GitHub"
-      ? IconGitHub
-      : iconName === "LinkedIn"
-      ? IconLinkedIn
-      : iconName === "Stack Overflow"
-      ? IconStackoverflow
-      : iconName === "+91 9159115328"
-      ? IconPhone
-      : iconName === "jeromemarshall0@gmail.com"
-      ? IconMail
-      : FiSquare;
+  let Icon = FiSquare;
 
-  return Icon;
+  switch (iconName) {
+    case "GitHub":
+      Icon = IconGitHub;
+      break;
+    case "LinkedIn":
+      Icon = IconLinkedIn;
+      break;
+    case "Stack Overflow":
+      Icon = IconStackoverflow;
+      break;
+    case "+91 9159115328":
+      Icon = IconPhone;
+      break;
+    case "jeromemarshall0@gmail.com":
+      Icon = IconMail;
+      break;
+    default:
+      Icon = FiSquare;
+      break;
+  }
+
+  return Icon as IconType;
 };
 
 export const imgLoader = ({

@@ -1,23 +1,23 @@
+"use client";
+
+import { type MotionValue } from "framer-motion";
 import { useTheme } from "next-themes";
-import { FC, ReactNode, useState } from "react";
+import { type FC, type ReactNode, useState } from "react";
 import { useLocalStorage } from "react-use";
-import { themeChangeTransition, ThemeProvider } from "../data/ThemeContext";
-import { GlobalDatum } from "../types/types";
+import { ThemeProvider, themeChangeTransition } from "~/contexts/ThemeContext";
 import Footer from "./Footer";
 import Header from "./Header";
-import { MotionValue } from "framer-motion";
 
 const Layout: FC<{
   children: ReactNode;
-  data: GlobalDatum;
   mousePosition: { mouseX: MotionValue<number>; mouseY: MotionValue<number> };
-}> = ({ children, data, mousePosition }) => {
+}> = ({ children, mousePosition }) => {
   const [localIsDark, setLocalIsDark, removelocalIsDark] = useLocalStorage(
     "isDark",
     true,
   );
   const { theme, setTheme } = useTheme();
-  const [isDark, setIsDark] = useState(localIsDark as boolean);
+  const [isDark, setIsDark] = useState(localIsDark!);
   const [isThemeChanging, setIsThemeChanging] = useState(false);
 
   const handleThemeChange = () => {
@@ -44,7 +44,7 @@ const Layout: FC<{
           mousePosition={mousePosition}
         />
         {children}
-        <Footer socials={data.socials} name={data.name} />
+        <Footer />
       </div>
     </ThemeProvider>
   );

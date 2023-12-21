@@ -1,3 +1,5 @@
+import { type Config } from "tailwindcss";
+
 const customColors = {
   accent_border: "#efd199",
   secondary: "#815400",
@@ -31,7 +33,7 @@ const customColors = {
   },
 };
 
-module.exports = {
+export default {
   darkMode: "class",
   content: ["./src/**/*.{html,js,tsx}"],
   theme: {
@@ -80,4 +82,4 @@ module.exports = {
     //   });
     // },
   ],
-};
+} satisfies Config;

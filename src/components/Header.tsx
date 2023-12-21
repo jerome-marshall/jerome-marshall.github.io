@@ -1,19 +1,20 @@
-import { MotionValue, motion, useMotionTemplate } from "framer-motion";
+"use client";
+
+import { type MotionValue, motion, useMotionTemplate } from "framer-motion";
 import { Cross as Hamburger } from "hamburger-react";
-import React, { FC, useContext, useState } from "react";
+import React, { type FC, useContext, useState } from "react";
 import DayNightToggle from "react-day-and-night-toggle";
 import { animateScroll as scroll, Link } from "react-scroll";
+import ScrollToLink from "./ScrollToLink";
+import clsx from "clsx";
+import useDeviceMedia from "~/hooks/useDeviceMedia";
 import {
+  ThemeContext,
   hoverAnimation,
   themeChangeTransition,
-  ThemeContext,
-} from "../data/ThemeContext";
-import { useWindowSize } from "../hooks/window-size";
-import { event } from "../libs/gtag";
+} from "~/contexts/ThemeContext";
+import { useWindowSize } from "~/hooks/window-size";
 import MobileMenuModal from "./MobileMenuModal";
-import ScrollToLink from "./ScrollToLink";
-import useDeviceMedia from "../hooks/useDeviceMedia";
-import clsx from "clsx";
 
 interface IHeaderProps {
   isDark: boolean;
@@ -70,7 +71,7 @@ const Header: FC<IHeaderProps> = ({
 
   return (
     <motion.nav
-      className={` fixed inset-0 z-50 w-full h-fit border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1 ${
+      className={` fixed inset-0 z-50 h-fit w-full border-b-2 border-background_2 bg-background_1 dark:border-dark-background_2 dark:bg-dark-background_1 ${
         isThemeChanging && themeChangeTransition
       }`}
       variants={navContainerVarient}
@@ -79,14 +80,14 @@ const Header: FC<IHeaderProps> = ({
     >
       <motion.div
         className={clsx(
-          "absolute inset-0 h-full w-full -z-10 transition-all duration-300",
+          "absolute inset-0 -z-10 h-full w-full transition-all duration-300",
           isMobile && "hidden",
         )}
         style={{
           background: useMotionTemplate`radial-gradient(600px circle at ${mousePosition.mouseX}px ${mousePosition.mouseY}px, var(--gradientColor) 40%, transparent 100%)`,
         }}
       />
-      <div className="wrapper flex items-center justify-between h-20">
+      <div className="wrapper flex h-20 items-center justify-between">
         <motion.div variants={navItemVarient} whileHover={hoverAnimation}>
           <Link
             className={`cursor-pointer text-2xl font-bold text-primary dark:text-dark-primary ${
@@ -127,12 +128,12 @@ const Header: FC<IHeaderProps> = ({
               target="_blank"
               rel="noreferrer"
               onClick={() => {
-                event({
-                  action: "click",
-                  category: " link click",
-                  label: "resume link clicked",
-                  value: "resume_clicked",
-                });
+                // event({
+                //   action: "click",
+                //   category: " link click",
+                //   label: "resume link clicked",
+                //   value: "resume_clicked",
+                // });
               }}
             >
               Resume

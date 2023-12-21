@@ -1,23 +1,24 @@
+"use client";
 import { motion } from "framer-motion";
-import { FC } from "react";
-import { event } from "../libs/gtag";
-import { ComponentComponentSocial } from "../types/types";
-import { getIcon } from "../utils/utils";
+import { type FC } from "react";
+import { socials } from "~/data";
+import { getIcon } from "~/lib/utils";
+import { type Social } from "~/types/types";
 
-const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
-  const iconsLocation = [
-    ["GitHub", "LinkedIn", "Stack Overflow"], // left icons
-    ["+91 9159115328", "jeromemarshall0@gmail.com"], // right icons
-  ];
+const iconsLocation = [
+  ["GitHub", "LinkedIn", "Stack Overflow"], // left icons
+  ["+91 9159115328", "jeromemarshall0@gmail.com"], // right icons
+];
 
-  const iconCardWidths: Record<string, string> = {
-    GitHub: "hover:w-[107px]",
-    LinkedIn: "hover:w-[117px]",
-    "Stack Overflow": "hover:w-[158px]",
-    "+91 9159115328": "hover:w-[164px]",
-    "jeromemarshall0@gmail.com": "hover:w-[253px]",
-  };
+const iconCardWidths: Record<string, string> = {
+  GitHub: "hover:w-[107px]",
+  LinkedIn: "hover:w-[117px]",
+  "Stack Overflow": "hover:w-[158px]",
+  "+91 9159115328": "hover:w-[164px]",
+  "jeromemarshall0@gmail.com": "hover:w-[253px]",
+};
 
+const SideBar: FC = () => {
   const sideContainerVariant = (isLeft: boolean) => {
     return {
       hidden: {
@@ -64,7 +65,7 @@ const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
   // }
 
   const GetIconCard: FC<{
-    social: ComponentComponentSocial;
+    social: Social;
     left?: boolean;
     right?: boolean;
   }> = ({ social, left, right }) => {
@@ -81,12 +82,12 @@ const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
           target={social.name !== "phone" ? "_blank" : ""}
           rel="noreferrer"
           onClick={() => {
-            event({
-              action: "click",
-              category: " link click",
-              label: social.name + " link clicked",
-              value: social.name + "_clicked",
-            });
+            // event({
+            //   action: "click",
+            //   category: " link click",
+            //   label: social.name + " link clicked",
+            //   value: social.name + "_clicked",
+            // });
           }}
         >
           <Icon />
@@ -99,19 +100,19 @@ const SideBar: FC<{ socials: ComponentComponentSocial[] }> = ({ socials }) => {
   };
 
   const LeftSection = socials
-    .filter((social) => iconsLocation[0].includes(social.name))
+    .filter((social) => iconsLocation[0]?.includes(social.name))
     .map((social) => (
       <GetIconCard key={social.name + "left"} social={social} left />
     ));
 
   const RightSection = socials
-    .filter((social) => iconsLocation[1].includes(social.name))
+    .filter((social) => iconsLocation[1]?.includes(social.name))
     .map((social) => (
       <GetIconCard key={social.name + "right"} social={social} right />
     ));
 
   return (
-    <div className="wrapper fixed bottom-0 right-0 left-0 z-0 hidden w-screen items-end justify-between xl:flex">
+    <div className="wrapper fixed bottom-0 left-0 right-0 z-0 hidden w-screen items-end justify-between xl:flex">
       {iconsLocation.map((_, index) => {
         const isLeft = index === 0;
 

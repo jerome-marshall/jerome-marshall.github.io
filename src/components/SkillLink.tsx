@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import type { FC } from "react";
-import { hoverAnimation } from "../data/ThemeContext";
-import type { Skill } from "../types/types";
+import { hoverAnimation } from "~/contexts/ThemeContext";
+import { type Skill } from "~/types/types";
 
 const SkillLink: FC<{
   skill: Skill;

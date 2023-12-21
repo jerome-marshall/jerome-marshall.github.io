@@ -1,12 +1,13 @@
-import { motion, Variant, Variants } from "framer-motion";
-import React, { FC, ReactNode, useContext } from "react";
+"use client";
+
+import { motion, type Variants } from "framer-motion";
+import { type FC, type ReactNode, useContext } from "react";
 import { Link } from "react-scroll";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
-} from "../data/ThemeContext";
-import { event } from "../libs/gtag";
+} from "~/contexts/ThemeContext";
 
 interface IScrollToLinkProps {
   to: string;
@@ -38,12 +39,12 @@ const ScrollToLink: FC<IScrollToLinkProps> = ({
         }`}
         onClick={() => {
           if (clickHandler) clickHandler();
-          event({
-            action: "click",
-            category: "menu link click",
-            label: to + " menu clicked",
-            value: to + "_clicked",
-          });
+          // event({
+          //   action: "click",
+          //   category: "menu link click",
+          //   label: to + " menu clicked",
+          //   value: to + "_clicked",
+          // });
         }}
         smooth={true}
         duration={1000}

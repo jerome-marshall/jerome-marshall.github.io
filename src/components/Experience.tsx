@@ -1,22 +1,20 @@
+"use client";
+
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import parse from "html-react-parser";
-import { FC, useContext, useRef, useState } from "react";
+import { type FC, useContext, useRef, useState } from "react";
 import {
+  ThemeContext,
   hoverAnimation,
   themeChangeTransition,
-  ThemeContext,
-} from "../data/ThemeContext";
-import { Job } from "../types/types";
-import { calculateRange } from "../utils/utils";
+} from "~/contexts/ThemeContext";
+import { jobs } from "~/data";
+import { calculateRange } from "~/lib/utils";
 import ExpAccordian from "./ExpAccordian";
 
-interface IExperienceProps {
-  jobs: Job[];
-}
-
-const Experience: FC<IExperienceProps> = ({ jobs }) => {
+const Experience: FC = () => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const pannelRef = useRef(null);
@@ -99,7 +97,7 @@ const Experience: FC<IExperienceProps> = ({ jobs }) => {
                         "z-10 w-full whitespace-nowrap border-l-[3px] p-3 text-left text-sm transition-all duration-500 hover:bg-background_3 hover:text-accent_hover dark:hover:bg-dark-background_3 dark:hover:text-dark-accent_hover",
                         selected
                           ? "border-secondary text-secondary dark:border-dark-secondary  dark:text-dark-secondary"
-                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500"
+                          : "border-accent_border text-text_500 dark:border-dark-accent_border dark:text-dark-text_500",
                       )
                     }
                   >
@@ -170,7 +168,7 @@ const Experience: FC<IExperienceProps> = ({ jobs }) => {
               </AnimatePresence>
             </Tab.Panels>
           </Tab.Group>
-          <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-background_3 dark:border-dark-background_3 md:hidden">
+          <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-background_3 md:hidden dark:border-dark-background_3">
             {jobs.map((job, i) => {
               return (
                 <ExpAccordian
@@ -181,7 +179,7 @@ const Experience: FC<IExperienceProps> = ({ jobs }) => {
                   toggleDisclosure={toggleDisclosure}
                   job={job}
                   index={i}
-                ></ExpAccordian>
+                />
               );
             })}
           </div>

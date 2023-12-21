@@ -1,13 +1,15 @@
+"use client";
+
 import { motion } from "framer-motion";
-import React, { FC, useContext } from "react";
+import React, { type FC, useContext } from "react";
 import {
   FiExternalLink as IconExternal,
   FiFolder as IconFolder,
   FiGithub as IconGitHub,
 } from "react-icons/fi";
-import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
-import { Project } from "../types/types";
 import SkillLink from "./SkillLink";
+import { ThemeContext, themeChangeTransition } from "~/contexts/ThemeContext";
+import { type Project } from "~/types/types";
 
 interface IProjectCardProps {
   project: Project;
@@ -82,7 +84,7 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, index }) => {
             {project.name}
           </h5>
           <p
-            className={`mt-3 text-text_500 dark:text-dark-text_500 lg:text-sm ${
+            className={`mt-3 text-text_500 lg:text-sm dark:text-dark-text_500 ${
               isThemeChanging && themeChangeTransition
             }`}
           >

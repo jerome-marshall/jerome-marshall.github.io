@@ -1,20 +1,18 @@
+"use client";
+
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
-import { FC, useContext } from "react";
+import { type FC, useContext } from "react";
 import { Link } from "react-scroll";
 import {
   hoverAnimation,
   themeChangeTransition,
   ThemeContext,
-} from "../data/ThemeContext";
-import { IThemeContext } from "../types/types";
+} from "~/contexts/ThemeContext";
+import { type IThemeContext } from "../types/types";
+import data from "~/data";
 
-interface IHeroProps {
-  name?: string;
-  shortIntro?: string;
-  introduction?: string;
-}
-const Hero: FC<IHeroProps> = ({ name, shortIntro, introduction }) => {
+const Hero: FC = () => {
   const { isThemeChanging } = useContext<IThemeContext>(ThemeContext);
 
   const containerVariant = {
@@ -67,22 +65,21 @@ const Hero: FC<IHeroProps> = ({ name, shortIntro, introduction }) => {
           variants={textVariant}
           className="text-clamp-lg font-bold text-text_900 dark:text-dark-text_900"
         >
-          {name}.
+          {data.name}.
         </motion.h1>
         <motion.h3
           variants={textVariant}
           className="text-clamp-md text-text_700 dark:text-dark-text_700"
         >
-          {shortIntro}
+          {data.shortIntroduction}
         </motion.h3>
-        {introduction && (
-          <motion.div
-            variants={textVariant}
-            className="z-10 mt-5 max-w-[600px] child-p:text-text_500  dark:child-p:text-dark-text_500  md:child-p:text-lg"
-          >
-            {parse(introduction)}
-          </motion.div>
-        )}
+        <motion.div
+          variants={textVariant}
+          className="z-10 mt-5 max-w-[600px] child-p:text-text_500  md:child-p:text-lg  dark:child-p:text-dark-text_500"
+        >
+          {parse(data.introduction)}
+        </motion.div>
+
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
           <motion.div
             className={`btn mt-12 self-center sm:self-start ${

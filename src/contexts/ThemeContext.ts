@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import { IThemeContext } from "../types/types";
+import { createContext } from "react";
+import { type IThemeContext } from "../types/types";
 
 export const hoverAnimation = {
   scale: 1.05,

@@ -1,21 +1,17 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { FC, useContext } from "react";
+import { type FC, useContext } from "react";
 import { SiNextdotjs as IconNextJs } from "react-icons/si";
 import {
+  ThemeContext,
   hoverAnimation,
   themeChangeTransition,
-  ThemeContext,
-} from "../data/ThemeContext";
-import { event } from "../libs/gtag";
-import { ComponentComponentSocial } from "../types/types";
-import { getIcon } from "../utils/utils";
+} from "~/contexts/ThemeContext";
+import data, { socials } from "~/data";
+import { getIcon } from "~/lib/utils";
 
-interface IFOoterProps {
-  socials: ComponentComponentSocial[];
-  name: string;
-}
-
-const Footer: FC<IFOoterProps> = ({ socials, name }) => {
+const Footer: FC = () => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {
@@ -46,12 +42,12 @@ const Footer: FC<IFOoterProps> = ({ socials, name }) => {
         target={social.name !== "phone" ? "_blank" : ""}
         rel="noreferrer"
         onClick={() => {
-          event({
-            action: "click",
-            category: " link click",
-            label: social.name + " link clicked",
-            value: social.name + "_footer_clicked",
-          });
+          //   event({
+          //     action: "click",
+          //     category: " link click",
+          //     label: social.name + " link clicked",
+          //     value: social.name + "_footer_clicked",
+          //   });
         }}
       >
         <Icon />
@@ -75,7 +71,7 @@ const Footer: FC<IFOoterProps> = ({ socials, name }) => {
               isThemeChanging && themeChangeTransition
             }`}
           >
-            Designed by {name}
+            Designed by {data.name}
           </p>
           <p
             className={`mt-1 flex items-center gap-2 text-sm text-text_500 descendant:duration-1000 descendant-svg:h-5 descendant-svg:w-5 descendant-svg:text-secondary descendant-svg:transition-all dark:text-dark-text_500 dark:descendant-svg:text-dark-secondary ${

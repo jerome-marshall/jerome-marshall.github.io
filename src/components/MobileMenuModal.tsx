@@ -1,22 +1,24 @@
-import { Dialog, Transition } from "@headlessui/react";
-import React, { FC, Fragment, useContext } from "react";
-import { themeChangeTransition, ThemeContext } from "../data/ThemeContext";
-import { event } from "../libs/gtag";
-import ScrollToLink from "./ScrollToLink";
+"use client";
 
-const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = (
-  props
-) => {
+import { Dialog, Transition } from "@headlessui/react";
+import React, { type FC, Fragment, useContext } from "react";
+import ScrollToLink from "./ScrollToLink";
+import { ThemeContext, themeChangeTransition } from "~/contexts/ThemeContext";
+
+const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = ({
+  closeModal,
+  isModalOpen,
+}) => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   return (
-    <Transition show={props.isModalOpen}>
+    <Transition show={isModalOpen}>
       <Dialog
         // variants={modalVarient}
         // initial="hidden"
         // animate="visible"
         // open={props.isModalOpen}
-        onClose={(closeModal) => {}}
+        onClose={(closeModal) => null}
         className="relative z-50 transition-all"
       >
         <Transition.Child
@@ -43,16 +45,16 @@ const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = (
 
               <Dialog.Panel className="relative bottom-20 mx-auto">
                 <div className="flex flex-col gap-7 child-a:text-2xl child-a:text-text_900 child-a:transition-all child-a:duration-1000 child-a:ease-linear dark:child-a:text-dark-text_900">
-                  <ScrollToLink to="about" clickHandler={props.closeModal}>
+                  <ScrollToLink to="about" clickHandler={closeModal}>
                     About
                   </ScrollToLink>
-                  <ScrollToLink to="experience" clickHandler={props.closeModal}>
+                  <ScrollToLink to="experience" clickHandler={closeModal}>
                     Experience
                   </ScrollToLink>
-                  <ScrollToLink to="projects" clickHandler={props.closeModal}>
+                  <ScrollToLink to="projects" clickHandler={closeModal}>
                     Projects
                   </ScrollToLink>
-                  <ScrollToLink to="contact" clickHandler={props.closeModal}>
+                  <ScrollToLink to="contact" clickHandler={closeModal}>
                     Contact
                   </ScrollToLink>
                 </div>
@@ -65,12 +67,12 @@ const MobileMenuModal: FC<{ isModalOpen: boolean; closeModal: () => void }> = (
                     }`}
                     rel="noreferrer"
                     onClick={() => {
-                      event({
-                        action: "click",
-                        category: " link click",
-                        label: "resume link clicked",
-                        value: "resume_clicked",
-                      });
+                      // event({
+                      //   action: "click",
+                      //   category: " link click",
+                      //   label: "resume link clicked",
+                      //   value: "resume_clicked",
+                      // });
                     }}
                   >
                     Resume

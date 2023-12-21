@@ -1,18 +1,20 @@
-/** @type {import('next').NextConfig} */
+/**
+ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
+ * for Docker builds.
+ */
+await import("./src/env.js");
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-const nextConfig = {
-  output: "export",
-  reactStrictMode: true,
-  images: {
-    loader: "custom",
-    domains: ["images.weserv.nl", "live.staticflickr.com"],
-    // path: "/",
-  },
-  swcMinify: true,
+/** @type {import("next").NextConfig} */
+const config = {
+    output: "export",
+    reactStrictMode: true,
+    images: {
+      loader: "custom",
+      domains: ["images.weserv.nl", "live.staticflickr.com"],
+      // path: "/",
+    },
+    swcMinify: true,
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+export default config;
+  

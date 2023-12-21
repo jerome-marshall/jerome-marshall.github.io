@@ -1,12 +1,15 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { FC, useContext } from "react";
+import { type FC, useContext } from "react";
 import {
+  ThemeContext,
   hoverAnimation,
   themeChangeTransition,
-  ThemeContext,
-} from "../data/ThemeContext";
+} from "~/contexts/ThemeContext";
+import data from "~/data";
 
-const Contact: FC<{ content: string }> = ({ content }) => {
+const Contact: FC = () => {
   const { isThemeChanging } = useContext(ThemeContext);
 
   const containerVariant = {
@@ -39,7 +42,7 @@ const Contact: FC<{ content: string }> = ({ content }) => {
         className="flex flex-col items-center justify-center px-5 text-center"
       >
         <h6
-          className={`text-sm text-secondary dark:text-dark-secondary lg:text-base ${
+          className={`text-sm text-secondary lg:text-base dark:text-dark-secondary ${
             isThemeChanging && themeChangeTransition
           }`}
         >
@@ -53,11 +56,11 @@ const Contact: FC<{ content: string }> = ({ content }) => {
           {"Get In Touch"}
         </h3>
         <p
-          className={`mt-4 mb-6 max-w-xl lg:text-lg ${
+          className={`mb-6 mt-4 max-w-xl lg:text-lg ${
             isThemeChanging && themeChangeTransition
           }`}
         >
-          {content}
+          {data.contactText}
         </p>
         <motion.a
           href="mailto:jeromemarshall0@gmail.com"

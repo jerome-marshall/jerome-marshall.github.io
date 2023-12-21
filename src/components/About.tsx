@@ -1,17 +1,15 @@
+"use client";
+
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
 import Image from "next/image";
-import { FC } from "react";
-import { SkillRelationResponseCollection } from "../types/types";
-import { imgLoader } from "../utils/utils";
+import { type FC } from "react";
+import data from "~/data";
 import SkillLink from "./SkillLink";
+import { imgLoader } from "~/lib/utils";
 
-interface IAboutProps {
-  aboutMe: string;
-  skillsData: SkillRelationResponseCollection;
-}
-const About: FC<IAboutProps> = ({ aboutMe, skillsData }) => {
-  const skills = skillsData.data.map((skill) => skill.attributes);
+const About: FC = () => {
+  const skills = data.skillsHighlight.data.map((skill) => skill.attributes);
   const containerVariant = {
     hidden: {
       opacity: 0,
@@ -77,7 +75,7 @@ const About: FC<IAboutProps> = ({ aboutMe, skillsData }) => {
         <h3 className="self-center md:self-start">About Me</h3>
         <div className="flex items-center md:gap-8 lg:gap-10 xl:gap-12">
           <div className="z-10 mt-7 flex w-full flex-col md:basis-2/3">
-            {parse(aboutMe)}
+            {parse(data.about)}
             <p className="mt-6">
               {"Here are a few technologies I've been working with recently:"}
             </p>
