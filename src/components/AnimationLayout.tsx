@@ -52,7 +52,7 @@ const AnimationLayout: FC<AnimationWrapperProps> = ({ children }) => {
           <motion.div
             className={cn(
               "fixed h-full w-full transition-all duration-300",
-              // isMobile && "hidden",
+              isMobile && "hidden",
             )}
             style={{
               background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, var(--gradientColor) 10%, transparent 80%)`,
