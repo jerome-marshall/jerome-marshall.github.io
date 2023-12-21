@@ -1,3 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  --gradientColor: rgb(215 140 0 /0.07);
+}
+
+html.dark {
+  --gradientColor: rgb(40 115 255 /0.12);
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1000px];
+  }
+
+  .wrapper {
+    @apply mx-auto max-w-[1600px] px-6;
+  }
+
+  .text-gradient-animation {
+    @apply light-gradient dark:dark-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    background-size: 300%;
+    background-position: 0%;
+    animation: animatedText 4s infinite linear;
+  }
+
+  @keyframes animatedText {
+    from {
+      background-position: 0%;
+    }
+    to {
+      background-position: 100%;
+    }
+  }
+
+  .light-gradient {
+    background-image: linear-gradient(
+      to right,
+      theme(colors.primary),
+      theme(colors.text_900),
+      theme(colors.primary),
+      theme(colors.text_900)
+    );
+  }
+
+  .dark-gradient {
+    background-image: linear-gradient(
+      to right,
+      theme(colors.dark.primary),
+      theme(colors.dark.text_900),
+      theme(colors.dark.primary),
+      theme(colors.dark.text_900)
+    );
+  }
+
+  .show-scrollbar {
+    &::-webkit-scrollbar {
+      @apply h-1;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      @apply bg-background_1 transition-all duration-1000 dark:bg-dark-background_1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      @apply bg-text_500 transition-all duration-1000 dark:bg-dark-text_500;
+    }
+  }
+
+  .btn {
+    background-color: transparent;
+    @apply z-10 rounded-full border-[2px] border-text_900  py-3 px-5 text-base text-text_900 dark:border-dark-text_900  dark:text-dark-text_900 md:px-6 md:py-4 lg:border-[3px] lg:text-lg;
+    @apply active:border-secondary active:bg-secondary active:text-text_hover dark:active:border-dark-secondary dark:active:bg-dark-secondary dark:active:text-dark-text_hover;
+    @apply transition-all duration-300;
+
+    @media screen(lg) {
+      @apply hover:border-secondary hover:bg-secondary hover:text-text_hover dark:hover:border-dark-secondary dark:hover:bg-dark-secondary dark:hover:text-dark-text_hover;
+    }
+  }
+  .btn-secondary {
+    @apply border-secondary bg-secondary text-text_hover dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-text_hover;
+    @apply active:border-text_900 active:text-text_900 dark:active:border-dark-text_900 dark:active:text-dark-text_900;
+  }
+
+  .theme-toggle {
+    > div {
+      > div {
+        @apply shadow-toggle-shadow dark:shadow-dark-toggle-shadow;
+      }
+    }
+  }
+
+  .header-link {
+    @apply cursor-pointer text-sm text-text_900 dark:text-dark-text_900 dark:hover:text-dark-primary;
+  }
+
+  .social-card {
+    @apply flex overflow-hidden rounded-full border-2 border-accent_border p-3 hover:border-secondary hover:bg-background_2 child-svg:min-h-[20px] child-svg:min-w-[20px] child-svg:text-text_700 dark:border-dark-accent_border dark:hover:border-dark-secondary dark:hover:bg-dark-background_2 dark:child-svg:text-dark-text_700;
+    @apply transition-all duration-500;
+  }
+
+  .clickable {
+    @apply z-20 cursor-pointer;
+  }
+}
+
+@layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+
+  h3 {
+    @apply text-[28px] font-bold text-text_900 dark:text-dark-text_900;
+  }
+
+  p {
+    @apply text-base leading-relaxed text-text_700 dark:text-dark-text_700;
+
+    a {
+      @apply text-secondary transition-all duration-300 dark:text-dark-secondary;
+      @apply hover:text-primary dark:hover:text-dark-primary;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      @apply relative pl-5 text-base leading-relaxed;
+    }
+
+    li::before {
+      @apply absolute left-0 text-base text-primary content-['▹'] dark:text-dark-primary;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  /* Works on Firefox */
+  * {
+    scrollbar-width: thin;
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--background-dark);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--grey-500);
+    border-radius: 100px;
+    /* border: 3px solid orange; */
+  }
+}
