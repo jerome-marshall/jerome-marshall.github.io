@@ -48,6 +48,11 @@ type Social = {
   url: string;
 };
 
+type Quote = {
+  quote: string;
+  author: string;
+};
+
 export interface IThemeContext {
   isThemeChanging?: boolean;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import type { FC } from "react";
 import {
   AnimatePresence,
@@ -10,12 +10,18 @@ import {
 } from "framer-motion";
 import { cn } from "~/lib/utils";
 import Layout from "~/components/Layout";
+import SplashScreen from "./SplashScreen";
+import useDeviceMedia from "~/hooks/useDeviceMedia";
+import { quotes } from "~/data";
 
 interface AnimationWrapperProps {
   children: React.ReactNode;
 }
 
 const AnimationLayout: FC<AnimationWrapperProps> = ({ children }) => {
+  const { isMobile } = useDeviceMedia();
+  const [isLoading, setIsLoading] = useState(true);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -27,13 +33,22 @@ const AnimationLayout: FC<AnimationWrapperProps> = ({ children }) => {
     mouseY.set(clientY);
   };
 
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]!;
+
   return (
     <div
       className="min-h-screen bg-background_1 dark:bg-dark-background_1"
       onMouseMove={handleMouseMove}
     >
       <AnimatePresence mode="wait">
-        <div className={cn("h-full w-full")}>
+        {isLoading && (
+          <SplashScreen
+            key="splash-container"
+            setIsLoading={setIsLoading}
+            randomQuote={randomQuote}
+          />
+        )}
+        <div className={cn("h-full w-full", isLoading && "hidden")}>
           <motion.div
             className={cn(
               "fixed h-full w-full transition-all duration-300",

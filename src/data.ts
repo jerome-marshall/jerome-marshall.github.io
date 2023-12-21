@@ -395,4 +395,33 @@ export const socials = [
   },
 ];
 
+export const quotes = [
+  {
+    quote: "Your most unhappy customers are your greatest source of learning.",
+    author: "Bill Gates",
+  },
+  {
+    quote: "Experience is the name everyone gives to their mistakes",
+    author: "Oscar Wilde",
+  },
+  {
+    quote: "Knowledge is power",
+    author: "Francis Bacon",
+  },
+  {
+    quote: "Websites promote you 24/7: No employee will do that.",
+    author: "Paul Cookson",
+  },
+  {
+    quote:
+      "No one comes to your website to be entertained. They have questions they think you can answer. Content answers questions.",
+    author: "Jay Baer",
+  },
+  {
+    quote:
+      "Your website is the window of your business. Keep it fresh, keep it exciting.",
+    author: "Jay Conrad Levinson",
+  },
+];
+
 export default data;
