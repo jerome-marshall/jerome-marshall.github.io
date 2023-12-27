@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import escapeHTML from 'escape-html'
 import Link from 'next/link'
 
-type Node = {
+export type Node = {
   type: string
   value?: {
     url: string
@@ -14,17 +14,15 @@ type Node = {
   newTab?: boolean
 }
 
-export type CustomRenderers = {
-  [key: string]: (args: { node: Node; Serialize: SerializeFunction; index: number }) => JSX.Element // eslint-disable-line
-}
+export type CustomRenderers = Record<string, (args: { node: Node; Serialize: SerializeFunction; index: number }) => JSX.Element>
 
 type SerializeFunction = React.FC<{
   content?: Node[]
   customRenderers?: CustomRenderers
 }>
 
-const isText = (value: any): boolean =>
-  typeof value === 'object' && value !== null && typeof value.text === 'string'
+const isText = (value: unknown): boolean =>
+  typeof value === 'object' && value !== null && "text" in value && typeof value.text === 'string'
 
 export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
   return (
@@ -70,11 +68,10 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
         }
 
         if (
-          customRenderers &&
-          customRenderers[node.type] &&
+          customRenderers?.[node.type] &&
           typeof customRenderers[node.type] === 'function'
         ) {
-          return customRenderers[node.type]({ node, Serialize, index: i })
+          return customRenderers[node.type]?.({ node, Serialize, index: i })
         }
 
         switch (node.type) {

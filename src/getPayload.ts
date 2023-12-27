@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import dotenv from 'dotenv'
 import path from 'path'
 import type { Payload } from 'payload'
@@ -10,10 +11,17 @@ dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
 
-let cached = (global as any).payload
+declare global {
+  var payload: {
+    client: Payload | null
+    promise: Promise<Payload> | null
+  }
+}
+
+let cached = (global).payload
 
 if (!cached) {
-  cached = (global as any).payload = { client: null, promise: null }
+  cached = (global).payload = { client: null, promise: null }
 }
 
 interface Args {
@@ -34,7 +42,7 @@ export const getPayloadClient = async ({ initOptions, seed }: Args = {}): Promis
     cached.promise = payload.init({
       secret: process.env.PAYLOAD_SECRET,
       local: initOptions?.express ? false : true,
-      ...(initOptions || {}),
+      ...(initOptions ?? {}),
     })
   }
 

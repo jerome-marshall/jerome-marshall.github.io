@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import dotenv from 'dotenv'
 import next from 'next'
 import nextBuild from 'next/dist/build'
@@ -12,7 +14,7 @@ import express from 'express'
 import { getPayloadClient } from './getPayload'
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT ?? 3000
 
 const start = async (): Promise<void> => {
   const payload = await getPayloadClient({
@@ -42,12 +44,12 @@ const start = async (): Promise<void> => {
 
   const nextHandler = nextApp.getRequestHandler()
 
-  app.use((req, res) => nextHandler(req, res))
+  app.use( (req, res) => { nextHandler(req, res)})
 
   nextApp.prepare().then(() => {
     payload.logger.info('Next.js started')
 
-    app.listen(PORT, async () => {
+    app.listen(PORT, () => {
       payload.logger.info(`Next.js App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
     })
   })

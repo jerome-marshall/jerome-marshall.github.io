@@ -2,13 +2,13 @@
 
 import React from 'react'
 
-import { CustomRenderers, Serialize as SerializeContent } from './Serialize'
+import { type CustomRenderers, Serialize as SerializeContent, type Node } from './Serialize'
 
 import classes from './index.module.scss'
 
 export const RichText: React.FC<{
   className?: string
-  content: any
+  content: Node[]
   customRenderers?: CustomRenderers
 }> = ({ className, content, customRenderers }) => {
   if (!content) {

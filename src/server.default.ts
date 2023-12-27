@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import dotenv from 'dotenv'
 import path from 'path'
 
@@ -14,7 +15,7 @@ import express from 'express'
 import { getPayloadClient } from './getPayload'
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT ?? 3000
 
 const start = async (): Promise<void> => {
   const payload = await getPayloadClient({
@@ -27,7 +28,7 @@ const start = async (): Promise<void> => {
     seed: process.env.PAYLOAD_PUBLIC_SEED === 'true',
   })
 
-  app.listen(PORT, async () => {
+  app.listen(PORT, () => {
     payload.logger.info(`App URL: ${process.env.PAYLOAD_PUBLIC_SERVER_URL}`)
   })
 }

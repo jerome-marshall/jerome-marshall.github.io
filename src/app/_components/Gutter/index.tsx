@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, type Ref } from 'react'
 
 import classes from './index.module.scss'
 
