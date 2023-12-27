@@ -1,9 +1,13 @@
-require('dotenv').config()
+/** @type {import("next").NextConfig} */
+const config = {
+    output: "export",
+    reactStrictMode: true,
+    images: {
+      loader: "custom",
+      domains: ["images.weserv.nl", "live.staticflickr.com"],
+      // path: "/",
+    },
+    swcMinify: true,
+};
 
-module.exports = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    domains: ['localhost', process.env.NEXT_PUBLIC_PAYLOAD_URL],
-  },
-}
+export default config;
