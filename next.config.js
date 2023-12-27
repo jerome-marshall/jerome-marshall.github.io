@@ -1,20 +1,9 @@
-/**
- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
- * for Docker builds.
- */
-await import("./src/env.js");
+require('dotenv').config()
 
-/** @type {import("next").NextConfig} */
-const config = {
-    output: "export",
-    reactStrictMode: true,
-    images: {
-      loader: "custom",
-      domains: ["images.weserv.nl", "live.staticflickr.com"],
-      // path: "/",
-    },
-    swcMinify: true,
-};
-
-export default config;
-  
+module.exports = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['localhost', process.env.NEXT_PUBLIC_PAYLOAD_URL],
+  },
+}
