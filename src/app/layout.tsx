@@ -1,36 +1,33 @@
-import React from 'react'
-import Link from 'next/link'
+import "~/styles/globals.css";
 
-import './app.scss'
+import { Inter } from "next/font/google";
+import Providers from "~/components/Providers";
+import data from "~/data";
+import AnimationLayout from "~/components/AnimationLayout";
 
-import classes from './layout.module.scss'
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata = {
-  title: 'Payload Custom Server',
-  description: 'Serve Payload alongside any front-end framework.',
-}
+  title: data.name,
+  description: `${data.name}'s portfolio. Has all the info on ${data.name}'s career.`,
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={classes.body}>
-        <header className={classes.header}>
-          <Link href="https://payloadcms.com" target="_blank" rel="noopener noreferrer">
-            <picture>
-              <source
-                media="(prefers-color-scheme: dark)"
-                srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
-              />
-              <img
-                className={classes.logo}
-                alt="Payload Logo"
-                src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-dark.svg"
-              />
-            </picture>
-          </Link>
-        </header>
-        {children}
+      <body className={`font-sans ${inter.variable}`}>
+        <Providers>
+          <AnimationLayout>{children}</AnimationLayout>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
