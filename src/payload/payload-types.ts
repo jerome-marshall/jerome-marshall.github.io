@@ -18,19 +18,29 @@ export interface Config {
   };
 }
 export interface Page {
-  id: string;
+  id: number;
   title: string;
-  richText?:
-    | {
+  richText?: {
+    root: {
+      children: {
+        type: string;
+        version: number;
         [k: string]: unknown;
-      }[]
-    | null;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -43,10 +53,10 @@ export interface User {
   password: string | null;
 }
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -62,20 +72,56 @@ export interface PayloadPreference {
   createdAt: string;
 }
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 export interface Datum {
-  id: string;
+  id: number;
   firstName: string;
   lastName: string;
   fullName?: string | null;
-  richText?:
-    | {
+  shortIntroduction?: string | null;
+  introduction?: {
+    root: {
+      children: {
+        type: string;
+        version: number;
         [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  introduction_html?: string | null;
+  about?: {
+    root: {
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  about_html?: string | null;
+  contactText: string;
+  socials?:
+    | {
+        name: string;
+        url: string;
+        id?: string | null;
       }[]
     | null;
   updatedAt?: string | null;

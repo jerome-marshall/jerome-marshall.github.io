@@ -20,7 +20,7 @@ interface AnimationWrapperProps {
 
 const AnimationLayout: FC<AnimationWrapperProps> = ({ children }) => {
   const { isMobile } = useDeviceMedia();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);

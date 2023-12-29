@@ -10,9 +10,15 @@ import {
   ThemeContext,
 } from "~/contexts/ThemeContext";
 import { type IThemeContext } from "../types/types";
-import data from "~/data";
+import { type Datum } from "~/payload/payload-types";
+import lexicalToHTML from "~/lib/lexicalToHTML";
+import { convertLexicalToHTML } from "@payloadcms/richtext-lexical";
 
-const Hero: FC = () => {
+type Props = {
+  data: Datum;
+};
+
+const Hero = ({ data }: Props) => {
   const { isThemeChanging } = useContext<IThemeContext>(ThemeContext);
 
   const containerVariant = {
@@ -65,7 +71,7 @@ const Hero: FC = () => {
           variants={textVariant}
           className="text-clamp-lg font-bold text-text_900 dark:text-dark-text_900"
         >
-          {data.name}.
+          {data.fullName}.
         </motion.h1>
         <motion.h3
           variants={textVariant}
@@ -73,12 +79,14 @@ const Hero: FC = () => {
         >
           {data.shortIntroduction}
         </motion.h3>
-        <motion.div
-          variants={textVariant}
-          className="z-10 mt-5 max-w-[600px] child-p:text-text_500  md:child-p:text-lg  dark:child-p:text-dark-text_500"
-        >
-          {parse(data.introduction)}
-        </motion.div>
+        {!!data.introduction_html && (
+          <motion.div
+            variants={textVariant}
+            className="z-10 mt-5 max-w-[600px] child-p:text-text_500  md:child-p:text-lg  dark:child-p:text-dark-text_500"
+          >
+            {parse(data.introduction_html)}
+          </motion.div>
+        )}
 
         <motion.div className="z-10 cursor-pointer" variants={textVariant}>
           <motion.div

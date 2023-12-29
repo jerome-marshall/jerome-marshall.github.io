@@ -4,11 +4,15 @@ import Experience from "~/components/Experience";
 import Hero from "~/components/Hero";
 import Projects from "~/components/Projects";
 import SideBar from "~/components/SideBar";
+import payload from "payload";
+import getAllData from "~/lib/getAllData";
 
-export default function HomePage() {
+const HomePage = async () => {
+  const data = await getAllData(payload);
+
   return (
     <>
-      <Hero />
+      <Hero data={data} />
       <About />
       <Experience />
       <Projects />
@@ -16,4 +20,6 @@ export default function HomePage() {
       <SideBar />
     </>
   );
-}
+};
+
+export default HomePage;

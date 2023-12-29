@@ -11,7 +11,6 @@ dotenv.config({
 import { buildConfig } from "payload/config";
 
 import { type PayloadBundler } from "payload/dist/bundlers/types";
-import BeforeLogin from "../components/BeforeLogin";
 import { Pages } from "./collections/Pages";
 import { Data } from "./globals/Data";
 
